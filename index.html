@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código Das Cordas | Curso de Violão — Gabriel Mattos</title>
+  <meta name="description" content="Código Das Cordas — curso de violão de Gabriel Mattos. Aprenda do zero ou organize seus conhecimentos, de acordes e escalas à harmonia e improvisação.">
+  <style>
+    :root{
+      --wood:#3a2115; --wood2:#5a3422; --cream:#f4ead7; --paper:#fff9ed;
+      --gold:#c69a52; --ink:#211711; --muted:#6c5a4b; --line:#d8c5a7;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ink);
+  line-height:1.6;
+
+  background:url("027d36bf-e798-4083-99db-b76b6cd20d48.png") center center fixed;
+  background-size:cover;
+}
+    .top{background:var(--wood);color:#f8edda;text-align:center;padding:10px 18px;font-size:.92rem;letter-spacing:.04em}
+    nav{position:sticky;top:0;z-index:20;background:rgba(58,33,21,.97);border-bottom:1px solid rgba(198,154,82,.45)}
+    nav .inner{max-width:1120px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+    .brand{font-weight:bold;letter-spacing:.08em;color:#f5dfb5}
+    nav a{color:#fff5e6;text-decoration:none;margin-left:20px;font-size:.92rem}
+    .hero{
+  background:rgba(0,0,0,.55);
+  color:#fff7e9;
+  padding:82px 20px 90px;
+  position:relative;
+  overflow:hidden;
+}
+    .hero:after{content:"♪ ♫ ♪";position:absolute;right:4%;bottom:8%;font-size:7rem;color:rgba(255,255,255,.055);transform:rotate(-10deg)}
+    .wrap{max-width:1120px;margin:auto}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+    .eyebrow{color:#e0bc78;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:bold}
+    h1{font-size:clamp(3rem,7vw,5.8rem);line-height:.92;margin:15px 0 24px;letter-spacing:-.04em}
+    h1 span{display:block;color:#e0bc78}
+    .hero p{font-size:1.22rem;max-width:650px;color:#f3e4cf}
+    .cta{display:inline-block;background:var(--gold);color:#24160e;text-decoration:none;font-weight:bold;padding:16px 26px;border-radius:4px;margin-top:14px;box-shadow:0 8px 24px #0004}
+    .cta:hover{filter:brightness(1.08)}
+    .course-card{background:#f8eedc;color:var(--ink);padding:22px;border:1px solid #b78b51;box-shadow:14px 16px 0 rgba(198,154,82,.18);transform:rotate(1deg)}
+    .course-cover{height:300px;background:linear-gradient(145deg,#6a4128,#2d190f);display:grid;place-items:center;text-align:center;color:#f3d69e;border:7px solid #d1a566}
+    .course-cover strong{display:block;font-size:2.2rem;letter-spacing:.08em}.course-cover small{letter-spacing:.16em}
+    section{padding:75px 20px}.paper{background:var(--paper)}
+    .section-title{text-align:center;max-width:760px;margin:0 auto 45px}
+    .section-title h2{font-size:clamp(2rem,4vw,3.1rem);margin:0 0 10px}
+    .section-title p{color:var(--muted);margin:0}
+    .quote{background:var(--wood2);color:#f8ead4;padding:45px 20px;text-align:center}
+    .quote blockquote{max-width:850px;margin:0 auto;font-size:clamp(1.4rem,3vw,2.15rem);font-style:italic}
+    .quote cite{display:block;margin-top:15px;color:#e0bc78;font-weight:bold}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .benefit{background:#fffaf0;border:1px solid var(--line);padding:27px}
+    .icon{font-size:2rem;color:var(--gold)}
+    .benefit h3{margin:8px 0}.benefit p{color:var(--muted);margin:0}
+    .modules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:auto}
+    details{background:#fffaf0;border:1px solid var(--line);padding:17px 20px}
+    summary{cursor:pointer;font-weight:bold;font-size:1.06rem}
+    details ul{color:var(--muted);margin-bottom:0}
+    .audience{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch}
+    .audience-box{background:#fffaf0;border-left:5px solid var(--gold);padding:28px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .price{background:linear-gradient(135deg,#2b180f,#5c3825);color:#fff4df;text-align:center}
+    .price .box{max-width:700px;margin:auto;border:1px solid #c69a52;padding:45px 25px}
+    .price small{color:#dfc28e}.price .value{font-size:4rem;font-weight:bold;line-height:1;margin:12px 0}.price .pix{color:#e1bc76;font-weight:bold}
+    .faq{max-width:850px;margin:auto}.faq details{margin:10px 0}
+    footer{background:#21130d;color:#d9c5a8;text-align:center;padding:30px 20px;font-size:.9rem}
+    @media(max-width:800px){
+      .hero-grid,.audience{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}.modules{grid-template-columns:1fr}
+      nav .inner{flex-direction:column;gap:8px}nav a{margin:0 7px}
+      .hero{padding-top:55px}.course-card{max-width:500px;margin:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="top">🎸 UM MÉTODO COMPLETO PARA ENTENDER E DOMINAR O VIOLÃO</div>
+  <nav>
+    <div class="inner">
+      <div class="brand">CÓDIGO DAS CORDAS</div>
+      <div>
+  <a href="#curso">O curso</a>
+  <a href="#conteudo">Conteúdo</a>
+  <a href="#oferta">Investimento</a>
+  <a href="#suporte">Suporte</a>
+  <a href="#faq">Dúvidas</a>
+</div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Curso de violão • Gabriel Mattos</div>
+        <h1>Aprenda a <span>entender</span> o violão.</h1>
+        <p>Do primeiro acorde à construção de solos: uma jornada organizada para quem quer aprender do zero ou colocar seus conhecimentos em ordem.</p>
+        <a class="cta" href="#oferta">QUERO APRENDER VIOLÃO →</a>
+      </div>
+      <div class="course-card">
+        <div class="course-cover">
+          <div><small>O MÉTODO</small><strong>CÓDIGO<br>DAS CORDAS</strong><small>GABRIEL MATTOS</small></div>
+        </div>
+        <p style="margin-bottom:0;text-align:center"><strong>Material completo em PDF</strong><br>+ acesso vitalício</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="curso" class="paper">
+    <div class="section-title">
+      <h2>Mais do que decorar acordes</h2>
+      <p>O objetivo é compreender o que está acontecendo no instrumento para tocar com mais segurança, consciência e liberdade.</p>
+    </div>
+    <div class="benefits wrap">
+      <div class="benefit"><div class="icon">🎼</div><h3>Teoria aplicada</h3><p>Semitons, tons, intervalos, escalas, acordes, campos harmônicos e funções explicados de forma progressiva.</p></div>
+      <div class="benefit"><div class="icon">🎸</div><h3>Prática no braço</h3><p>O conteúdo é pensado para você conectar teoria, acordes, escalas, arpejos e posições no violão.</p></div>
+      <div class="benefit"><div class="icon">🔥</div><h3>Improvisação</h3><p>Avance até pentatônicas, blue note, técnicas e construção de solos.</p></div>
+    </div>
+  </section>
+
+  <div class="quote">
+    <blockquote>“O conhecimento só se transforma em habilidade através da prática.”</blockquote>
+    <cite>— Gabriel Mattos</cite>
+  </div>
+
+  <section id="conteudo">
+    <div class="section-title">
+      <h2>Uma jornada completa pelo violão</h2>
+      <p>Os conteúdos foram organizados em uma sequência que vai dos fundamentos até conceitos avançados.</p>
+    </div>
+    <div class="modules">
+      <details open><summary>01 — Fundamentos e linguagem musical</summary><ul><li>Semitom, tom, intervalos e trítono</li><li>Acidentes musicais e escala cromática</li><li>Acordes e tríades</li><li>Escala maior e estrutura dos acordes</li></ul></details>
+      <details><summary>02 — Acordes e CAGED</summary><ul><li>Formação de acordes maiores e menores</li><li>Sistema CAGED</li><li>Tétrades</li><li>Inversão de acordes</li><li>Acordes dissonantes</li></ul></details>
+      <details><summary>03 — Escalas e campos harmônicos</summary><ul><li>Escalas maiores e menores</li><li>Campo harmônico maior natural</li><li>Campo harmônico menor natural</li><li>Campos menor harmônico e melódico</li></ul></details>
+      <details><summary>04 — Harmonia na prática</summary><ul><li>Funções harmônicas</li><li>Cadências</li><li>Notas de tensão</li><li>Acordes dominantes</li><li>Empréstimo modal e rearmonização</li></ul></details>
+      <details><summary>05 — Ciclos, tonalidades e modulação</summary><ul><li>Ciclo das quintas e das quartas</li><li>Modulação e transposição</li><li>Ciclo das quintas e tonalidades</li></ul></details>
+      <details><summary>06 — Modos gregos</summary><ul><li>Jônio, Dórico e Frígio</li><li>Lídio e Mixolídio</li><li>Eólio e Lócrio</li></ul></details>
+      <details><summary>07 — Arpejos e pentatônicas</summary><ul><li>Arpejos maiores e menores</li><li>Tríades e tétrades</li><li>Pentatônica maior e menor</li><li>Blue note</li></ul></details>
+      <details><summary>08 — Diminutos e meio-diminutos</summary><ul><li>Acordes meio-diminuto</li><li>Intervalos meio-diminutos</li><li>Acordes diminutos</li><li>Intervalos diminutos</li></ul></details>
+      <details><summary>09 — Técnica e improvisação</summary><ul><li>Improvisação</li><li>Técnicas de execução</li><li>Construção de solos</li><li>Aplicação musical</li></ul></details>
+      <details><summary>10 — Bônus</summary><ul><li>“Aprendendo a Tocar”</li><li>Módulo bônus de leitura de partitura</li></ul></details>
+    </div>
+  </section>
+
+  <section class="paper">
+    <div class="section-title"><h2>Para quem é o Código Das Cordas?</h2></div>
+    <div class="audience wrap">
+      <div class="audience-box"><h3>🎸 Está começando?</h3><p>Você pode construir sua base desde os fundamentos, entendendo a lógica por trás do instrumento em vez de apenas memorizar formas.</p></div>
+      <div class="audience-box"><h3>📚 Já toca um pouco?</h3><p>Organize conhecimentos que ficaram soltos e avance para harmonia, escalas, arpejos, modos e improvisação.</p></div>
+    </div>
+  </section>
+
+  <section class="price" id="oferta">
+  <div class="box">
+    <div class="eyebrow">INVESTIMENTO</div>
+
+    <h2>Garanta seu acesso ao Código Das Cordas</h2>
+
+    <p>Curso completo + material em PDF + acesso vitalício.</p>
+
+    <div class="value">R$ 120,00</div>
+
+    <div class="pix">
+      À vista no PIX<br>
+      ou<br>
+      2x de R$ 60,00
+    </div>
+
+    <br>
+
+    <a class="cta" href="COLE-AQUI-SEU-LINK-DE-PAGAMENTO">
+      QUERO O CÓDIGO DAS CORDAS
+    </a>
+
+    <p>
+      <small>
+        Acesso vitalício ao material e futuras atualizações.
+      </small>
+    </p>
+  </div>
+</section>
+      <section id="suporte" class="paper">
+
+  <div class="section-title">
+    <h2>Suporte Direto com o Professor</h2>
+    <p>
+      Tenha acompanhamento mesmo após adquirir o curso.
+    </p>
+  </div>
+
+  <div style="
+    max-width:900px;
+    margin:auto;
+    background:#fffaf0;
+    border:1px solid var(--line);
+    padding:40px;
+    text-align:center;
+    border-top:5px solid var(--gold);
+  ">
+
+    <div style="font-size:4rem;">💬</div>
+
+    <h3>
+      Tire suas dúvidas pelo WhatsApp
+    </h3>
+
+    <p>
+      Ao adquirir o <strong>Código Das Cordas</strong>, você não recebe apenas o material.
+    </p>
+
+    <p>
+      Sempre que surgir alguma dúvida sobre teoria musical, acordes,
+      escalas, campo harmônico, improvisação ou qualquer conteúdo do curso,
+      você poderá entrar em contato diretamente comigo.
+    </p>
+
+    <p style="font-size:1.3rem;">
+      <strong>WhatsApp de Suporte</strong><br>
+      (21) 96774-8037
+    </p>
+
+    <a
+      class="cta"
+      href="https://wa.me/5521967748037"
+      target="_blank"
+    >
+      FALAR COM O PROFESSOR
+    </a>
+
+  </div>
+
+</section>
+
+  <section id="faq" class="paper">
+    <div class="section-title"><h2>Dúvidas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>Preciso já saber tocar violão?</summary><p>Não. O curso foi pensado para quem quer aprender do zero e também para quem já toca e deseja organizar e aprofundar seus conhecimentos.</p></details>
+      <details><summary>Como recebo o curso?</summary><p>O curso é entregue em PDF. Após a confirmação do pagamento, o material deve ser disponibilizado conforme o processo de entrega definido pelo vendedor.</p></details>
+      <details><summary>O acesso é por quanto tempo?</summary><p>O acesso ao material é vitalício, conforme a oferta apresentada nesta página.</p></details>
+      <details><summary>Como posso pagar?</summary><p>O pagamento será realizado via Pix.</p></details>
+      <details><summary>Existe garantia?</summary><p>Sim. A oferta informa garantia vitalícia.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Código Das Cordas</strong> — Gabriel Mattos<br>
+    © 2026. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
