@@ -55,69 +55,39 @@
     .benefit{background:#fffaf0;border:1px solid var(--line);padding:27px}
     .icon{font-size:2rem;color:var(--gold)}
     .benefit h3{margin:8px 0}.benefit p{color:var(--muted);margin:0}
-.modules {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  max-width: 1000px;
-  margin: auto;
-  align-items: start;
-}
-
-.modules details {
-  background: #fffaf0;
-  border: 1px solid var(--line);
-  padding: 10px 14px;
-  min-height: 64px;
-  position: relative;
-  z-index: 1;
-}
-
-.modules details[open] {
-  z-index: 1000;
-}
-
-.modules summary {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  width: 100%;
-}
-
-/* =========================
-   NUVEM DE PENSAMENTO
-   ========================= */
-
-.modules details ul {
+details ul {
   position: fixed;
 
-  width: 380px;
+  width: 460px;
   max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 80px);
+
+  overflow-y: auto;
 
   margin: 0;
-  padding: 25px 30px 25px 42px;
+  padding: 28px 38px 28px 50px;
 
   background: #fffaf0;
   color: var(--ink);
 
   border: 2px solid var(--gold);
 
+  /* NUVEM MAIS LARGA E ORGÂNICA */
   border-radius:
-    48% 52% 43% 57%
-    / 52% 44% 56% 48%;
+    50% 46% 52% 48%
+    / 42% 52% 46% 54%;
 
   box-shadow:
     0 18px 40px rgba(0,0,0,.28),
     0 5px 12px rgba(0,0,0,.12);
 
-  list-style: disc;
-
-  font-size: 1rem;
-  line-height: 1.55;
-
   z-index: 99999;
 
-  overflow-y: auto;
+  list-style: disc;
+
+  /* TAMANHO DO TEXTO */
+  font-size: 0.95rem;
+  line-height: 1.5;
 
   opacity: 0;
   visibility: hidden;
@@ -125,13 +95,12 @@
   transform: scale(.88);
 
   transition:
-    opacity .22s ease,
-    transform .22s ease,
-    visibility .22s ease;
+    opacity .25s ease,
+    transform .25s ease,
+    visibility .25s ease;
 }
 
-/* Quando estiver aberta */
-
+/* Nuvem aberta */
 .modules details[open] ul {
   opacity: 1;
   visibility: visible;
@@ -139,14 +108,13 @@
 }
 
 /* Bolinha maior */
-
-.modules details ul::before {
+details ul::before {
   content: "";
 
   position: absolute;
 
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 
   background: #fffaf0;
 
@@ -154,19 +122,21 @@
 
   border-radius: 50%;
 
-  left: 38px;
-  top: -17px;
+  left: 40px;
+  top: -16px;
+
+  box-shadow:
+    0 3px 6px rgba(0,0,0,.08);
 }
 
 /* Bolinha menor */
-
-.modules details ul::after {
+details ul::after {
   content: "";
 
   position: absolute;
 
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
 
   background: #fffaf0;
 
@@ -174,8 +144,8 @@
 
   border-radius: 50%;
 
-  left: 25px;
-  top: -30px;
+  left: 27px;
+  top: -29px;
 }
     .audience{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch}
     .audience-box{background:#fffaf0;border-left:5px solid var(--gold);padding:28px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
