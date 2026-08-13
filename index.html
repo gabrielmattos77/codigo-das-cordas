@@ -137,30 +137,23 @@
 
   position: fixed;
 
-  width: min(390px, calc(100vw - 40px));
+  width: min(520px, calc(100vw - 40px));
 
-  max-height: min(430px, calc(100vh - 100px));
+  max-height: min(500px, calc(100vh - 80px));
 
   overflow-y: auto;
 
-  margin: 0;
+  margin:0;
 
-  padding: 28px 32px 28px 42px;
-
-  background:#fffaf0;
-
+  padding:20px 25px;
+  
+  background:#fdf8ee;
+  
   color:var(--ink);
+  
+  border:1px solid #c69a52;
 
-  border:1.5px solid var(--gold);
-
-  /*
-     Formato orgânico da nuvem
-  */
-
-  border-radius:
-    48% 52% 47% 53%
-    /
-    48% 44% 56% 52%;
+  border-radius:8px;
 
   box-shadow:
     0 18px 40px rgba(0,0,0,.25),
@@ -170,33 +163,17 @@
 
   list-style:disc;
 
-  /*
-     TAMANHO CONTROLADO DO CONTEÚDO
-  */
-
-  font-size:16px !important;
-
-  line-height:1.55;
-
-  /*
-     Impede que o tamanho do texto
-     seja alterado pelo conteúdo
-  */
-
-  transform-origin:center center;
+font-size:16px;
+  line-height:1.7;
 
   opacity:0;
-
   visibility:hidden;
-
-  transform:scale(.82);
-
+  transform:translateY(-10px);
   pointer-events:none;
 
   transition:
     opacity .22s ease,
-    transform .22s ease,
-    visibility .22s ease;
+    transform .22s ease;
 }
 
 
@@ -224,48 +201,6 @@
 /* ================================
    BOLINHAS DA NUVEM
 ================================ */
-
-.modules details ul::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:20px;
-  height:20px;
-
-  background:#fffaf0;
-
-  border:1.5px solid var(--gold);
-
-  border-radius:50%;
-
-  left:42px;
-  top:-15px;
-
-  box-shadow:
-    0 3px 6px rgba(0,0,0,.08);
-}
-
-
-.modules details ul::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:11px;
-  height:11px;
-
-  background:#fffaf0;
-
-  border:1.5px solid var(--gold);
-
-  border-radius:50%;
-
-  left:28px;
-  top:-27px;
-}
 
 
 /* ================================
@@ -578,10 +513,10 @@ document.addEventListener("DOMContentLoaded", function () {
         */
 
         const largura =
-          Math.min(
-            390,
-            window.innerWidth - margem * 2
-          );
+  Math.min(
+    520,
+    window.innerWidth - margem * 2
+  );
 
 
         /*
@@ -724,10 +659,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     const largura =
-      Math.min(
-        390,
-        window.innerWidth - 40
-      );
+  Math.min(
+    520,
+    window.innerWidth - margem * 2
+  );
 
 
     let left =
