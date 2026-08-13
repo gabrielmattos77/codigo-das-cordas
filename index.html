@@ -55,81 +55,255 @@
     .benefit{background:#fffaf0;border:1px solid var(--line);padding:27px}
     .icon{font-size:2rem;color:var(--gold)}
     .benefit h3{margin:8px 0}.benefit p{color:var(--muted);margin:0}
-details ul {
+
+
+/* ================================
+   GRADE DOS MÓDULOS
+================================ */
+
+.modules{
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+}
+
+
+/* ================================
+   CADA MÓDULO
+================================ */
+
+.modules details{
+  position: relative;
+}
+
+
+/* Título do módulo */
+
+.modules summary{
+  cursor: pointer;
+  list-style: none;
+
+  background: #fffaf0;
+  border: 1px solid var(--line);
+
+  padding: 12px 15px;
+
+  font-size: 1.05rem;
+  font-weight: bold;
+
+  color: var(--ink);
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+
+/* Remove o marcador padrão */
+
+.modules summary::-webkit-details-marker{
+  display:none;
+}
+
+
+/* Nossa própria seta */
+
+.modules summary::before{
+  content:"▶";
+  display:inline-block;
+  margin-right:9px;
+  font-size:.75em;
+  transition:transform .2s ease;
+}
+
+
+/* Quando estiver aberto */
+
+.modules details[open] summary::before{
+  transform:rotate(90deg);
+}
+
+
+/* ================================
+   NUVEM DE CONTEÚDO
+================================ */
+
+.modules details ul{
+
   position: fixed;
 
-  width: 460px;
-  max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 80px);
+  width: min(390px, calc(100vw - 40px));
+
+  max-height: min(430px, calc(100vh - 100px));
 
   overflow-y: auto;
 
   margin: 0;
-padding: 22px 28px 22px 38px;
-  background: #fffaf0;
-  color: var(--ink);
 
-  border: 2px solid var(--gold);
+  padding: 28px 32px 28px 42px;
 
-  /* NUVEM MAIS LARGA E ORGÂNICA */
+  background:#fffaf0;
+
+  color:var(--ink);
+
+  border:1.5px solid var(--gold);
+
+  /*
+     Formato orgânico da nuvem
+  */
+
   border-radius:
-    50% 46% 52% 48%
-    / 42% 52% 46% 54%;
+    48% 52% 47% 53%
+    /
+    48% 44% 56% 52%;
 
   box-shadow:
-    0 18px 40px rgba(0,0,0,.28),
-    0 5px 12px rgba(0,0,0,.12);
+    0 18px 40px rgba(0,0,0,.25),
+    0 6px 14px rgba(0,0,0,.12);
 
-  z-index: 99999;
+  z-index:99999;
 
-  list-style: disc;
+  list-style:disc;
 
-  /* TAMANHO DO TEXTO */
-  font-size: 0.70rem;
-line-height: 1.35;
+  /*
+     TAMANHO CONTROLADO DO CONTEÚDO
+  */
 
-  opacity: 0;
-  visibility: hidden;
+  font-size:16px !important;
 
-  transform: scale(.88);
+  line-height:1.55;
+
+  /*
+     Impede que o tamanho do texto
+     seja alterado pelo conteúdo
+  */
+
+  transform-origin:center center;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:scale(.82);
+
+  pointer-events:none;
 
   transition:
-    opacity .25s ease,
-    transform .25s ease,
-    visibility .25s ease;
+    opacity .22s ease,
+    transform .22s ease,
+    visibility .22s ease;
 }
+
 
 /* Nuvem aberta */
-.modules details[open] ul {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
+
+.modules details[open] ul{
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:scale(1);
+
+  pointer-events:auto;
 }
 
-/* Bolinha maior */
-details ul::before {
-  content: "";
 
-  position: absolute;
+/* Espaçamento dos itens */
 
-  width: 20px;
-  height: 20px;
+.modules details ul li{
+  margin:7px 0;
+}
 
-  background: #fffaf0;
 
-  border: 2px solid var(--gold);
+/* ================================
+   BOLINHAS DA NUVEM
+================================ */
 
-  border-radius: 50%;
+.modules details ul::before{
 
-  left: 40px;
-  top: -16px;
+  content:"";
+
+  position:absolute;
+
+  width:20px;
+  height:20px;
+
+  background:#fffaf0;
+
+  border:1.5px solid var(--gold);
+
+  border-radius:50%;
+
+  left:42px;
+  top:-15px;
 
   box-shadow:
     0 3px 6px rgba(0,0,0,.08);
 }
 
-/* Bolinha menor */
-details ul::after {
+
+.modules details ul::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:11px;
+  height:11px;
+
+  background:#fffaf0;
+
+  border:1.5px solid var(--gold);
+
+  border-radius:50%;
+
+  left:28px;
+  top:-27px;
+}
+
+
+/* ================================
+   ROLAGEM DA NUVEM
+================================ */
+
+.modules details ul::-webkit-scrollbar{
+  width:6px;
+}
+
+.modules details ul::-webkit-scrollbar-thumb{
+  background:rgba(198,154,82,.65);
+  border-radius:10px;
+}
+
+
+/* ================================
+   CELULAR
+================================ */
+
+@media(max-width:800px){
+
+  .modules{
+    grid-template-columns:1fr;
+    max-width:500px;
+  }
+
+  .modules details ul{
+    width:calc(100vw - 30px);
+
+    font-size:15px !important;
+
+    padding:
+      25px
+      28px
+      25px
+      38px;
+  }
+
+} {
   content: "";
 
   position: absolute;
@@ -352,130 +526,176 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const modules = document.querySelectorAll(".modules details");
 
-  modules.forEach(function (module) {
+  modules.forEach(function(module) {
 
     const summary = module.querySelector("summary");
     const cloud = module.querySelector("ul");
 
-    summary.addEventListener("click", function (event) {
+    summary.addEventListener("click", function(event) {
 
-      /* Impede o <details> de abrir sozinho */
       event.preventDefault();
 
       const estavaAberto = module.hasAttribute("open");
 
-      /* Fecha TODOS os módulos */
-      modules.forEach(function (outro) {
-        outro.removeAttribute("open");
 
-        const outraNuvem = outro.querySelector("ul");
+      /*
+        PRIMEIRO:
+        fecha imediatamente todos os módulos.
+      */
 
-        if (outraNuvem) {
-          outraNuvem.style.left = "";
-          outraNuvem.style.top = "";
-          outraNuvem.style.maxHeight = "";
+      modules.forEach(function(outro) {
+
+        if (outro !== module) {
+          outro.removeAttribute("open");
         }
+
       });
 
-      /* Se o módulo já estava aberto,
-         apenas fecha */
+
+      /*
+        Se o módulo clicado já estava aberto,
+        simplesmente fecha.
+      */
+
       if (estavaAberto) {
+
+        module.removeAttribute("open");
+
         return;
       }
 
-      /* Abre somente este módulo */
+
+      /*
+        Abre somente o módulo clicado.
+      */
+
       module.setAttribute("open", "");
 
-      /* Pequeno atraso para o navegador
-         calcular o tamanho da nuvem */
-      requestAnimationFrame(function () {
 
-        const rect = summary.getBoundingClientRect();
+      /*
+        Calcula a posição da nuvem
+        depois que ela foi aberta.
+      */
+
+      requestAnimationFrame(function() {
+
+        const rect =
+          summary.getBoundingClientRect();
+
+
+        const margem = 20;
+
+
+        /*
+          Largura real da nuvem
+        */
 
         const largura =
-          Math.min(380, window.innerWidth - 40);
+          Math.min(
+            390,
+            window.innerWidth - margem * 2
+          );
+
+
+        /*
+          Centraliza a nuvem em relação
+          ao módulo clicado.
+        */
 
         let left =
           rect.left +
-          (rect.width / 2) -
-          (largura / 2);
+          rect.width / 2 -
+          largura / 2;
 
-        /* Limite esquerdo */
-        left = Math.max(20, left);
 
-        /* Limite direito */
-        if (left + largura > window.innerWidth - 20) {
+        /*
+          Não deixa sair da tela.
+        */
+
+        if (left < margem) {
+          left = margem;
+        }
+
+
+        if (
+          left + largura >
+          window.innerWidth - margem
+        ) {
+
           left =
             window.innerWidth -
             largura -
-            20;
+            margem;
+
         }
 
+
         /*
-          Espaço disponível abaixo
+          Altura máxima disponível
         */
+
         const espacoAbaixo =
           window.innerHeight -
           rect.bottom -
           30;
 
-        /*
-          Espaço disponível acima
-        */
+
         const espacoAcima =
           rect.top -
           30;
 
-        /*
-          Escolhe o lado com mais espaço
-        */
+
         let top;
-        let alturaMaxima;
 
-        if (espacoAbaixo >= 300) {
 
-          top = rect.bottom + 18;
+        /*
+          Preferência:
+          colocar a nuvem abaixo.
+        */
 
-          alturaMaxima = espacoAbaixo;
+        if (espacoAbaixo >= 280) {
 
-        } else {
+          top =
+            rect.bottom + 18;
 
-          alturaMaxima =
-            Math.max(250, espacoAcima);
+        }
 
-          /*
-            Primeiro define a altura
-            para depois posicionar acima
-          */
-          cloud.style.maxHeight =
-            alturaMaxima + "px";
+        /*
+          Se não houver espaço suficiente
+          embaixo, coloca acima.
+        */
+
+        else {
 
           const altura =
             Math.min(
               cloud.scrollHeight,
-              alturaMaxima
+              Math.max(250, espacoAcima)
             );
 
           top =
             rect.top -
             altura -
             18;
+
         }
+
 
         /*
-          Limites finais
+          Segurança contra sair da tela.
         */
-        if (top < 20) {
-          top = 20;
+
+        if (top < margem) {
+          top = margem;
         }
 
-        if (
-          top + cloud.offsetHeight >
-          window.innerHeight - 20
-        ) {
-          cloud.style.maxHeight =
-            (window.innerHeight - top - 20) + "px";
-        }
+
+        /*
+          Define a posição.
+        */
+
+        cloud.style.width =
+          largura + "px";
 
         cloud.style.left =
           left + "px";
@@ -486,6 +706,80 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     });
+
+  });
+
+
+  /*
+    Se a janela for redimensionada,
+    reposiciona a nuvem aberta.
+  */
+
+  window.addEventListener("resize", function() {
+
+    const aberto =
+      document.querySelector(
+        ".modules details[open]"
+      );
+
+    if (!aberto) return;
+
+
+    const summary =
+      aberto.querySelector("summary");
+
+    const cloud =
+      aberto.querySelector("ul");
+
+
+    const rect =
+      summary.getBoundingClientRect();
+
+
+    const largura =
+      Math.min(
+        390,
+        window.innerWidth - 40
+      );
+
+
+    let left =
+      rect.left +
+      rect.width / 2 -
+      largura / 2;
+
+
+    left =
+      Math.max(
+        20,
+        Math.min(
+          left,
+          window.innerWidth -
+          largura -
+          20
+        )
+      );
+
+
+    cloud.style.width =
+      largura + "px";
+
+    cloud.style.left =
+      left + "px";
+
+
+    const espacoAbaixo =
+      window.innerHeight -
+      rect.bottom -
+      30;
+
+
+    if (espacoAbaixo >= 280) {
+
+      cloud.style.top =
+        (rect.bottom + 18) + "px";
+
+    }
 
   });
 
