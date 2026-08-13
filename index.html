@@ -90,41 +90,39 @@ summary {
   width: 100%;
 }
 details ul {
-  position: absolute;
+  position: fixed;
 
-  top: calc(100% + 22px);
-  left: 50%;
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 60px);
 
-  width: 330px;
-  max-width: 90vw;
+  overflow-y: auto;
 
   margin: 0;
-  padding: 25px 30px 25px 45px;
+  padding: 24px 30px 24px 42px;
 
   background: #fffaf0;
   color: var(--ink);
 
   border: 2px solid var(--gold);
 
-  /* Formato orgânico de nuvem */
-  border-radius:
-    48% 52% 43% 57%
-    / 52% 44% 56% 48%;
+  border-radius: 42% 58% 48% 52% / 52% 44% 56% 48%;
 
   box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.25),
-    0 4px 8px rgba(0, 0, 0, 0.12);
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    0 5px 12px rgba(0, 0, 0, 0.12);
 
-  transform: translateX(-50%) translateY(-10px) scale(0.92);
-
-  opacity: 0;
-
-  z-index: 2000;
+  z-index: 99999;
 
   list-style: disc;
 
-  /* Animação */
-  animation: thoughtCloud 0.35s ease-out forwards;
+  font-size: 0.95rem;
+  line-height: 1.55;
+
+  opacity: 0;
+  transform: scale(0.88);
+
+  animation: thoughtCloud 0.28s ease-out forwards;
 }   
 @keyframes thoughtCloud {
   0% {
@@ -180,20 +178,13 @@ details ul::after {
   left: 25px;
   top: -30px;
 }
-    .modules details:nth-child(3n + 1) ul {
-  left: 0;
-  transform: translateY(-10px) scale(0.92);
-}
+    @keyframes thoughtCloudLeft
 
 .modules details:nth-child(3n + 1)[open] ul {
   animation-name: thoughtCloudLeft;
 }
 
-.modules details:nth-child(3n) ul {
-  left: auto;
-  right: 0;
-  transform: translateY(-10px) scale(0.92);
-}
+@keyframes thoughtCloudRight
 
 .modules details:nth-child(3n)[open] ul {
   animation-name: thoughtCloudRight;
@@ -472,5 +463,75 @@ details ul::after {
     <strong>Código Das Cordas</strong> — Gabriel Mattos<br>
     © 2026. Todos os direitos reservados.
   </footer>
+  <script>
+document.querySelectorAll('.modules details').forEach(function (details) {
+
+  details.addEventListener('click', function (event) {
+
+    if (event.target.tagName !== 'SUMMARY') {
+      return;
+    }
+
+    // Fecha imediatamente todos os outros módulos
+    document.querySelectorAll('.modules details').forEach(function (other) {
+      if (other !== details) {
+        other.removeAttribute('open');
+      }
+    });
+
+    // Espera o navegador abrir/fechar o módulo clicado
+    setTimeout(function () {
+
+      if (!details.open) {
+        return;
+      }
+
+      var summary = details.querySelector('summary');
+      var cloud = details.querySelector('ul');
+
+      if (!summary || !cloud) {
+        return;
+      }
+
+      var rect = summary.getBoundingClientRect();
+
+      var cloudWidth = Math.min(380, window.innerWidth - 40);
+
+      var left = rect.left + (rect.width / 2) - (cloudWidth / 2);
+
+      // Não deixa a nuvem sair pela esquerda
+      if (left < 20) {
+        left = 20;
+      }
+
+      // Não deixa a nuvem sair pela direita
+      if (left + cloudWidth > window.innerWidth - 20) {
+        left = window.innerWidth - cloudWidth - 20;
+      }
+
+      var cloudHeight = cloud.offsetHeight;
+
+      var top = rect.bottom + 18;
+
+      // Se não houver espaço suficiente embaixo,
+      // coloca a nuvem acima do módulo
+      if (top + cloudHeight > window.innerHeight - 20) {
+        top = rect.top - cloudHeight - 18;
+      }
+
+      // Se também não couber acima, limita à tela
+      if (top < 20) {
+        top = 20;
+      }
+
+      cloud.style.left = left + 'px';
+      cloud.style.top = top + 'px';
+
+    }, 0);
+
+  });
+
+});
+</script>
 </body>
 </html>
