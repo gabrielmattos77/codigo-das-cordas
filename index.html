@@ -62,7 +62,7 @@
 ================================ */
 
 .modules{
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -74,9 +74,11 @@
 /* ================================
    CADA MÓDULO
 ================================ */
-
 .modules details{
   position: relative;
+  background:#fffaf0;
+  border:1px solid var(--line);
+  min-height:64px;
 }
 
 
@@ -303,22 +305,7 @@
       38px;
   }
 
-} {
-  content: "";
 
-  position: absolute;
-
-  width: 11px;
-  height: 11px;
-
-  background: #fffaf0;
-
-  border: 2px solid var(--gold);
-
-  border-radius: 50%;
-
-  left: 27px;
-  top: -29px;
 }
     .audience{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch}
     .audience-box{background:#fffaf0;border-left:5px solid var(--gold);padding:28px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
