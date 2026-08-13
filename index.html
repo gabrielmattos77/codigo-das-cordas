@@ -64,203 +64,105 @@
   align-items: stretch;
 }
 
-details {
+.modules details {
   background: #fffaf0;
   border: 1px solid var(--line);
   padding: 10px 14px;
   min-height: 64px;
-  display: flex;
-  align-items: center;
   position: relative;
   z-index: 1;
 }
 
-details[open] {
+.modules details[open] {
   z-index: 1000;
 }
 
-details[open] {
-  z-index: 100;
-}
-
-summary {
+.modules summary {
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
   width: 100%;
 }
-details ul {
-  position: fixed;
 
+/* NUVEM DE PENSAMENTO */
+
+.modules details ul {
+  position: fixed;
   width: 380px;
   max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - 40px);
 
   overflow-y: auto;
 
   margin: 0;
-  padding: 24px 30px 24px 42px;
+  padding: 25px 30px 25px 42px;
 
   background: #fffaf0;
   color: var(--ink);
 
   border: 2px solid var(--gold);
-
-  border-radius: 42% 58% 48% 52% / 52% 44% 56% 48%;
+  border-radius: 45% 55% 50% 50% / 50% 45% 55% 50%;
 
   box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.28),
-    0 5px 12px rgba(0, 0, 0, 0.12);
-
-  z-index: 99999;
+    0 18px 40px rgba(0,0,0,.28),
+    0 5px 12px rgba(0,0,0,.12);
 
   list-style: disc;
 
-  font-size: 0.95rem;
+  font-size: .95rem;
   line-height: 1.55;
 
+  z-index: 99999;
+
   opacity: 0;
-  transform: scale(0.88);
+  visibility: hidden;
 
-  animation: thoughtCloud 0.28s ease-out forwards;
-}   
-@keyframes thoughtCloud {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px) scale(0.85);
-  }
+  transform: scale(.88);
 
-  60% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(3px) scale(1.03);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    visibility .25s ease;
 }
-details ul::before {
-  content: "";
 
+/* Nuvem visível */
+
+.modules details[open] ul {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* Bolinhas da nuvem */
+
+.modules details ul::before {
+  content: "";
   position: absolute;
 
   width: 22px;
   height: 22px;
 
   background: #fffaf0;
-
   border: 2px solid var(--gold);
-
   border-radius: 50%;
 
   left: 38px;
   top: -17px;
-
-  box-shadow:
-    0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-details ul::after {
+.modules details ul::after {
   content: "";
-
   position: absolute;
 
   width: 12px;
   height: 12px;
 
   background: #fffaf0;
-
   border: 2px solid var(--gold);
-
   border-radius: 50%;
 
   left: 25px;
   top: -30px;
-}
-    @keyframes thoughtCloudLeft
-
-.modules details:nth-child(3n + 1)[open] ul {
-  animation-name: thoughtCloudLeft;
-}
-
-@keyframes thoughtCloudRight
-
-.modules details:nth-child(3n)[open] ul {
-  animation-name: thoughtCloudRight;
-}
-    @keyframes thoughtCloudLeft {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.85);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translateY(3px) scale(1.03);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes thoughtCloudRight {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.85);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translateY(3px) scale(1.03);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-    
-    details ul::before {
-  content: "";
-  position: absolute;
-
-  width: 18px;
-  height: 18px;
-
-  background: #fffaf0;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-
-  top: -15px;
-  left: 38px;
-}
-
-details ul::after {
-  content: "";
-  position: absolute;
-
-  width: 10px;
-  height: 10px;
-
-  background: #fffaf0;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-
-  top: -27px;
-  left: 25px;
-}
-.modules details:nth-child(3n) ul {
-  left: auto;
-  right: 0;
-  transform: none;
-}
-
-.modules details:nth-child(3n + 1) ul {
-  left: 0;
-  transform: none;
 }
     .audience{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch}
     .audience-box{background:#fffaf0;border-left:5px solid var(--gold);padding:28px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -331,7 +233,7 @@ details ul::after {
       <p>Os conteúdos foram organizados em uma sequência que vai dos fundamentos até conceitos avançados.</p>
     </div>
     <div class="modules">
-      <details open><summary>Módulo 1</summary><ul><li>Introdução</li><li>Semitom, Tom, Intervalos & Trítono</li><li>Acidentes musicais, Escala cromática, Acordes & Tríades</li></ul></details>
+      <details><summary>Módulo 1</summary><ul><li>Introdução</li><li>Semitom, Tom, Intervalos & Trítono</li><li>Acidentes musicais, Escala cromática, Acordes & Tríades</li></ul></details>
       <details><summary>Módulo 2</summary><ul><li>Formação de acordes maiores & Sistema CAGED</li><li>Formação de acordes menores</li><li>Escala Cromática do braço do violão & Escala maior</li><li>Estrutura dos acordes maiores & menores</li></ul></details>
       <details><summary>Módulo 3</summary><ul><li>Tétrades</li></ul></details>
       <details><summary>Módulo 4</summary><ul><li>Inversão de acordes</li></ul></details>
@@ -464,70 +366,99 @@ details ul::after {
     © 2026. Todos os direitos reservados.
   </footer>
   <script>
-document.querySelectorAll('.modules details').forEach(function (details) {
+document.addEventListener("DOMContentLoaded", function () {
 
-  details.addEventListener('click', function (event) {
+  const modules = document.querySelectorAll(".modules details");
 
-    if (event.target.tagName !== 'SUMMARY') {
-      return;
-    }
+  modules.forEach(function (module) {
 
-    // Fecha imediatamente todos os outros módulos
-    document.querySelectorAll('.modules details').forEach(function (other) {
-      if (other !== details) {
-        other.removeAttribute('open');
-      }
-    });
+    module.addEventListener("toggle", function () {
 
-    // Espera o navegador abrir/fechar o módulo clicado
-    setTimeout(function () {
-
-      if (!details.open) {
+      if (!module.open) {
         return;
       }
 
-      var summary = details.querySelector('summary');
-      var cloud = details.querySelector('ul');
+      /* Fecha imediatamente todos os outros módulos */
+      modules.forEach(function (other) {
+        if (other !== module) {
+          other.removeAttribute("open");
+        }
+      });
+
+      const summary = module.querySelector("summary");
+      const cloud = module.querySelector("ul");
 
       if (!summary || !cloud) {
         return;
       }
 
-      var rect = summary.getBoundingClientRect();
+      /* Posição do módulo */
+      const rect = summary.getBoundingClientRect();
 
-      var cloudWidth = Math.min(380, window.innerWidth - 40);
+      /* Tamanho da nuvem */
+      const cloudWidth = Math.min(
+        380,
+        window.innerWidth - 40
+      );
 
-      var left = rect.left + (rect.width / 2) - (cloudWidth / 2);
+      /* Centraliza a nuvem em relação ao módulo */
+      let left =
+        rect.left +
+        (rect.width / 2) -
+        (cloudWidth / 2);
 
-      // Não deixa a nuvem sair pela esquerda
+      /* Não deixa sair da tela pela esquerda */
       if (left < 20) {
         left = 20;
       }
 
-      // Não deixa a nuvem sair pela direita
+      /* Não deixa sair pela direita */
       if (left + cloudWidth > window.innerWidth - 20) {
-        left = window.innerWidth - cloudWidth - 20;
+        left =
+          window.innerWidth -
+          cloudWidth -
+          20;
       }
 
-      var cloudHeight = cloud.offsetHeight;
+      /* Coloca inicialmente abaixo do módulo */
+      let top = rect.bottom + 18;
 
-      var top = rect.bottom + 18;
+      /*
+        Espera a nuvem aparecer para
+        descobrir sua altura real.
+      */
+      requestAnimationFrame(function () {
 
-      // Se não houver espaço suficiente embaixo,
-      // coloca a nuvem acima do módulo
-      if (top + cloudHeight > window.innerHeight - 20) {
-        top = rect.top - cloudHeight - 18;
-      }
+        const cloudHeight = cloud.offsetHeight;
 
-      // Se também não couber acima, limita à tela
-      if (top < 20) {
-        top = 20;
-      }
+        /*
+          Se não couber abaixo,
+          coloca acima.
+        */
+        if (
+          top + cloudHeight >
+          window.innerHeight - 20
+        ) {
+          top =
+            rect.top -
+            cloudHeight -
+            18;
+        }
 
-      cloud.style.left = left + 'px';
-      cloud.style.top = top + 'px';
+        /*
+          Se não couber nem acima,
+          mantém dentro da tela.
+        */
+        if (top < 20) {
+          top = 20;
+        }
 
-    }, 0);
+        cloud.style.left = left + "px";
+        cloud.style.top = top + "px";
+
+      });
+
+    });
 
   });
 
