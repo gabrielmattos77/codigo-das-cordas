@@ -61,7 +61,7 @@
   gap: 12px;
   max-width: 1000px;
   margin: auto;
-  align-items: stretch;
+  align-items: start;
 }
 
 .modules details {
@@ -84,15 +84,15 @@
   width: 100%;
 }
 
-/* NUVEM DE PENSAMENTO */
+/* =========================
+   NUVEM DE PENSAMENTO
+   ========================= */
 
 .modules details ul {
   position: fixed;
+
   width: 380px;
   max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 40px);
-
-  overflow-y: auto;
 
   margin: 0;
   padding: 25px 30px 25px 42px;
@@ -101,7 +101,10 @@
   color: var(--ink);
 
   border: 2px solid var(--gold);
-  border-radius: 45% 55% 50% 50% / 50% 45% 55% 50%;
+
+  border-radius:
+    48% 52% 43% 57%
+    / 52% 44% 56% 48%;
 
   box-shadow:
     0 18px 40px rgba(0,0,0,.28),
@@ -109,10 +112,12 @@
 
   list-style: disc;
 
-  font-size: .95rem;
+  font-size: 1rem;
   line-height: 1.55;
 
   z-index: 99999;
+
+  overflow-y: auto;
 
   opacity: 0;
   visibility: hidden;
@@ -120,12 +125,12 @@
   transform: scale(.88);
 
   transition:
-    opacity .25s ease,
-    transform .25s ease,
-    visibility .25s ease;
+    opacity .22s ease,
+    transform .22s ease,
+    visibility .22s ease;
 }
 
-/* Nuvem visível */
+/* Quando estiver aberta */
 
 .modules details[open] ul {
   opacity: 1;
@@ -133,32 +138,40 @@
   transform: scale(1);
 }
 
-/* Bolinhas da nuvem */
+/* Bolinha maior */
 
 .modules details ul::before {
   content: "";
+
   position: absolute;
 
   width: 22px;
   height: 22px;
 
   background: #fffaf0;
+
   border: 2px solid var(--gold);
+
   border-radius: 50%;
 
   left: 38px;
   top: -17px;
 }
 
+/* Bolinha menor */
+
 .modules details ul::after {
   content: "";
+
   position: absolute;
 
   width: 12px;
   height: 12px;
 
   background: #fffaf0;
+
   border: 2px solid var(--gold);
+
   border-radius: 50%;
 
   left: 25px;
@@ -372,89 +385,134 @@ document.addEventListener("DOMContentLoaded", function () {
 
   modules.forEach(function (module) {
 
-    module.addEventListener("toggle", function () {
+    const summary = module.querySelector("summary");
+    const cloud = module.querySelector("ul");
 
-      if (!module.open) {
-        return;
-      }
+    summary.addEventListener("click", function (event) {
 
-      /* Fecha imediatamente todos os outros módulos */
-      modules.forEach(function (other) {
-        if (other !== module) {
-          other.removeAttribute("open");
+      /* Impede o <details> de abrir sozinho */
+      event.preventDefault();
+
+      const estavaAberto = module.hasAttribute("open");
+
+      /* Fecha TODOS os módulos */
+      modules.forEach(function (outro) {
+        outro.removeAttribute("open");
+
+        const outraNuvem = outro.querySelector("ul");
+
+        if (outraNuvem) {
+          outraNuvem.style.left = "";
+          outraNuvem.style.top = "";
+          outraNuvem.style.maxHeight = "";
         }
       });
 
-      const summary = module.querySelector("summary");
-      const cloud = module.querySelector("ul");
-
-      if (!summary || !cloud) {
+      /* Se o módulo já estava aberto,
+         apenas fecha */
+      if (estavaAberto) {
         return;
       }
 
-      /* Posição do módulo */
-      const rect = summary.getBoundingClientRect();
+      /* Abre somente este módulo */
+      module.setAttribute("open", "");
 
-      /* Tamanho da nuvem */
-      const cloudWidth = Math.min(
-        380,
-        window.innerWidth - 40
-      );
-
-      /* Centraliza a nuvem em relação ao módulo */
-      let left =
-        rect.left +
-        (rect.width / 2) -
-        (cloudWidth / 2);
-
-      /* Não deixa sair da tela pela esquerda */
-      if (left < 20) {
-        left = 20;
-      }
-
-      /* Não deixa sair pela direita */
-      if (left + cloudWidth > window.innerWidth - 20) {
-        left =
-          window.innerWidth -
-          cloudWidth -
-          20;
-      }
-
-      /* Coloca inicialmente abaixo do módulo */
-      let top = rect.bottom + 18;
-
-      /*
-        Espera a nuvem aparecer para
-        descobrir sua altura real.
-      */
+      /* Pequeno atraso para o navegador
+         calcular o tamanho da nuvem */
       requestAnimationFrame(function () {
 
-        const cloudHeight = cloud.offsetHeight;
+        const rect = summary.getBoundingClientRect();
+
+        const largura =
+          Math.min(380, window.innerWidth - 40);
+
+        let left =
+          rect.left +
+          (rect.width / 2) -
+          (largura / 2);
+
+        /* Limite esquerdo */
+        left = Math.max(20, left);
+
+        /* Limite direito */
+        if (left + largura > window.innerWidth - 20) {
+          left =
+            window.innerWidth -
+            largura -
+            20;
+        }
 
         /*
-          Se não couber abaixo,
-          coloca acima.
+          Espaço disponível abaixo
         */
-        if (
-          top + cloudHeight >
-          window.innerHeight - 20
-        ) {
+        const espacoAbaixo =
+          window.innerHeight -
+          rect.bottom -
+          30;
+
+        /*
+          Espaço disponível acima
+        */
+        const espacoAcima =
+          rect.top -
+          30;
+
+        /*
+          Escolhe o lado com mais espaço
+        */
+        let top;
+        let alturaMaxima;
+
+        if (espacoAbaixo >= 300) {
+
+          top = rect.bottom + 18;
+
+          alturaMaxima = espacoAbaixo;
+
+        } else {
+
+          alturaMaxima =
+            Math.max(250, espacoAcima);
+
+          /*
+            Primeiro define a altura
+            para depois posicionar acima
+          */
+          cloud.style.maxHeight =
+            alturaMaxima + "px";
+
+          const altura =
+            Math.min(
+              cloud.scrollHeight,
+              alturaMaxima
+            );
+
           top =
             rect.top -
-            cloudHeight -
+            altura -
             18;
         }
 
         /*
-          Se não couber nem acima,
-          mantém dentro da tela.
+          Limites finais
         */
         if (top < 20) {
           top = 20;
         }
 
-        cloud.style.left = left + "px";
-        cloud.style.top = top + "px";
+        if (
+          top + cloud.offsetHeight >
+          window.innerHeight - 20
+        ) {
+          cloud.style.maxHeight =
+            (window.innerHeight - top - 20) + "px";
+        }
+
+        cloud.style.left =
+          left + "px";
+
+        cloud.style.top =
+          top + "px";
 
       });
 
