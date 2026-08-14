@@ -254,6 +254,59 @@ font-size:22px;
       nav .inner{flex-direction:column;gap:8px}nav a{margin:0 7px}
       .hero{padding-top:55px}.course-card{max-width:500px;margin:auto}
     }
+    .whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  background:#25D366;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+  z-index:9999;
+
+  transition:transform .2s ease;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.04);
+}
+
+.whatsapp-float svg{
+  width:24px;
+  height:24px;
+  fill:white;
+}
+   /* ANIMAÇÃO DO BOTÃO */
+
+@keyframes pulse{
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+.whatsapp-float{
+  animation:pulse 2.5s infinite;
+} 
   </style>
 </head>
 <body>
@@ -722,5 +775,19 @@ window.addEventListener("scroll", function() {
 });
 });
 </script>
+  <a
+  class="whatsapp-float"
+  href="https://wa.me/5521967748037?text=Olá%20Gabriel!%20Quero%20adquirir%20o%20*Código%20das%20Cordas*."
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp"
+>
+
+<svg viewBox="0 0 32 32">
+  <path d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.21-.6.07-.28-.14-1.17-.43-2.23-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.46.07-.7.35-.24.28-.92.9-.92 2.2s.94 2.55 1.07 2.72c.14.18 1.85 2.82 4.48 3.95.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.19-.53-.33z"/>
+  <path d="M16.03 3C8.84 3 3 8.84 3 16.03c0 2.3.6 4.54 1.75 6.52L3 29l6.64-1.74a13 13 0 0 0 6.39 1.67c7.19 0 13.03-5.84 13.03-13.03S23.22 3 16.03 3zm0 23.74c-2.03 0-4.01-.55-5.74-1.59l-.41-.24-3.94 1.03 1.05-3.84-.27-.39a10.7 10.7 0 1 1 9.31 5.03z"/>
+</svg>
+
+</a>
 </body>
 </html>
