@@ -386,6 +386,59 @@ font-size:22px;
   }
 
 }
+/* PREVIEW DAS APOSTILAS */
+
+.material-preview{
+    background:#f5f0e6;
+    padding:100px 20px;
+    text-align:center;
+}
+
+.material-preview .section-title span{
+    color:#a46b38;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.material-preview .section-title h2{
+    font-size:3rem;
+    margin:15px 0;
+    color:#2b160f;
+}
+
+.material-preview .section-title p{
+    max-width:700px;
+    margin:auto;
+    color:#444;
+}
+
+.preview-grid{
+    margin-top:50px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.preview-grid img{
+    width:100%;
+    border-radius:10px;
+    border:3px solid #d1a566;
+
+    transition:.4s;
+}
+
+.preview-grid img:hover{
+    transform:translateY(-8px) scale(1.02);
+
+    box-shadow:
+        0 0 20px rgba(209,165,102,.4),
+        0 0 40px rgba(209,165,102,.2);
+}
     
 .whatsapp-float{
   animation:pulse 2.5s infinite;
@@ -474,6 +527,32 @@ font-size:22px;
       <details><summary>Módulo Bônus ✨</summary><ul><li>Leitura de partitura na Clave de SOL (parte 1, 2 & 3)</li></ul></details>
     </div>
   </section>
+
+  <section class="material-preview">
+
+    <div class="section-title">
+        <span>APOSTILA COMPLETA</span>
+
+        <h2>Veja algumas páginas do material</h2>
+
+        <p>
+            Conteúdo organizado, diagramas, exercícios,
+            explicações passo a passo e material em PDF.
+        </p>
+    </div>
+
+    <div class="preview-grid">
+
+        <img src="aula1.jpg" alt="Aula 1">
+        <img src="aula2.jpg" alt="Aula 2">
+        <img src="aula3.jpg" alt="Aula 3">
+        <img src="aula4.jpg" alt="Aula 4">
+        <img src="aula5.jpg" alt="Aula 5">
+        <img src="aula6.jpg" alt="Aula 6">
+
+    </div>
+
+</section>
 
   <section class="paper">
     <div class="section-title"><h2>Para quem é o Código Das Cordas?</h2></div>
