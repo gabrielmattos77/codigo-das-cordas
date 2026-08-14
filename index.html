@@ -704,7 +704,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   });
+window.addEventListener("scroll", function() {
 
+  document
+    .querySelectorAll(".modules details[open]")
+    .forEach(function(modulo){
+
+      modulo.removeAttribute("open");
+
+    });
+
+});
 });
 </script>
 </body>
