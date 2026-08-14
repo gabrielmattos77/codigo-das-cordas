@@ -47,18 +47,30 @@
     .cta:hover{filter:brightness(1.08)}
 .course-cover{
   height:450px;
-  background:linear-gradient(145deg,#6a4128,#2d190f);
+
+  background:
+    linear-gradient(
+      rgba(45,25,15,.70),
+      rgba(45,25,15,.70)
+    ),
+    url("027d36bf-e798-4083-99db-b76b6cd20d48.png.png");
+
+  background-size:cover;
+  background-position:center;
+
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+
   color:#f3d69e;
+
   border:7px solid #d1a566;
 
-  animation:
-    brilhoDourado 2.5s infinite,
-    pular 2.5s infinite ease-in-out;
- 
+  overflow:hidden;
+
+  animation: brilhoDourado 2.5s infinite;
+
   box-shadow:
     0 0 15px rgba(209,165,102,.6),
     0 0 30px rgba(209,165,102,.4),
