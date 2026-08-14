@@ -166,7 +166,7 @@
 font-size:22px;
   line-height:1.9;
 
-  opacity:1;
+  opacity:0;
   visibility:hidden;
   transform:translateY(-10px);
   pointer-events:none;
@@ -447,6 +447,7 @@ font-size:22px;
 document.addEventListener("DOMContentLoaded", function () {
 
   const modules = document.querySelectorAll(".modules details");
+  
 
   modules.forEach(function(module) {
 
@@ -658,7 +659,9 @@ document.addEventListener("DOMContentLoaded", function () {
       summary.getBoundingClientRect();
 
 
-    const largura =
+    const margem = 20;
+
+const largura =
   Math.min(
     520,
     window.innerWidth - margem * 2
