@@ -46,26 +46,20 @@
     .cta{display:inline-block;background:var(--gold);color:#24160e;text-decoration:none;font-weight:bold;padding:16px 26px;border-radius:4px;margin-top:14px;box-shadow:0 8px 24px #0004}
     .cta:hover{filter:brightness(1.08)}
 .course-cover{
-  width:100%;
-  max-width:420px;
-
-  height:420px;
-
-  margin:auto;
-
+  height:450px;
   background:linear-gradient(145deg,#6a4128,#2d190f);
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   text-align:center;
-
   color:#f3d69e;
-
   border:7px solid #d1a566;
-
-  box-shadow:14px 16px 0 rgba(198,154,82,.18);
+  animation: brilhoDourado 2.5s infinite;
+  
+  box-shadow:
+    0 0 15px rgba(209,165,102,.6),
+    0 0 30px rgba(209,165,102,.4),
+    0 0 50px rgba(209,165,102,.25);
 }
 
 .course-cover small{
@@ -291,8 +285,14 @@ font-size:22px;
     .audience{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:stretch}
     .audience-box{background:#fffaf0;border-left:5px solid var(--gold);padding:28px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
     .price{background:linear-gradient(135deg,#2b180f,#5c3825);color:#fff4df;text-align:center}
-    .price .box{max-width:700px;margin:auto;border:1px solid #c69a52;padding:45px 25px}
-    .price small{color:#dfc28e}.price .value{font-size:4rem;font-weight:bold;line-height:1;margin:12px 0}.price .pix{color:#e1bc76;font-weight:bold}
+.price .box{
+  max-width:700px;
+  margin:auto;
+  border:1px solid #c69a52;
+  padding:45px 25px;
+
+  animation: brilhoDourado 2.5s infinite;
+}    .price small{color:#dfc28e}.price .value{font-size:4rem;font-weight:bold;line-height:1;margin:12px 0}.price .pix{color:#e1bc76;font-weight:bold}
     .faq{max-width:850px;margin:auto}.faq details{margin:10px 0}
     footer{background:#21130d;color:#d9c5a8;text-align:center;padding:30px 20px;font-size:.9rem}
     @media(max-width:800px){
@@ -349,7 +349,29 @@ font-size:22px;
     transform:scale(1);
   }
 }
+@keyframes brilhoDourado{
 
+  0%{
+    box-shadow:
+      0 0 10px rgba(209,165,102,.4),
+      0 0 20px rgba(209,165,102,.2);
+  }
+
+  50%{
+    box-shadow:
+      0 0 25px rgba(209,165,102,.9),
+      0 0 50px rgba(209,165,102,.7),
+      0 0 80px rgba(209,165,102,.5);
+  }
+
+  100%{
+    box-shadow:
+      0 0 10px rgba(209,165,102,.4),
+      0 0 20px rgba(209,165,102,.2);
+  }
+
+}
+    
 .whatsapp-float{
   animation:pulse 2.5s infinite;
 } 
