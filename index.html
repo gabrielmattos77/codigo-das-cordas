@@ -431,7 +431,7 @@ font-size:22px;
     margin:0 auto;
     display:grid;
     grid-template-columns:repeat(6, minmax(0, 1fr));
-    gap:28px 22px;
+    gap:32px 24px;
     align-items:start;
 }
 
@@ -456,6 +456,8 @@ font-size:22px;
     padding:8px;
     box-shadow:0 7px 18px rgba(45,25,15,.12);
     transition:transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+    user-select:none;
 }
 
 .preview-item:hover{
@@ -463,6 +465,19 @@ font-size:22px;
 
     box-shadow:
         0 14px 28px rgba(45,25,15,.18);
+}
+
+    .preview-item:focus-visible{
+    outline:3px solid #a46b38;
+    outline-offset:4px;
+}
+
+.preview-item img{
+    transition:transform .25s ease;
+}
+
+.preview-item:hover img{
+    transform:scale(1.015);
 }
 
 /* IMAGEM */
@@ -523,6 +538,107 @@ font-size:22px;
 .whatsapp-float{
   animation:pulse 2.5s infinite;
 } 
+
+/* =========================================
+   VISUALIZAÇÃO AMPLIADA DAS PRÉVIAS
+========================================= */
+
+.preview-modal{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+}
+
+.preview-modal.is-open{
+    display:flex;
+}
+
+.preview-modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(20,12,8,.88);
+    backdrop-filter:blur(3px);
+}
+
+.preview-modal-content{
+    position:relative;
+    z-index:1;
+    width:min(94vw, 1180px);
+    height:min(94vh, 1200px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.preview-modal-image{
+    display:block;
+    max-width:100%;
+    max-height:94vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    background:#fffaf0;
+    border:1px solid rgba(209,165,102,.9);
+    box-shadow:0 22px 70px rgba(0,0,0,.45);
+}
+
+.preview-modal-close{
+    position:absolute;
+    z-index:2;
+    top:-12px;
+    right:-12px;
+    width:46px;
+    height:46px;
+    border:1px solid #d1a566;
+    border-radius:50%;
+    background:#fffaf0;
+    color:#3a2115;
+    font-size:2rem;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.28);
+}
+
+.preview-modal-close:hover{
+    transform:scale(1.05);
+}
+
+body.preview-modal-open{
+    overflow:hidden;
+}
+
+@media(max-width:800px){
+
+    .preview-modal{
+        padding:12px;
+    }
+
+    .preview-modal-content{
+        width:96vw;
+        height:96vh;
+    }
+
+    .preview-modal-image{
+        max-width:96vw;
+        max-height:92vh;
+    }
+
+    .preview-modal-close{
+        top:-8px;
+        right:-4px;
+        width:42px;
+        height:42px;
+        font-size:1.8rem;
+    }
+}
+    
   </style>
 </head>
 <body>
@@ -627,72 +743,56 @@ font-size:22px;
 
         <!-- AULA 1 -->
 
-        <div class="preview-item">
-
-            <img
-                src="previews/aula-1.jpg"
-                alt="Aula 1 — Introdução"
-            >
-
-            <span>Aula 1 — Introdução</span>
-
-        </div>
+        <div
+    class="preview-item"
+    tabindex="0"
+    role="button"
+    aria-label="Ampliar Aula 1 — Introdução"
+    data-preview="previews/aula-1.jpg"
+>
 
 
         <!-- AULA 27 -->
 
-        <div class="preview-item">
-
-            <img
-                src="previews/aula-27.jpg"
-                alt="Aula 27 — Modulação e Transposição"
-            >
-
-            <span>Aula 27 — Modulação & Transposição</span>
-
-        </div>
+       <div
+    class="preview-item"
+    tabindex="0"
+    role="button"
+    aria-label="Ampliar Aula 27 — Modulação e Transposição"
+    data-preview="previews/aula-27.jpg"
+>
 
 
         <!-- AULA 28 -->
 
-        <div class="preview-item">
-
-            <img
-                src="previews/aula-28.jpg"
-                alt="Aula 28 — Modos Gregos"
-            >
-
-            <span>Aula 28 — Modos Gregos</span>
-
-        </div>
+        <div
+    class="preview-item"
+    tabindex="0"
+    role="button"
+    aria-label="Ampliar Aula 28 — Modos Gregos"
+    data-preview="previews/aula-28.jpg"
+>
 
 
         <!-- AULA 41 -->
-
-        <div class="preview-item">
-
-            <img
-                src="previews/aula-41.jpg"
-                alt="Aula 41 — Empréstimo Modal"
-            >
-
-            <span>Aula 41 — Empréstimo Modal</span>
-
-        </div>
+<div
+    class="preview-item"
+    tabindex="0"
+    role="button"
+    aria-label="Ampliar Aula 41 — Empréstimo Modal"
+    data-preview="previews/aula-41.jpg"
+>
 
 
         <!-- AULA 45 -->
 
-        <div class="preview-item">
-
-            <img
-                src="previews/aula-45.jpg"
-                alt="Aula 45 — Improvisação e Técnicas"
-            >
-
-            <span>Aula 45 — Improvisação & Técnicas</span>
-
-        </div>
+        <div
+    class="preview-item"
+    tabindex="0"
+    role="button"
+    aria-label="Ampliar Aula 45 — Improvisação e Técnicas"
+    data-preview="previews/aula-45.jpg"
+>
 
 
 
@@ -1075,6 +1175,150 @@ const largura =
     }
 
   });
+
+/* =========================================
+   VISUALIZADOR DAS PRÉVIAS
+========================================= */
+
+const previewItems =
+    document.querySelectorAll(".preview-item[data-preview]");
+
+const previewModal =
+    document.getElementById("previewModal");
+
+const previewModalImage =
+    document.getElementById("previewModalImage");
+
+const previewCloseButtons =
+    document.querySelectorAll("[data-close-preview]");
+
+
+function abrirPreview(item){
+
+    const imagem =
+        item.getAttribute("data-preview");
+
+    const imgOriginal =
+        item.querySelector("img");
+
+    if(!imagem || !previewModal || !previewModalImage){
+        return;
+    }
+
+    previewModalImage.src = imagem;
+
+    previewModalImage.alt =
+        imgOriginal
+        ? imgOriginal.alt
+        : "Prévia ampliada da aula";
+
+    previewModal.classList.add("is-open");
+
+    previewModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "preview-modal-open"
+    );
+
+}
+
+
+function fecharPreview(){
+
+    if(!previewModal || !previewModalImage){
+        return;
+    }
+
+    previewModal.classList.remove(
+        "is-open"
+    );
+
+    previewModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "preview-modal-open"
+    );
+
+    previewModalImage.src = "";
+
+    previewModalImage.alt = "";
+
+}
+
+
+previewItems.forEach(function(item){
+
+    item.addEventListener(
+        "click",
+        function(){
+
+            /*
+             * Existe somente UMA janela.
+             * Ao clicar em outra aula,
+             * a imagem anterior é substituída.
+             */
+
+            abrirPreview(item);
+
+        }
+    );
+
+
+    item.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter" ||
+                event.key === " "
+            ){
+
+                event.preventDefault();
+
+                abrirPreview(item);
+
+            }
+
+        }
+    );
+
+});
+
+
+previewCloseButtons.forEach(
+    function(botao){
+
+        botao.addEventListener(
+            "click",
+            fecharPreview
+        );
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape" &&
+            previewModal.classList.contains("is-open")
+        ){
+
+            fecharPreview();
+
+        }
+
+    }
+);
+  
 window.addEventListener("scroll", function() {
 
   document
@@ -1088,8 +1332,38 @@ window.addEventListener("scroll", function() {
 });
 });
 </script>
-  <a
-  class="whatsapp-float"
+
+  <!-- VISUALIZADOR AMPLIADO DAS PRÉVIAS -->
+<div class="preview-modal" id="previewModal" aria-hidden="true">
+
+  <div class="preview-modal-backdrop" data-close-preview></div>
+
+  <div
+    class="preview-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Visualização ampliada da aula"
+  >
+
+    <button
+      class="preview-modal-close"
+      type="button"
+      aria-label="Fechar visualização"
+      data-close-preview
+    >×</button>
+
+    <img
+      class="preview-modal-image"
+      id="previewModalImage"
+      src=""
+      alt=""
+    >
+
+  </div>
+
+</div>
+  
+  <a class="whatsapp-float"
   href="https://wa.me/5521967748037?text=Olá%20Gabriel!%20Quero%20adquirir%20o%20*Código%20das%20Cordas*."
   target="_blank"
   rel="noopener noreferrer"
