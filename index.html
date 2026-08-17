@@ -494,21 +494,27 @@ font-size:22px;
     border-radius:2px;
 }
 
-    /* =========================================
-   AULA 1 — AMOSTRA PARCIAL
+   /* =========================================
+   AULA 1 — AMOSTRA
 ========================================= */
 
 .preview-item:first-child{
     overflow:hidden;
 }
-    
-.preview-item:first-child img{
-    object-fit:cover;
-    object-position:top center;
-    filter:blur(2px);
-    transform:scale(1.35);
-}
 
+.preview-item:first-child img{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:3 / 4;
+
+    object-fit:contain;
+    object-position:center;
+
+    filter:blur(2px);
+
+    background:#fdf8ee;
+}
 /* =========================================
    AULAS BLOQUEADAS
 ========================================= */
@@ -670,7 +676,7 @@ font-size:22px;
 
     filter:blur(2px);
 
-    transform:scale(1.25);
+    transform:scale(1);
     transform-origin:top center;
 
     background:#fffaf0;
