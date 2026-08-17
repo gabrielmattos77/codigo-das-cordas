@@ -494,6 +494,57 @@ font-size:22px;
     border-radius:2px;
 }
 
+/* =========================================
+   AULAS BLOQUEADAS
+========================================= */
+
+.preview-item-locked{
+    cursor:default;
+}
+
+.preview-item-locked:hover{
+    transform:none;
+    box-shadow:0 7px 18px rgba(45,25,15,.12);
+}
+
+.preview-locked-image{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    border-radius:2px;
+    aspect-ratio:3 / 4;
+    background:#211711;
+}
+
+.preview-locked-image img{
+    display:none;
+}
+
+.preview-lock-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#17100c;
+    pointer-events:none;
+}
+
+.preview-lock{
+    font-size:3.2rem;
+    line-height:1;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.7));
+}
+
+.preview-item-locked span{
+    display:block;
+    padding:9px 5px 6px;
+    text-align:center;
+    font-size:.9rem;
+    font-weight:bold;
+    color:#3a2115;
+}
+    
 /* NOME DA AULA */
 
 .preview-item span{
@@ -756,68 +807,71 @@ body.preview-modal-open{
   </div>
 
 
-  <!-- AULA 27 -->
-  <div
-    class="preview-item"
-    tabindex="0"
-    role="button"
-    aria-label="Ampliar Aula 27 — Modulação e Transposição"
-    data-preview="previews/aula-27.jpg"
-  >
+  <!-- AULA 27 — BLOQUEADA -->
+<div class="preview-item preview-item-locked">
+  <div class="preview-locked-image">
     <img
       src="previews/aula-27.jpg"
       alt="Aula 27 — Modulação e Transposição"
     >
-    <span>Aula 27 — Modulação e Transposição</span>
+
+    <div class="preview-lock-overlay">
+      <div class="preview-lock">🔒</div>
+    </div>
   </div>
 
+  <span>Aula 27 — Modulação e Transposição</span>
+</div>
 
-  <!-- AULA 28 -->
-  <div
-    class="preview-item"
-    tabindex="0"
-    role="button"
-    aria-label="Ampliar Aula 28 — Modos Gregos"
-    data-preview="previews/aula-28.jpg"
-  >
+
+  <!-- AULA 28 — BLOQUEADA -->
+<div class="preview-item preview-item-locked">
+  <div class="preview-locked-image">
     <img
       src="previews/aula-28.jpg"
       alt="Aula 28 — Modos Gregos"
     >
-    <span>Aula 28 — Modos Gregos</span>
+
+    <div class="preview-lock-overlay">
+      <div class="preview-lock">🔒</div>
+    </div>
   </div>
 
+  <span>Aula 28 — Modos Gregos</span>
+</div>
 
-  <!-- AULA 41 -->
-  <div
-    class="preview-item"
-    tabindex="0"
-    role="button"
-    aria-label="Ampliar Aula 41 — Empréstimo Modal"
-    data-preview="previews/aula-41.jpg"
-  >
+<!-- AULA 41 — BLOQUEADA -->
+<div class="preview-item preview-item-locked">
+  <div class="preview-locked-image">
     <img
       src="previews/aula-41.jpg"
       alt="Aula 41 — Empréstimo Modal"
     >
-    <span>Aula 41 — Empréstimo Modal</span>
+
+    <div class="preview-lock-overlay">
+      <div class="preview-lock">🔒</div>
+    </div>
   </div>
 
+  <span>Aula 41 — Empréstimo Modal</span>
+</div>
 
-  <!-- AULA 45 -->
-  <div
-    class="preview-item"
-    tabindex="0"
-    role="button"
-    aria-label="Ampliar Aula 45 — Improvisação e Técnicas"
-    data-preview="previews/aula-45.jpg"
-  >
+
+  <!-- AULA 45 — BLOQUEADA -->
+<div class="preview-item preview-item-locked">
+  <div class="preview-locked-image">
     <img
       src="previews/aula-45.jpg"
       alt="Aula 45 — Improvisação e Técnicas"
     >
-    <span>Aula 45 — Improvisação e Técnicas</span>
+
+    <div class="preview-lock-overlay">
+      <div class="preview-lock">🔒</div>
+    </div>
   </div>
+
+  <span>Aula 45 — Improvisação e Técnicas</span>
+</div>
 
 </div>
 
@@ -1274,41 +1328,41 @@ function fecharPreview(){
 }
 
 
-previewItems.forEach(function(item){
+/* =========================================
+   CLIQUE NAS AULAS BLOQUEADAS
+========================================= */
 
-    item.addEventListener(
-        "click",
-        function(){
+const lockedItems =
+    document.querySelectorAll(".preview-item-locked");
 
-            /*
-             * Existe somente UMA janela.
-             * Ao clicar em outra aula,
-             * a imagem anterior é substituída.
-             */
-
-            abrirPreview(item);
-
-        }
+const whatsappCompra =
+    "https://wa.me/5521967748037?text=" +
+    encodeURIComponent(
+        "Olá, Gabriel! Quero adquirir o curso Código das Cordas."
     );
 
+lockedItems.forEach(function(item){
 
-    item.addEventListener(
-        "keydown",
-        function(event){
+    item.addEventListener("click", function(){
 
-            if(
-                event.key === "Enter" ||
-                event.key === " "
-            ){
+        window.location.href = whatsappCompra;
 
-                event.preventDefault();
+    });
 
-                abrirPreview(item);
+    item.addEventListener("keydown", function(event){
 
-            }
+        if(
+            event.key === "Enter" ||
+            event.key === " "
+        ){
+
+            event.preventDefault();
+
+            window.location.href = whatsappCompra;
 
         }
-    );
+
+    });
 
 });
 
