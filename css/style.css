@@ -9,8 +9,7 @@
   color:var(--ink);
   line-height:1.6;
 
-  background:url("027d36bf-e798-4083-99db-b76b6cd20d48.png.png") center center fixed;
-  background-size:cover;
+background:url("../027d36bf-e798-4083-99db-b76b6cd20d48.png.png") center center fixed;  background-size:cover;
 }
     .top{background:var(--wood);color:#f8edda;text-align:center;padding:10px 18px;font-size:.92rem;letter-spacing:.04em}
     nav{position:sticky;top:0;z-index:20;background:rgba(58,33,21,.97);border-bottom:1px solid rgba(198,154,82,.45)}
@@ -45,8 +44,7 @@
       rgba(45,25,15,.55),
       rgba(45,25,15,.55)
     ),
-    url("a_warm_vintage_musical_still_life_scene_photograp.png");
-
+url("../a_warm_vintage_musical_still_life_scene_photograp.png")
   background-size:cover;
   background-position:center;
 
