@@ -45,17 +45,98 @@ A proposta é apresentar os conteúdos de forma organizada e progressiva, partin
 codigo-das-cordas/
 │
 ├── css/
-│   └── style.css
-│
 ├── js/
-│   └── arquivos JavaScript
-│
 ├── pdf/
-│   └── materiais das aulas
-│
-├── prévias/
-│   └── imagens e prévias do projeto
+├── previews/
 │
 ├── index.html
-│
 └── README.md
+```
+---
+
+## 📚 Conteúdos
+
+O **Código das Cordas** reúne conteúdos de violão e teoria musical organizados de forma progressiva, acompanhando a evolução do aluno desde os fundamentos até conceitos mais avançados de harmonia e improvisação.
+
+### 🎼 Teoria musical
+
+- Introdução à música
+- Semitons e tons
+- Intervalos musicais
+- Trítono
+- Acidentes musicais
+- Escala cromática
+- Formação de acordes
+- Tríades
+- Tétrades
+- Inversões de acordes
+
+### 🎸 Violão e harmonia
+
+- Acordes maiores e menores
+- Sistema CAGED
+- Escalas maiores e menores
+- Campo harmônico
+- Funções harmônicas
+- Modos gregos
+- Empréstimo modal
+- Transposição
+- Modulação
+- Rearmonização
+
+### 🎵 Improvisação
+
+- Escalas para improvisação
+- Pentatônicas
+- Notas de passagem
+- Técnicas de violão
+- Construção de solos
+- Improvisação aplicada
+
+---
+
+## 📸 Preview
+
+As prévias das aulas e da plataforma estão disponíveis na pasta [`previews/`](./previews/).
+
+---
+
+## 📖 O que aprendi desenvolvendo este projeto
+
+O desenvolvimento do **Código das Cordas** também serve como experiência prática para aplicar conhecimentos de desenvolvimento web, organização de projetos e publicação na internet.
+
+Entre os principais conhecimentos envolvidos estão:
+
+- Estruturação de páginas com HTML
+- Estilização com CSS
+- Interatividade com JavaScript
+- Organização de arquivos e diretórios
+- Git e GitHub
+- Publicação com GitHub Pages
+- Desenvolvimento de interfaces responsivas
+- Organização de conteúdo educacional
+
+---
+
+## 🚀 Próximos passos
+
+- Aprimorar a interface da plataforma
+- Expandir os conteúdos das aulas
+- Adicionar novas prévias
+- Melhorar a acessibilidade
+- Otimizar o desempenho
+- Adicionar novos recursos à plataforma
+
+---
+
+## 👨‍💻 Autor
+
+**Gabriel Mattos**
+
+🎸 Música · 💻 Tecnologia · 📚 Educação
+
+[GitHub](https://github.com/gabrielmattos77)
+
+---
+
+⭐ Se você gostou do projeto, considere deixar uma estrela no repositório!
