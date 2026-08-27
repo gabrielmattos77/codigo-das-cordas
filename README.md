@@ -95,60 +95,60 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 
 ---
 
+---
+
 ## 📸 Prévias
 
 <p align="center">
-<img src="./previews/aula-1.jpg" alt="Aula 1 – Introdução" width="350">
+<img src="./previews/aula-1.jpg" alt="Aula 1 – Introdução" width="500">
 </p>
 
 <p align="center">
 <strong>🟢 AULA 1 — DISPONÍVEL</strong>
 </p>
 
+<br>
+
 <table>
 <tr>
+
 <td align="center" width="50%">
-
-<h3>🔒 AULA 27</h3>
-<br>
-<strong>🔒 BLOQUEADA</strong><br>
-<sub>Modulação & Transposição</sub>
-
+<a href="#">
+<img src="./previews/bloqueada-27.svg" alt="Aula 27 – Modulação e Transposição" width="100%">
+</a>
 </td>
 
 <td align="center" width="50%">
-
-<h3>🔒 AULA 28</h3>
-<br>
-<strong>🔒 BLOQUEADA</strong><br>
-<sub>Modos Gregos</sub>
-
+<a href="#">
+<img src="./previews/bloqueada-28.svg" alt="Aula 28 – Modos Gregos" width="100%">
+</a>
 </td>
+
 </tr>
 
 <tr>
+
 <td align="center" width="50%">
-
-<h3>🔒 AULA 41</h3>
-<br>
-<strong>🔒 BLOQUEADA</strong><br>
-<sub>Empréstimo Modal</sub>
-
+<a href="#">
+<img src="./previews/bloqueada-41.svg" alt="Aula 41 – Empréstimo Modal" width="100%">
+</a>
 </td>
 
 <td align="center" width="50%">
-
-<h3>🔒 AULA 45</h3>
-<br>
-<strong>🔒 BLOQUEADA</strong><br>
-<sub>Improvisação, Técnicas & Construção de Solos</sub>
-
+<a href="#">
+<img src="./previews/bloqueada-45.svg" alt="Aula 45 – Improvisação e Construção de Solos" width="100%">
+</a>
 </td>
+
 </tr>
 </table>
 
+<br>
+
 <p align="center">
-<a href="./previews/">📂 Ver todas as prévias</a>
+<a href="./previews/">
+📂 Ver todas as prévias
+</a>
 </p>
 
 ---
