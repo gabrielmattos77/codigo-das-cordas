@@ -98,7 +98,9 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 ## 📸 Prévias
 
 <p align="center">
-<img src="./previews/aula-1.jpg" alt="Aula 1 – Introdução" width="500">
+<img src="./previews/aula-1.jpg"
+     alt="Aula 1 – Introdução"
+     width="300">
 </p>
 
 <p align="center">
@@ -111,15 +113,19 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <tr>
 
 <td align="center" width="50%">
-<a href="#">
-<img src="./previews/bloqueada-27.svg" alt="Aula 27 – Modulação e Transposição" width="100%">
-</a>
+
+<img src="./previews/bloqueada-27.svg"
+     alt="Aula 27 – Bloqueada"
+     width="100%">
+
 </td>
 
 <td align="center" width="50%">
-<a href="#">
-<img src="./previews/bloqueada-28.svg" alt="Aula 28 – Modos Gregos" width="100%">
-</a>
+
+<img src="./previews/bloqueada-28.svg"
+     alt="Aula 28 – Bloqueada"
+     width="100%">
+
 </td>
 
 </tr>
@@ -127,29 +133,27 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <tr>
 
 <td align="center" width="50%">
-<a href="#">
-<img src="./previews/bloqueada-41.svg" alt="Aula 41 – Empréstimo Modal" width="100%">
-</a>
+
+<img src="./previews/bloqueada-41.svg"
+     alt="Aula 41 – Bloqueada"
+     width="100%">
+
 </td>
 
 <td align="center" width="50%">
-<a href="#">
-<img src="./previews/bloqueada-45.svg" alt="Aula 45 – Improvisação e Construção de Solos" width="100%">
-</a>
+
+<img src="./previews/bloqueada-45.svg"
+     alt="Aula 45 – Bloqueada"
+     width="100%">
+
 </td>
 
 </tr>
 </table>
 
-<br>
-
 <p align="center">
-<a href="./previews/">
-📂 Ver todas as prévias
-</a>
+<a href="./previews/">📂 Ver todas as prévias</a>
 </p>
-
----
 
 ## 📖 O que aprendi desenvolvendo este projeto
 
