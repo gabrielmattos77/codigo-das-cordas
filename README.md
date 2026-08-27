@@ -100,8 +100,7 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 ### Aula 1 — Introdução
 
 <p align="center">
-<img src="previews/aula-1-exata.png" alt="Aula 1 — Introdução" width="300">
-</p><strong>AULA 1</strong>
+<img src="previews/aula-1-exata.png" alt="Aula 1 — Introdução" width="350">
 </p>
 
 <br>
