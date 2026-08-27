@@ -1,6 +1,6 @@
 # 🎸 Código das Cordas
 
-### Plataforma de ensino de violão e teoria musical
+### Plataforma de ensino de violão e Teoria musical
 
 O **Código das Cordas** é um projeto educacional desenvolvido para ajudar estudantes de violão a compreender não apenas como tocar, mas também **como a música funciona**.
 
@@ -56,7 +56,7 @@ codigo-das-cordas/
 
 ## 📚 Conteúdos
 
-O **Código das Cordas** reúne conteúdos de violão e teoria musical organizados de forma progressiva, acompanhando a evolução do aluno desde os fundamentos até conceitos mais avançados de harmonia e improvisação.
+O **Código das Cordas** reúne conteúdos de violão e teoria musical organizados de forma progressiva, acompanhando a evolução do aluno desde os fundamentos até conceitos de harmonia e improvisação.
 
 ### 🎼 Teoria musical
 
@@ -95,9 +95,38 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 
 ---
 
-## 📸 Preview
+## 📸 Prévias
 
-As prévias das aulas e da plataforma estão disponíveis na pasta [`previews/`](./previews/).
+<p align="center">
+  <img src="./previews/aula-1.jpg" alt="Aula 1 – Introdução" width="350">
+</p>
+
+<p align="center">
+  <strong>Algumas aulas do Código das Cordas</strong>
+</p>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./previews/aula-27.jpg" alt="Aula 27 – Modulação e Transposição" width="250">
+    </td>
+    <td align="center">
+      <img src="./previews/aula-28.jpg" alt="Aula 28 – Modos Gregos" width="250">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./previews/aula-41.jpg" alt="Aula 41 – Empréstimo Modal" width="250">
+    </td>
+    <td align="center">
+      <img src="./previews/aula-45.jpg" alt="Aula 45 – Improvisação, Técnicas e Construção de Solos" width="250">
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="./previews/">Ver todas as prévias</a>
+</p>
 
 ---
 
