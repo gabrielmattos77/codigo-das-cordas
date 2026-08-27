@@ -104,7 +104,7 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 </p>
 
 <p align="center">
-  <strong>🟢 AULA 1 — DISPONÍVEL</strong>
+  <strong>AULA 1</strong>
 </p>
 
 <br>
