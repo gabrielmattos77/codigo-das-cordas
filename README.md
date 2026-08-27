@@ -98,13 +98,13 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 ## 📸 Prévias
 
 <p align="center">
-<img src="./previews/aula-1.jpg"
-     alt="Aula 1 – Introdução"
-     width="300">
+  <img src="./previews/aula-1.jpg"
+       alt="Aula 1 – Introdução"
+       width="300">
 </p>
 
 <p align="center">
-<strong>🟢 AULA 1 — DISPONÍVEL</strong>
+  <strong>🟢 AULA 1 — DISPONÍVEL</strong>
 </p>
 
 <br>
@@ -113,19 +113,33 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <tr>
 
 <td align="center" width="50%">
-
-<img src="./previews/bloqueada-27.svg"
-     alt="Aula 27 – Bloqueada"
-     width="100%">
-
+  <div style="
+    background:#161616;
+    border:2px solid #c9a048;
+    border-radius:18px;
+    padding:35px 20px;
+    min-height:200px;
+  ">
+    <div style="font-size:50px;">🔒</div>
+    <h3>AULA 27</h3>
+    <strong>Modulação &amp; Transposição</strong>
+    <p>🔐 CONTEÚDO BLOQUEADO</p>
+  </div>
 </td>
 
 <td align="center" width="50%">
-
-<img src="./previews/bloqueada-28.svg"
-     alt="Aula 28 – Bloqueada"
-     width="100%">
-
+  <div style="
+    background:#161616;
+    border:2px solid #c9a048;
+    border-radius:18px;
+    padding:35px 20px;
+    min-height:200px;
+  ">
+    <div style="font-size:50px;">🔒</div>
+    <h3>AULA 28</h3>
+    <strong>Modos Gregos</strong>
+    <p>🔐 CONTEÚDO BLOQUEADO</p>
+  </div>
 </td>
 
 </tr>
@@ -133,26 +147,40 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <tr>
 
 <td align="center" width="50%">
-
-<img src="./previews/bloqueada-41.svg"
-     alt="Aula 41 – Bloqueada"
-     width="100%">
-
+  <div style="
+    background:#161616;
+    border:2px solid #c9a048;
+    border-radius:18px;
+    padding:35px 20px;
+    min-height:200px;
+  ">
+    <div style="font-size:50px;">🔒</div>
+    <h3>AULA 41</h3>
+    <strong>Empréstimo Modal</strong>
+    <p>🔐 CONTEÚDO BLOQUEADO</p>
+  </div>
 </td>
 
 <td align="center" width="50%">
-
-<img src="./previews/bloqueada-45.svg"
-     alt="Aula 45 – Bloqueada"
-     width="100%">
-
+  <div style="
+    background:#161616;
+    border:2px solid #c9a048;
+    border-radius:18px;
+    padding:35px 20px;
+    min-height:200px;
+  ">
+    <div style="font-size:50px;">🔒</div>
+    <h3>AULA 45</h3>
+    <strong>Improvisação, Técnicas &amp; Construção de Solos</strong>
+    <p>🔐 CONTEÚDO BLOQUEADO</p>
+  </div>
 </td>
 
 </tr>
 </table>
 
 <p align="center">
-<a href="./previews/">📂 Ver todas as prévias</a>
+  <a href="./previews/">📂 Ver todas as prévias</a>
 </p>
 
 ## 📖 O que aprendi desenvolvendo este projeto
