@@ -95,7 +95,7 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 
 ---
 
-## 📸 Prévias
+## 📸 Prévia
 
 <p align="center">
   <img src="./previews/aula-1.jpg"
@@ -109,79 +109,7 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 
 <br>
 
-<table>
-<tr>
-
-<td align="center" width="50%">
-  <div style="
-    background:#161616;
-    border:2px solid #c9a048;
-    border-radius:18px;
-    padding:35px 20px;
-    min-height:200px;
-  ">
-    <div style="font-size:50px;">🔒</div>
-    <h3>AULA 27</h3>
-    <strong>Modulação &amp; Transposição</strong>
-    <p>🔐 CONTEÚDO BLOQUEADO</p>
-  </div>
-</td>
-
-<td align="center" width="50%">
-  <div style="
-    background:#161616;
-    border:2px solid #c9a048;
-    border-radius:18px;
-    padding:35px 20px;
-    min-height:200px;
-  ">
-    <div style="font-size:50px;">🔒</div>
-    <h3>AULA 28</h3>
-    <strong>Modos Gregos</strong>
-    <p>🔐 CONTEÚDO BLOQUEADO</p>
-  </div>
-</td>
-
-</tr>
-
-<tr>
-
-<td align="center" width="50%">
-  <div style="
-    background:#161616;
-    border:2px solid #c9a048;
-    border-radius:18px;
-    padding:35px 20px;
-    min-height:200px;
-  ">
-    <div style="font-size:50px;">🔒</div>
-    <h3>AULA 41</h3>
-    <strong>Empréstimo Modal</strong>
-    <p>🔐 CONTEÚDO BLOQUEADO</p>
-  </div>
-</td>
-
-<td align="center" width="50%">
-  <div style="
-    background:#161616;
-    border:2px solid #c9a048;
-    border-radius:18px;
-    padding:35px 20px;
-    min-height:200px;
-  ">
-    <div style="font-size:50px;">🔒</div>
-    <h3>AULA 45</h3>
-    <strong>Improvisação, Técnicas &amp; Construção de Solos</strong>
-    <p>🔐 CONTEÚDO BLOQUEADO</p>
-  </div>
-</td>
-
-</tr>
-</table>
-
-<p align="center">
-  <a href="./previews/">📂 Ver todas as prévias</a>
-</p>
+---
 
 ## 📖 O que aprendi desenvolvendo este projeto
 
