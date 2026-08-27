@@ -95,8 +95,6 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 
 ---
 
----
-
 ## 📸 Prévias
 
 <p align="center">
