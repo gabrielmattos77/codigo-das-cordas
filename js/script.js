@@ -459,17 +459,16 @@ document.addEventListener(
 
         if(
             event.key === "Escape" &&
-            lockedModal &&
-            lockedModal.classList.contains("is-open")
+            previewModal &&
+            previewModal.classList.contains("is-open")
         ){
 
-            fecharLockedModal();
+            fecharPreview();
 
         }
 
     }
 );
-
 
 previewCloseButtons.forEach(
     function(botao){
