@@ -343,38 +343,132 @@ function fecharPreview(){
 ========================================= */
 
 const lockedItems =
-    document.querySelectorAll(".preview-item-locked");
+document.querySelectorAll(".preview-item-locked");
+
+const lockedModal =
+document.getElementById("lockedModal");
+
+const lockedModalTitle =
+document.getElementById("lockedModalTitle");
+
+const lockedModalText =
+document.getElementById("lockedModalText");
+
+const lockedModalButton =
+document.getElementById("lockedModalButton");
+
+const closeLockedButtons =
+document.querySelectorAll("[data-close-locked]");
 
 const whatsappCompra =
-    "https://wa.me/5521967748037?text=" +
-    encodeURIComponent(
-        "Olá, Gabriel! Quero adquirir o curso Código das Cordas."
+"https://wa.me/5521967748037?text=" +
+encodeURIComponent(
+"Olá, Gabriel! Quero adquirir o curso Código das Cordas."
+);
+
+
+function abrirLockedModal(item){
+
+    if(!lockedModal){
+        return;
+    }
+
+    const titulo =
+        item.querySelector("span");
+
+    if(titulo){
+
+        lockedModalTitle.textContent =
+            "Desbloqueie " + titulo.textContent;
+
+        lockedModalText.innerHTML =
+            "A <strong>" +
+            titulo.textContent +
+            "</strong> faz parte do conteúdo completo do Código das Cordas.";
+
+    }
+
+    lockedModalButton.href =
+        whatsappCompra;
+
+    lockedModal.classList.add(
+        "is-open"
     );
+
+    lockedModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "locked-modal-open"
+    );
+
+}
+
+
+function fecharLockedModal(){
+
+    if(!lockedModal){
+        return;
+    }
+
+    lockedModal.classList.remove(
+        "is-open"
+    );
+
+    lockedModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "locked-modal-open"
+    );
+
+}
+
 
 lockedItems.forEach(function(item){
 
-    item.addEventListener("click", function(){
+    item.addEventListener(
+        "click",
+        function(){
 
-        window.location.href = whatsappCompra;
+            abrirLockedModal(item);
 
-    });
+        }
+    );
 
-    item.addEventListener("keydown", function(event){
+});
+
+
+closeLockedButtons.forEach(function(botao){
+
+    botao.addEventListener(
+        "click",
+        fecharLockedModal
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
 
         if(
-            event.key === "Enter" ||
-            event.key === " "
+            event.key === "Escape" &&
+            lockedModal &&
+            lockedModal.classList.contains("is-open")
         ){
 
-            event.preventDefault();
-
-            window.location.href = whatsappCompra;
+            fecharLockedModal();
 
         }
 
-    });
-
-});
+    }
+);
 
 
 previewCloseButtons.forEach(
