@@ -750,3 +750,364 @@ body.preview-modal-open{
         font-size:1.8rem;
     }
 }
+/* =========================================
+   MODAL DE AULA BLOQUEADA
+   ========================================= */
+
+.locked-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+/* Modal aberto */
+
+.locked-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* Fundo escuro */
+
+.locked-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.78);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* Caixa principal */
+
+.locked-modal-content {
+    position: relative;
+    z-index: 1;
+
+    width: min(460px, 100%);
+
+    padding: 42px 34px 32px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #5a3422,
+            #2b180f
+        );
+
+    color: #fff7e9;
+
+    border: 1px solid #c69a52;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55),
+        0 0 25px rgba(198, 154, 82, 0.18);
+
+    transform: translateY(18px) scale(0.96);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+    opacity: 0;
+}
+
+
+/* Animação da caixa ao abrir */
+
+.locked-modal.is-open .locked-modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+
+/* Cadeado */
+
+.locked-modal-icon {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+
+    background: rgba(198, 154, 82, 0.12);
+
+    border: 1px solid rgba(198, 154, 82, 0.65);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 20px rgba(198, 154, 82, 0.18);
+}
+
+
+/* Pequeno título */
+
+.locked-modal-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    opacity: 0.65;
+}
+
+
+/* Título principal */
+
+.locked-modal-content h2 {
+    margin: 0 0 16px;
+
+    font-size: clamp(22px, 4vw, 30px);
+
+    line-height: 1.2;
+
+    font-weight: 700;
+}
+
+
+/* Texto principal */
+
+.locked-modal-content p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#lockedModalText {
+    max-width: 390px;
+
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    opacity: 0.9;
+}
+
+
+#lockedModalText strong {
+    font-weight: 700;
+}
+
+
+/* Texto secundário */
+
+.locked-modal-subtext {
+    max-width: 370px;
+
+    margin-top: 0;
+    margin-bottom: 26px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    opacity: 0.6;
+}
+
+
+/* Botão */
+
+.locked-modal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 14px 20px;
+
+    border-radius: 8px;
+
+    background: var(--gold);
+    color: #24160e; 
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+/* Efeito ao passar o mouse */
+
+.locked-modal-button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Efeito ao clicar */
+
+.locked-modal-button:active {
+    transform: translateY(0);
+}
+
+
+/* Texto abaixo do botão */
+
+.locked-modal-note {
+    margin-top: 14px;
+    margin-bottom: 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    opacity: 0.45;
+}
+
+
+/* Botão fechar */
+
+.locked-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    font-size: 27px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    opacity: 0.55;
+
+    transition:
+        opacity 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.locked-modal-close:hover {
+    opacity: 1;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transform: rotate(90deg);
+}
+
+
+/* Impede a página de rolar enquanto o modal está aberto */
+
+body.locked-modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .locked-modal {
+        padding: 16px;
+    }
+
+    .locked-modal-content {
+        width: 100%;
+
+        padding: 38px 22px 26px;
+
+        border-radius: 12px;
+    }
+
+    .locked-modal-icon {
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 15px;
+
+        font-size: 26px;
+    }
+
+    .locked-modal-content h2 {
+        font-size: 23px;
+    }
+
+    #lockedModalText {
+        font-size: 14px;
+    }
+
+    .locked-modal-subtext {
+        font-size: 12px;
+
+        margin-bottom: 22px;
+    }
+
+    .locked-modal-button {
+        min-height: 50px;
+
+        font-size: 12px;
+    }
+
+    .locked-modal-note {
+        font-size: 10px;
+    }
+
+}
