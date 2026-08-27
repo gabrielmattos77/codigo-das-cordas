@@ -110,7 +110,6 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <td align="center" width="50%">
 
 <h3>🔒 AULA 27</h3>
-<img src="./previews/aula-27.jpg" alt="Aula 27 – Modulação e Transposição" width="280">
 <br>
 <strong>🔒 BLOQUEADA</strong><br>
 <sub>Modulação & Transposição</sub>
@@ -120,7 +119,6 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <td align="center" width="50%">
 
 <h3>🔒 AULA 28</h3>
-<img src="./previews/aula-28.jpg" alt="Aula 28 – Modos Gregos" width="280">
 <br>
 <strong>🔒 BLOQUEADA</strong><br>
 <sub>Modos Gregos</sub>
@@ -132,7 +130,6 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <td align="center" width="50%">
 
 <h3>🔒 AULA 41</h3>
-<img src="./previews/aula-41.jpg" alt="Aula 41 – Empréstimo Modal" width="280">
 <br>
 <strong>🔒 BLOQUEADA</strong><br>
 <sub>Empréstimo Modal</sub>
@@ -142,7 +139,6 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 <td align="center" width="50%">
 
 <h3>🔒 AULA 45</h3>
-<img src="./previews/aula-45.jpg" alt="Aula 45 – Improvisação, Técnicas e Construção de Solos" width="280">
 <br>
 <strong>🔒 BLOQUEADA</strong><br>
 <sub>Improvisação, Técnicas & Construção de Solos</sub>
