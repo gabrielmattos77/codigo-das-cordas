@@ -98,34 +98,89 @@ O **Código das Cordas** reúne conteúdos de violão e teoria musical organizad
 ## 📸 Prévias
 
 <p align="center">
-  <img src="./previews/aula-1.jpg" alt="Aula 1 – Introdução" width="350">
+  <img src="./previews/aula-1.jpg"
+       alt="Aula 1 – Introdução"
+       width="350">
 </p>
 
 <p align="center">
-  <strong>Algumas aulas do Código das Cordas</strong>
+  <strong>🟢 AULA 1 — DISPONÍVEL</strong>
 </p>
+
+<br>
 
 <table>
   <tr>
-    <td align="center">
-      <img src="./previews/aula-27.jpg" alt="Aula 27 – Modulação e Transposição" width="250">
+    <td align="center" width="50%">
+
+      <h3>🔒 AULA 27</h3>
+
+      <img src="./previews/aula-27.jpg"
+           alt="Aula 27 – Modulação e Transposição"
+           width="280">
+
+      <br>
+
+      <strong>🔒 BLOQUEADA</strong><br>
+      <sub>Modulação & Transposição</sub>
+
     </td>
-    <td align="center">
-      <img src="./previews/aula-28.jpg" alt="Aula 28 – Modos Gregos" width="250">
+
+    <td align="center" width="50%">
+
+      <h3>🔒 AULA 28</h3>
+
+      <img src="./previews/aula-28.jpg"
+           alt="Aula 28 – Modos Gregos"
+           width="280">
+
+      <br>
+
+      <strong>🔒 BLOQUEADA</strong><br>
+      <sub>Modos Gregos</sub>
+
     </td>
   </tr>
+
   <tr>
-    <td align="center">
-      <img src="./previews/aula-41.jpg" alt="Aula 41 – Empréstimo Modal" width="250">
+    <td align="center" width="50%">
+
+      <h3>🔒 AULA 41</h3>
+
+      <img src="./previews/aula-41.jpg"
+           alt="Aula 41 – Empréstimo Modal"
+           width="280">
+
+      <br>
+
+      <strong>🔒 BLOQUEADA</strong><br>
+      <sub>Empréstimo Modal</sub>
+
     </td>
-    <td align="center">
-      <img src="./previews/aula-45.jpg" alt="Aula 45 – Improvisação, Técnicas e Construção de Solos" width="250">
+
+    <td align="center" width="50%">
+
+      <h3>🔒 AULA 45</h3>
+
+      <img src="./previews/aula-45.jpg"
+           alt="Aula 45 – Improvisação, Técnicas e Construção de Solos"
+           width="280">
+
+      <br>
+
+      <strong>🔒 BLOQUEADA</strong><br>
+      <sub>Improvisação, Técnicas & Construção de Solos</sub>
+
     </td>
   </tr>
 </table>
 
+<br>
+
 <p align="center">
-  <a href="./previews/">Ver todas as prévias</a>
+  <a href="./previews/">
+    📂 Ver todas as prévias
+  </a>
 </p>
 
 ---
