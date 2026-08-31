@@ -413,3 +413,8 @@ td:nth-child(5) {
         margin: 6px;
     }
 }
+
+#bracoViolao {
+    background: red !important;
+    padding: 30px !important;
+}
