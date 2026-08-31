@@ -265,6 +265,7 @@ td:nth-child(5) {
     font-size: 22px;
 }
 
+
 /* =========================================
    CORPO DO BRAÇO
    ========================================= */
@@ -273,62 +274,105 @@ td:nth-child(5) {
     width: 100%;
     overflow-x: auto;
 
-    padding: 18px 12px 22px;
+    padding: 20px 14px 22px;
 
-    background: #7a4b22;
+    background:
+        linear-gradient(
+            to bottom,
+            #8d5c2e,
+            #70451f
+        );
 
     border: 2px solid #b58a4a;
     border-radius: 12px;
 
     box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.35),
-        0 8px 20px rgba(0, 0, 0, 0.30);
+        inset 0 0 25px rgba(0,0,0,.35),
+        0 7px 18px rgba(0,0,0,.30);
 }
 
+
 /* =========================================
-   CADA LINHA / CORDA
+   NUMERAÇÃO DAS CASAS
    ========================================= */
 
-.linha-corda {
-    position: relative;
-
+.numeracao-casas {
     display: grid;
 
     grid-template-columns:
-        48px
-        repeat(13, 60px);
+        50px
+        repeat(13, 62px);
 
     width: max-content;
-    min-width: 828px;
+
+    min-width: 856px;
+
+    height: 32px;
+}
+
+.espaco-corda {
+    width: 50px;
+}
+
+.numero-casa {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #f4dfb5;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   LINHAS DAS CORDAS
+   ========================================= */
+
+.linha-corda {
+    display: grid;
+
+    grid-template-columns:
+        50px
+        repeat(13, 62px);
+
+    width: max-content;
+
+    min-width: 856px;
 
     height: 48px;
 
-    background: #8b5a2b;
+    position: relative;
 }
+
 
 /* =========================================
    NOME DA CORDA
    ========================================= */
 
 .nome-corda {
-    width: 48px;
+    width: 50px;
     height: 48px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    background: #4a2f1b;
+    background: #4b2d16;
 
     color: #fff4df;
 
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
 
     border-right: 4px solid #d8bd87;
 
-    z-index: 5;
+    z-index: 10;
 }
+
 
 /* =========================================
    CASAS
@@ -337,27 +381,24 @@ td:nth-child(5) {
 .casa {
     position: relative;
 
-    width: 60px;
+    width: 62px;
     height: 48px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    color: rgba(255, 244, 223, 0.40);
-
-    font-size: 13px;
-    font-weight: normal;
-
     background: transparent;
 
-    border-right: 2px solid rgba(225, 225, 225, 0.55);
+    border-right: 2px solid rgba(220,220,220,.55);
 
-    z-index: 2;
+    z-index: 3;
 }
 
+
 /* =========================================
-   LINHA DA CORDA
+   CORDA METÁLICA
    ========================================= */
 
 .linha-corda::after {
@@ -365,110 +406,185 @@ td:nth-child(5) {
 
     position: absolute;
 
-    left: 48px;
+    left: 50px;
     right: 0;
 
     top: 50%;
 
     height: 2px;
 
+    transform: translateY(-50%);
+
     background: linear-gradient(
         to bottom,
-        #eeeeee 0%,
-        #a9a9a9 40%,
-        #ffffff 55%,
-        #888888 100%
+        #eeeeee,
+        #aaaaaa,
+        #ffffff,
+        #888888
     );
-
-    transform: translateY(-50%);
 
     pointer-events: none;
 
-    z-index: 1;
+    z-index: 5;
 }
 
-/* Cordas mais grossas */
-.linha-corda:nth-child(1)::after,
-.linha-corda:nth-child(6)::after {
+
+/* Grossuras das cordas */
+
+.linha-corda:nth-child(2)::after,
+.linha-corda:nth-child(7)::after {
     height: 4px;
 }
 
-.linha-corda:nth-child(2)::after,
-.linha-corda:nth-child(5)::after {
+.linha-corda:nth-child(3)::after,
+.linha-corda:nth-child(6)::after {
     height: 3px;
 }
 
-.linha-corda:nth-child(3)::after,
-.linha-corda:nth-child(4)::after {
+.linha-corda:nth-child(4)::after,
+.linha-corda:nth-child(5)::after {
     height: 2px;
 }
+
+
+/* =========================================
+   NOTAS
+   ========================================= */
+
+.nome-nota {
+    position: relative;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    z-index: 10;
+}
+
 
 /* =========================================
    NOTAS DA ESCALA
    ========================================= */
 
-.casa.nota-escala {
+.casa.nota-escala .nome-nota {
+    background: #d4a85c;
+
     color: #3a2514;
 
-    font-size: 13px;
     font-weight: bold;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #d4a85c 0,
-            #d4a85c 19px,
-            transparent 20px
-        );
-
-    border-right: 2px solid rgba(225, 225, 225, 0.55);
-
-    z-index: 3;
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.35);
 }
+
 
 /* =========================================
-   EFEITO AO PASSAR O MOUSE
+   TÔNICA
    ========================================= */
 
-.casa.nota-escala:hover {
-    background:
-        radial-gradient(
-            circle at center,
-            #e2bc70 0,
-            #e2bc70 20px,
-            transparent 21px
-        );
+.casa.tonica .nome-nota {
+    background: #f0c96a;
 
-    cursor: default;
+    color: #3a2514;
+
+    font-weight: 900;
+
+    border: 3px solid #fff0c0;
+
+    box-shadow:
+        0 0 0 2px rgba(90,50,15,.55),
+        0 3px 7px rgba(0,0,0,.45);
 }
+
 
 /* =========================================
-   CASAS NORMAIS
+   NOTAS FORA DA ESCALA
    ========================================= */
 
-.casa:not(.nota-escala):hover {
-    background:
-        linear-gradient(
-            rgba(255,255,255,0.05),
-            rgba(255,255,255,0.05)
-        );
+.casa:not(.nota-escala) .nome-nota {
+    color: rgba(255,244,223,.35);
+
+    background: transparent;
 }
+
 
 /* =========================================
-   PESTANA
+   CASAS MARCADAS NO BRAÇO
    ========================================= */
 
-.casa:first-of-type {
-    border-left: 4px solid #dfceb0;
+.linha-corda:nth-child(4) .casa:nth-child(4)::before,
+.linha-corda:nth-child(4) .casa:nth-child(6)::before,
+.linha-corda:nth-child(4) .casa:nth-child(8)::before,
+.linha-corda:nth-child(4) .casa:nth-child(10)::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.55);
+
+    bottom: 5px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
 }
+
 
 /* =========================================
-   SEPARAÇÃO ENTRE AS CORDAS
+   CASA 12 — DUPLA MARCAÇÃO
    ========================================= */
 
-.linha-corda + .linha-corda {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+.linha-corda:nth-child(4) .casa:nth-child(14)::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.60);
+
+    top: 13px;
+    left: 25%;
+
 }
+
+.linha-corda:nth-child(4) .casa:nth-child(14)::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.60);
+
+    top: 13px;
+    right: 25%;
+
+}
+
 
 /* =========================================
    RESPONSIVO
@@ -481,15 +597,23 @@ td:nth-child(5) {
     }
 
     .braco {
-        padding: 12px 8px 18px;
+        padding: 14px 8px 18px;
+    }
+
+    .numeracao-casas {
+        grid-template-columns:
+            42px
+            repeat(13, 56px);
+
+        min-width: 770px;
     }
 
     .linha-corda {
         grid-template-columns:
             42px
-            repeat(13, 55px);
+            repeat(13, 56px);
 
-        min-width: 757px;
+        min-width: 770px;
 
         height: 44px;
     }
@@ -497,26 +621,20 @@ td:nth-child(5) {
     .nome-corda {
         width: 42px;
         height: 44px;
-        font-size: 14px;
     }
 
     .casa {
-        width: 55px;
+        width: 56px;
         height: 44px;
-        font-size: 12px;
     }
 
     .linha-corda::after {
         left: 42px;
     }
 
-    .casa.nota-escala {
-        background:
-            radial-gradient(
-                circle at center,
-                #d4a85c 0,
-                #d4a85c 17px,
-                transparent 18px
-            );
+    .nome-nota {
+        width: 33px;
+        height: 33px;
+        font-size: 11px;
     }
 }
