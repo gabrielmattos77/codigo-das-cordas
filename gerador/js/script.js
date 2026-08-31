@@ -1230,6 +1230,7 @@ function gerarBracoViolao(notasEscala) {
         return;
     }
 
+    const numeroDeCasas = 12;
 
     let html = `
 
@@ -1239,61 +1240,90 @@ function gerarBracoViolao(notasEscala) {
 
         <div class="braco">
 
+            <div class="numeracao-casas">
+
+                <div class="espaco-corda"></div>
     `;
 
 
-    afinacaoViolao.forEach(
-        function (corda) {
+    // NUMERAÇÃO DAS CASAS
+    for (let casa = 0; casa <= numeroDeCasas; casa++) {
+
+        html += `
+            <div class="numero-casa">
+                ${casa}
+            </div>
+        `;
+    }
+
+
+    html += `
+            </div>
+    `;
+
+
+    // ==================================================
+    // CORDAS
+    // ==================================================
+
+    afinacaoViolao.forEach(function (corda) {
+
+        html += `
+
+            <div class="linha-corda">
+
+                <div class="nome-corda">
+                    ${corda}
+                </div>
+        `;
+
+
+        for (
+            let casa = 0;
+            casa <= numeroDeCasas;
+            casa++
+        ) {
+
+            const nota = obterNotaPorCasa(
+                corda,
+                casa
+            );
+
+
+            const pertenceEscala =
+                notasEscala.includes(nota);
+
+
+            const isTonica =
+                nota === notasEscala[0];
+
 
             html += `
 
-                <div class="linha-corda">
-
-                    <div class="nome-corda">
-                        ${corda}
-                    </div>
-
-            `;
-
-
-            for (
-                let casa = 0;
-                casa <= notasPorCasa;
-                casa++
-            ) {
-
-                const nota =
-                    obterNotaPorCasa(
-                        corda,
+                <div
+                    class="
                         casa
-                    );
+                        ${pertenceEscala ? "nota-escala" : ""}
+                        ${isTonica ? "tonica" : ""}
+                    "
+                >
 
-
-                const destaque =
-                    notasEscala.includes(nota);
-
-
-                html += `
-
-                    <div
-                        class="casa ${destaque ? "nota-escala" : ""}"
-                    >
+                    <span class="nome-nota">
                         ${nota}
-                    </div>
-
-                `;
-
-            }
-
-
-            html += `
+                    </span>
 
                 </div>
 
             `;
-
         }
-    );
+
+
+        html += `
+
+            </div>
+
+        `;
+    });
 
 
     html += `
@@ -1304,9 +1334,7 @@ function gerarBracoViolao(notasEscala) {
 
 
     bracoViolao.innerHTML = html;
-
 }
-
 
 // ======================================================
 // VERIFICAÇÃO DOS ELEMENTOS
