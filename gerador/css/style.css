@@ -267,43 +267,38 @@ td:nth-child(5) {
 
 /* Corpo do braço */
 .braco {
-    position: relative;
     width: 100%;
     overflow-x: auto;
-    padding: 18px 12px;
-    background: #8b5a2b;
+    padding: 18px 12px 22px;
+    background: #7a4b22;
     border: 2px solid #b58a4a;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow:
         inset 0 0 20px rgba(0, 0, 0, 0.35),
-        0 6px 15px rgba(0, 0, 0, 0.25);
-
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+        0 8px 20px rgba(0, 0, 0, 0.30);
 }
 
 /* Cada corda */
-.corda {
+.linha-corda {
     position: relative;
     display: flex;
     align-items: center;
 
-    min-width: 780px;
+    min-width: 825px;
     height: 48px;
 
-    color: #fff4df;
-    font-weight: bold;
+    background: #8b5a2b;
+}
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+/* Divisória entre cordas */
+.linha-corda + .linha-corda {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Nome da corda */
-.corda::before {
-    content: attr(data-corda);
-
-    width: 42px;
-    min-width: 42px;
+.nome-corda {
+    flex: 0 0 48px;
+    width: 48px;
     height: 48px;
 
     display: flex;
@@ -313,22 +308,48 @@ td:nth-child(5) {
     background: #4a2f1b;
     color: #fff4df;
 
-    border-right: 3px solid #d0b27a;
+    font-size: 16px;
+    font-weight: bold;
 
-    z-index: 3;
+    border-right: 4px solid #d8bd87;
+
+    z-index: 5;
 }
 
-/* Caso o texto E/A/D/G/B esteja diretamente dentro da .corda */
-.corda {
-    font-size: 0;
+/* Cada casa */
+.casa {
+    position: relative;
+
+    flex: 0 0 60px;
+    width: 60px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 244, 223, 0.45);
+    font-size: 13px;
+    font-weight: normal;
+
+    border-right: 2px solid rgba(215, 215, 215, 0.55);
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(255,255,255,0.025),
+            rgba(0,0,0,0.035)
+        );
+    
+    z-index: 2;
 }
 
 /* Linha metálica da corda */
-.corda::after {
+.linha-corda::after {
     content: "";
     position: absolute;
 
-    left: 42px;
+    left: 48px;
     right: 0;
     top: 50%;
 
@@ -336,10 +357,10 @@ td:nth-child(5) {
 
     background: linear-gradient(
         to bottom,
-        #f5f5f5 0%,
-        #bcbcbc 45%,
+        #eeeeee 0%,
+        #a9a9a9 40%,
         #ffffff 55%,
-        #999999 100%
+        #888888 100%
     );
 
     transform: translateY(-50%);
@@ -349,82 +370,86 @@ td:nth-child(5) {
     z-index: 1;
 }
 
-/* Espessuras diferentes das cordas */
-.corda:nth-child(1)::after,
-.corda:nth-child(6)::after {
-    height: 4px;
-}
-
-.corda:nth-child(2)::after,
-.corda:nth-child(5)::after {
+/* Espessura das cordas */
+.linha-corda:nth-child(1)::after,
+.linha-corda:nth-child(6)::after {
     height: 3px;
 }
 
-.corda:nth-child(3)::after,
-.corda:nth-child(4)::after {
+.linha-corda:nth-child(2)::after,
+.linha-corda:nth-child(5)::after {
+    height: 2.5px;
+}
+
+.linha-corda:nth-child(3)::after,
+.linha-corda:nth-child(4)::after {
     height: 2px;
 }
 
-/* Trastes */
-.corda {
-    background:
-        linear-gradient(
-            to right,
-            transparent 42px,
-            transparent 42px,
-            transparent 102px,
-            rgba(220, 220, 220, 0.8) 102px,
-            rgba(220, 220, 220, 0.8) 104px,
-            transparent 104px,
-            transparent 162px,
-            rgba(220, 220, 220, 0.8) 162px,
-            rgba(220, 220, 220, 0.8) 164px,
-            transparent 164px,
-            transparent 222px,
-            rgba(220, 220, 220, 0.8) 222px,
-            rgba(220, 220, 220, 0.8) 224px,
-            transparent 224px,
-            transparent 282px,
-            rgba(220, 220, 220, 0.8) 282px,
-            rgba(220, 220, 220, 0.8) 284px,
-            transparent 284px,
-            transparent 342px,
-            rgba(220, 220, 220, 0.8) 342px,
-            rgba(220, 220, 220, 0.8) 344px,
-            transparent 344px,
-            transparent 402px,
-            rgba(220, 220, 220, 0.8) 402px,
-            rgba(220, 220, 220, 0.8) 404px,
-            transparent 404px,
-            transparent 462px,
-            rgba(220, 220, 220, 0.8) 462px,
-            rgba(220, 220, 220, 0.8) 464px,
-            transparent 464px,
-            transparent 522px,
-            rgba(220, 220, 220, 0.8) 522px,
-            rgba(220, 220, 220, 0.8) 524px,
-            transparent 524px,
-            transparent 582px,
-            rgba(220, 220, 220, 0.8) 582px,
-            rgba(220, 220, 220, 0.8) 584px,
-            transparent 584px,
-            transparent 642px,
-            rgba(220, 220, 220, 0.8) 642px,
-            rgba(220, 220, 220, 0.8) 644px,
-            transparent 644px,
-            transparent 702px,
-            rgba(220, 220, 220, 0.8) 702px,
-            rgba(220, 220, 220, 0.8) 704px,
-            transparent 704px
-        );
+/* Notas que pertencem à escala */
+.casa.nota-escala {
+    color: #3a2514;
+    font-weight: bold;
+    font-size: 13px;
+
+    background: #d4a85c;
+
+    border: none;
+
+    width: 42px;
+    height: 42px;
+
+    margin: 3px 9px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+    z-index: 4;
 }
 
-/* Por cima da linha: divisórias visuais */
-.corda + .corda {
-    border-top: 0;
+/* Faz a nota parecer realmente sobre a corda */
+.casa.nota-escala::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 50%;
+
+    background: #d4a85c;
+
+    z-index: -1;
 }
 
-/* Responsivo */
+/* Pequeno destaque ao passar o mouse */
+.casa.nota-escala:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.45),
+        0 0 0 2px rgba(255, 244, 223, 0.35);
+}
+
+/* Casas normais */
+.casa:not(.nota-escala):hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* =========================================
+   MARCAÇÕES DO BRAÇO
+   ========================================= */
+
+/* Primeira divisória, representando a pestana */
+.linha-corda .casa:first-of-type {
+    border-left: 4px solid #dfceb0;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+
 @media (max-width: 768px) {
 
     #bracoViolao h3 {
@@ -432,21 +457,35 @@ td:nth-child(5) {
     }
 
     .braco {
-        padding: 12px 8px;
+        padding: 12px 8px 18px;
     }
 
-    .corda {
-        min-width: 720px;
+    .linha-corda {
+        min-width: 760px;
         height: 44px;
     }
 
-    .corda::before {
+    .nome-corda {
+        flex-basis: 42px;
+        width: 42px;
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .casa {
+        flex-basis: 55px;
+        width: 55px;
+        height: 44px;
+        font-size: 12px;
+    }
+
+    .linha-corda::after {
+        left: 42px;
+    }
+
+    .casa.nota-escala {
         width: 38px;
-        min-width: 38px;
-        height: 44px;
-    }
-
-    .corda::after {
-        left: 38px;
+        height: 38px;
+        margin: 3px 8px;
     }
 }
