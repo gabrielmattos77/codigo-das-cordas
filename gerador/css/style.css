@@ -261,26 +261,155 @@ td:nth-child(5) {
 
 #bracoViolao h3 {
     margin-bottom: 20px;
+    color: #f5ead7;
 }
+
+/* Corpo do braço */
 
 .braco {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 20px;
-    background: #8b5a2b;
-    border-radius: 10px;
+    width: 100%;
     overflow-x: auto;
+    padding: 20px;
+    background: #6f431e;
+    border: 1px solid #b58a4a;
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
 }
 
-.corda {
-    height: 3px;
-    background: #d9d9d9;
+/* Cada corda */
+
+.linha-corda {
+    display: flex;
+    min-width: 780px;
+    height: 48px;
     position: relative;
-    min-width: 600px;
+}
+
+/* Nome da corda */
+
+.nome-corda {
+    width: 45px;
+    min-width: 45px;
     display: flex;
     align-items: center;
-    padding-left: 15px;
-    color: white;
+    justify-content: center;
+    color: #fff4df;
     font-weight: bold;
+    background: #4a2f1b;
+    border-right: 2px solid #b58a4a;
+}
+
+/* Casas */
+
+.casa {
+    width: 60px;
+    min-width: 60px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    color: #e8d9bd;
+    font-size: 14px;
+
+    border-right: 1px solid #c49a5c;
+
+    background: #8b5a2b;
+}
+
+/* Linha da corda passando pelas casas */
+
+.linha-corda::after {
+    content: "";
+    position: absolute;
+
+    left: 45px;
+    right: 0;
+
+    top: 50%;
+
+    height: 3px;
+
+    background: #d9d9d9;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+/* Notas pertencentes à escala */
+
+.casa.nota-escala {
+    color: #fff;
+    font-weight: bold;
+    background: #d4a85c;
+    color: #3a2514;
+
+    border-radius: 50%;
+    margin: 6px;
+    height: 36px;
+    width: 48px;
+    min-width: 48px;
+
+    z-index: 2;
+}
+
+/* Evita que a linha atravesse a nota */
+
+.casa.nota-escala::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: #d4a85c;
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+/* Primeira casa / pestana */
+
+.linha-corda:first-child .casa:first-of-type {
+    border-left: 4px solid #e5d3b1;
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+
+    .braco {
+        padding: 12px;
+    }
+
+    .linha-corda {
+        min-width: 700px;
+        height: 44px;
+    }
+
+    .nome-corda {
+        width: 40px;
+        min-width: 40px;
+    }
+
+    .casa {
+        width: 55px;
+        min-width: 55px;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .linha-corda::after {
+        left: 40px;
+    }
+
+    .casa.nota-escala {
+        width: 42px;
+        min-width: 42px;
+        height: 32px;
+        margin: 6px;
+    }
 }
