@@ -1049,6 +1049,83 @@ const bracoViolao =
     document.getElementById("bracoViolao");
 
 // ======================================================
+// BRAÇO DO VIOLÃO
+// ======================================================
+
+const afinacaoViolao = [
+    "E",
+    "A",
+    "D",
+    "G",
+    "B",
+    "E"
+];
+
+const notasPorCasa = 12;
+
+function obterNotaPorCasa(notaInicial, casa) {
+
+    const valorInicial =
+        valoresNotas[notaInicial];
+
+    const valor =
+        (valorInicial + casa) % 12;
+
+    return notasCromaticas[valor];
+}
+
+
+function gerarBracoViolao(notasEscala) {
+
+    if (!bracoViolao) {
+        return;
+    }
+
+    let html = `
+        <h3>🎸 Braço do violão</h3>
+
+        <div class="braco">
+    `;
+
+    afinacaoViolao.forEach(function (corda) {
+
+        html += `
+            <div class="linha-corda">
+                <div class="nome-corda">${corda}</div>
+        `;
+
+        for (
+            let casa = 0;
+            casa <= notasPorCasa;
+            casa++
+        ) {
+
+            const nota =
+                obterNotaPorCasa(corda, casa);
+
+            const destaque =
+                notasEscala.includes(nota);
+
+            html += `
+                <div class="casa ${destaque ? "nota-escala" : ""}">
+                    ${nota}
+                </div>
+            `;
+        }
+
+        html += `
+            </div>
+        `;
+    });
+
+    html += `
+        </div>
+    `;
+
+    bracoViolao.innerHTML = html;
+}
+
+// ======================================================
 // VERIFICAÇÃO DOS ELEMENTOS
 // ======================================================
 
@@ -1128,6 +1205,13 @@ if (botao) {
 
                 }
             );
+
+
+        // ==============================================
+        // GERAR BRAÇO DO VIOLÃO
+        // ==============================================
+
+        gerarBracoViolao(escala);
 
 
         // ==============================================
