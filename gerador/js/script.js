@@ -1045,6 +1045,8 @@ const seletorEscala =
 const resultado =
     document.getElementById("resultado");
 
+const bracoViolao =
+    document.getElementById("bracoViolao");
 
 // ======================================================
 // VERIFICAÇÃO DOS ELEMENTOS
