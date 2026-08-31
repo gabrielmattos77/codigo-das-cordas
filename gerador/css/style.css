@@ -425,7 +425,7 @@ td:nth-child(5) {
 
     pointer-events: none;
 
-    z-index: 5;
+z-index: 1;
 }
 
 
