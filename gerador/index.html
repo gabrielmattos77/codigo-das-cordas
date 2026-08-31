@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <title>Music Tools</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -20,102 +21,211 @@
     <main>
 
         <section class="card">
+
             <h2>🎵 Gerador de Escalas</h2>
 
-            <label for="nota">Escolha uma tonalidade:</label>
+            <label for="nota">
+                Escolha uma tonalidade:
+            </label>
 
-<select id="nota">
-    <option value="C">C</option>
-    <option value="C#">C#</option>
-    <option value="Db">Db</option>
-    <option value="D">D</option>
-    <option value="D#">D#</option>
-    <option value="Eb">Eb</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="F#">F#</option>
-    <option value="Gb">Gb</option>
-    <option value="G">G</option>
-    <option value="G#">G#</option>
-    <option value="Ab">Ab</option>
-    <option value="A">A</option>
-    <option value="A#">A#</option>
-    <option value="Bb">Bb</option>
-    <option value="B">B</option>
-</select>
+            <select id="nota">
 
-<select id="tipoEscala">
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+                <option value="Db">Db</option>
+                <option value="D">D</option>
+                <option value="D#">D#</option>
+                <option value="Eb">Eb</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="Gb">Gb</option>
+                <option value="G">G</option>
+                <option value="G#">G#</option>
+                <option value="Ab">Ab</option>
+                <option value="A">A</option>
+                <option value="A#">A#</option>
+                <option value="Bb">Bb</option>
+                <option value="B">B</option>
 
-    <optgroup label="Diatônicas">
-        <option value="maior">Maior</option>
-        <option value="menorNatural">Menor natural</option>
-        <option value="menorHarmonica">Menor harmônica</option>
-        <option value="menorMelodica">Menor melódica</option>
-    </optgroup>
+            </select>
 
-    <optgroup label="Modos gregos">
-        <option value="jonio">Jônio</option>
-        <option value="dorico">Dórico</option>
-        <option value="frigio">Frígio</option>
-        <option value="lidio">Lídio</option>
-        <option value="mixolidio">Mixolídio</option>
-        <option value="eolio">Eólio</option>
-        <option value="locrio">Lócrio</option>
-    </optgroup>
 
-    <optgroup label="Pentatônicas">
-        <option value="pentatonicaMaior">Pentatônica maior</option>
-        <option value="pentatonicaMenor">Pentatônica menor</option>
-    </optgroup>
+            <label for="tipoEscala">
+                Escolha uma escala:
+            </label>
 
-    <optgroup label="Blues">
-        <option value="bluesMaior">Blues maior</option>
-        <option value="bluesMenor">Blues menor</option>
-    </optgroup>
+            <select id="tipoEscala">
 
-    <optgroup label="Simétricas">
-        <option value="cromatica">Cromática</option>
-        <option value="tonsInteiros">Tons inteiros (Hexafônica)</option>
-        <option value="diminutaTomSemitom">
-            Diminuta Tom–Semitom
-        </option>
-        <option value="diminutaSemitomTom">
-            Diminuta Semitom–Tom
-        </option>
-    </optgroup>
+                <optgroup label="Diatônicas">
 
-    <optgroup label="Outras">
-        <option value="meioDiminuta">Meio-diminuta</option>
-    </optgroup>
+                    <option value="maior">
+                        Maior
+                    </option>
 
-</select>
+                    <option value="menorNatural">
+                        Menor natural
+                    </option>
 
-<button id="gerarEscala">
-    Gerar escala
-</button>
+                    <option value="menorHarmonica">
+                        Menor harmônica
+                    </option>
 
-<div id="resultado">
-    <p>Escolha uma tônica e uma escala.</p>
-</div>
+                    <option value="menorMelodica">
+                        Menor melódica
+                    </option>
 
-        <div id="bracoViolao">
-    <h3>🎸 Braço do violão</h3>
+                </optgroup>
 
-    <div class="braco">
-        <div class="corda">E</div>
-        <div class="corda">A</div>
-        <div class="corda">D</div>
-        <div class="corda">G</div>
-        <div class="corda">B</div>
-        <div class="corda">E</div>
-    </div>
-</div>
+
+                <optgroup label="Modos gregos">
+
+                    <option value="jonio">
+                        Jônio
+                    </option>
+
+                    <option value="dorico">
+                        Dórico
+                    </option>
+
+                    <option value="frigio">
+                        Frígio
+                    </option>
+
+                    <option value="lidio">
+                        Lídio
+                    </option>
+
+                    <option value="mixolidio">
+                        Mixolídio
+                    </option>
+
+                    <option value="eolio">
+                        Eólio
+                    </option>
+
+                    <option value="locrio">
+                        Lócrio
+                    </option>
+
+                </optgroup>
+
+
+                <optgroup label="Pentatônicas">
+
+                    <option value="pentatonicaMaior">
+                        Pentatônica maior
+                    </option>
+
+                    <option value="pentatonicaMenor">
+                        Pentatônica menor
+                    </option>
+
+                </optgroup>
+
+
+                <optgroup label="Blues">
+
+                    <option value="bluesMaior">
+                        Blues maior
+                    </option>
+
+                    <option value="bluesMenor">
+                        Blues menor
+                    </option>
+
+                </optgroup>
+
+
+                <optgroup label="Simétricas">
+
+                    <option value="cromatica">
+                        Cromática
+                    </option>
+
+                    <option value="tonsInteiros">
+                        Tons inteiros (Hexafônica)
+                    </option>
+
+                    <option value="diminutaTomSemitom">
+                        Diminuta Tom–Semitom
+                    </option>
+
+                    <option value="diminutaSemitomTom">
+                        Diminuta Semitom–Tom
+                    </option>
+
+                </optgroup>
+
+
+                <optgroup label="Outras">
+
+                    <option value="meioDiminuta">
+                        Meio-diminuta
+                    </option>
+
+                </optgroup>
+
+            </select>
+
+
+            <button id="gerarEscala" type="button">
+                Gerar escala
+            </button>
+
+
+            <div id="resultado">
+
+                <p>
+                    Escolha uma tônica e uma escala.
+                </p>
+
+            </div>
+
+
+            <div id="bracoViolao">
+
+                <h3>
+                    🎸 Braço do violão
+                </h3>
+
+                <div class="braco">
+
+                    <div class="corda">
+                        E
+                    </div>
+
+                    <div class="corda">
+                        A
+                    </div>
+
+                    <div class="corda">
+                        D
+                    </div>
+
+                    <div class="corda">
+                        G
+                    </div>
+
+                    <div class="corda">
+                        B
+                    </div>
+
+                    <div class="corda">
+                        E
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
     </main>
 
-<script src="js/script.js" defer></script>
+
+    <script src="js/script.js" defer></script>
 
 </body>
+
 </html>
