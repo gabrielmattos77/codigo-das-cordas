@@ -1,0 +1,10 @@
+{
+  "name": "Gerador de Escalas",
+  "short_name": "Escalas",
+  "description": "Gerador de escalas musicais, intervalos e campos harmônicos.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "orientation": "portrait"
+}
