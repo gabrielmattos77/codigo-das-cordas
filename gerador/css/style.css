@@ -251,165 +251,202 @@ td:nth-child(5) {
 
 }
 
-/* ================================
+/* =========================================
    BRAÇO DO VIOLÃO
-   ================================ */
+   ========================================= */
 
 #bracoViolao {
     margin-top: 30px;
 }
 
 #bracoViolao h3 {
-    margin-bottom: 20px;
+    margin: 0 0 18px;
     color: #f5ead7;
+    font-size: 22px;
 }
 
 /* Corpo do braço */
-
 .braco {
+    position: relative;
     width: 100%;
     overflow-x: auto;
-    padding: 20px;
-    background: #6f431e;
-    border: 1px solid #b58a4a;
+    padding: 18px 12px;
+    background: #8b5a2b;
+    border: 2px solid #b58a4a;
     border-radius: 10px;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.35),
+        0 6px 15px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 /* Cada corda */
-
-.linha-corda {
+.corda {
+    position: relative;
     display: flex;
+    align-items: center;
+
     min-width: 780px;
     height: 48px;
-    position: relative;
+
+    color: #fff4df;
+    font-weight: bold;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Nome da corda */
+.corda::before {
+    content: attr(data-corda);
 
-.nome-corda {
-    width: 45px;
-    min-width: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff4df;
-    font-weight: bold;
-    background: #4a2f1b;
-    border-right: 2px solid #b58a4a;
-}
-
-/* Casas */
-
-.casa {
-    width: 60px;
-    min-width: 60px;
+    width: 42px;
+    min-width: 42px;
     height: 48px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
+    background: #4a2f1b;
+    color: #fff4df;
 
-    color: #e8d9bd;
-    font-size: 14px;
+    border-right: 3px solid #d0b27a;
 
-    border-right: 1px solid #c49a5c;
-
-    background: #8b5a2b;
+    z-index: 3;
 }
 
-/* Linha da corda passando pelas casas */
+/* Caso o texto E/A/D/G/B esteja diretamente dentro da .corda */
+.corda {
+    font-size: 0;
+}
 
-.linha-corda::after {
+/* Linha metálica da corda */
+.corda::after {
     content: "";
     position: absolute;
 
-    left: 45px;
+    left: 42px;
     right: 0;
-
     top: 50%;
 
-    height: 3px;
+    height: 2px;
 
-    background: #d9d9d9;
+    background: linear-gradient(
+        to bottom,
+        #f5f5f5 0%,
+        #bcbcbc 45%,
+        #ffffff 55%,
+        #999999 100%
+    );
 
     transform: translateY(-50%);
 
     pointer-events: none;
+
+    z-index: 1;
 }
 
-/* Notas pertencentes à escala */
-
-.casa.nota-escala {
-    color: #fff;
-    font-weight: bold;
-    background: #d4a85c;
-    color: #3a2514;
-
-    border-radius: 50%;
-    margin: 6px;
-    height: 36px;
-    width: 48px;
-    min-width: 48px;
-
-    z-index: 2;
+/* Espessuras diferentes das cordas */
+.corda:nth-child(1)::after,
+.corda:nth-child(6)::after {
+    height: 4px;
 }
 
-/* Evita que a linha atravesse a nota */
-
-.casa.nota-escala::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: #d4a85c;
-
-    border-radius: 50%;
-
-    z-index: -1;
+.corda:nth-child(2)::after,
+.corda:nth-child(5)::after {
+    height: 3px;
 }
 
-/* Primeira casa / pestana */
+.corda:nth-child(3)::after,
+.corda:nth-child(4)::after {
+    height: 2px;
+}
 
-.linha-corda:first-child .casa:first-of-type {
-    border-left: 4px solid #e5d3b1;
+/* Trastes */
+.corda {
+    background:
+        linear-gradient(
+            to right,
+            transparent 42px,
+            transparent 42px,
+            transparent 102px,
+            rgba(220, 220, 220, 0.8) 102px,
+            rgba(220, 220, 220, 0.8) 104px,
+            transparent 104px,
+            transparent 162px,
+            rgba(220, 220, 220, 0.8) 162px,
+            rgba(220, 220, 220, 0.8) 164px,
+            transparent 164px,
+            transparent 222px,
+            rgba(220, 220, 220, 0.8) 222px,
+            rgba(220, 220, 220, 0.8) 224px,
+            transparent 224px,
+            transparent 282px,
+            rgba(220, 220, 220, 0.8) 282px,
+            rgba(220, 220, 220, 0.8) 284px,
+            transparent 284px,
+            transparent 342px,
+            rgba(220, 220, 220, 0.8) 342px,
+            rgba(220, 220, 220, 0.8) 344px,
+            transparent 344px,
+            transparent 402px,
+            rgba(220, 220, 220, 0.8) 402px,
+            rgba(220, 220, 220, 0.8) 404px,
+            transparent 404px,
+            transparent 462px,
+            rgba(220, 220, 220, 0.8) 462px,
+            rgba(220, 220, 220, 0.8) 464px,
+            transparent 464px,
+            transparent 522px,
+            rgba(220, 220, 220, 0.8) 522px,
+            rgba(220, 220, 220, 0.8) 524px,
+            transparent 524px,
+            transparent 582px,
+            rgba(220, 220, 220, 0.8) 582px,
+            rgba(220, 220, 220, 0.8) 584px,
+            transparent 584px,
+            transparent 642px,
+            rgba(220, 220, 220, 0.8) 642px,
+            rgba(220, 220, 220, 0.8) 644px,
+            transparent 644px,
+            transparent 702px,
+            rgba(220, 220, 220, 0.8) 702px,
+            rgba(220, 220, 220, 0.8) 704px,
+            transparent 704px
+        );
+}
+
+/* Por cima da linha: divisórias visuais */
+.corda + .corda {
+    border-top: 0;
 }
 
 /* Responsivo */
-
 @media (max-width: 768px) {
 
+    #bracoViolao h3 {
+        font-size: 19px;
+    }
+
     .braco {
-        padding: 12px;
+        padding: 12px 8px;
     }
 
-    .linha-corda {
-        min-width: 700px;
+    .corda {
+        min-width: 720px;
         height: 44px;
     }
 
-    .nome-corda {
-        width: 40px;
-        min-width: 40px;
-    }
-
-    .casa {
-        width: 55px;
-        min-width: 55px;
+    .corda::before {
+        width: 38px;
+        min-width: 38px;
         height: 44px;
-        font-size: 13px;
     }
 
-    .linha-corda::after {
-        left: 40px;
-    }
-
-    .casa.nota-escala {
-        width: 42px;
-        min-width: 42px;
-        height: 32px;
-        margin: 6px;
+    .corda::after {
+        left: 38px;
     }
 }
