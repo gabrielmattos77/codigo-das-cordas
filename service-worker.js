@@ -1,11 +1,11 @@
-const CACHE_NAME = "gerador-de-escalas-v1";
+const CACHE_NAME = "gerador-de-escalas-v2";
 
 const ARQUIVOS = [
-    "./",
-    "./index.html",
+    "./gerador/",
+    "./gerador/index.html",
     "./manifest.json",
-    "./css/style.css",
-    "./js/script.js"
+    "./gerador/css/style.css",
+    "./gerador/js/script.js"
 ];
 
 self.addEventListener("install", function (event) {
