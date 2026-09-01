@@ -2086,6 +2086,99 @@ if (botao) {
 }
 
 // ======================================================
+// TESTE DE GRAFIA MUSICAL
+// ======================================================
+
+function testarGrafiaMusical(
+    tonalidade,
+    escalaDefinicao,
+    escala
+) {
+
+    const letraTonica =
+        obterLetraTonica(
+            tonalidade
+        );
+
+
+    const indiceTonica =
+        letras.indexOf(
+            letraTonica
+        );
+
+
+    if (
+        indiceTonica === -1
+    ) {
+
+        throw new Error(
+            "Letra da tônica inválida."
+        );
+
+    }
+
+
+    escalaDefinicao.formula.forEach(
+        function (
+            token,
+            indice
+        ) {
+
+            const dados =
+                analisarFormula(
+                    token
+                );
+
+
+            if (!dados) {
+
+                throw new Error(
+                    "Fórmula inválida: " +
+                    token
+                );
+
+            }
+
+
+            const indiceLetraEsperada =
+                (
+                    indiceTonica +
+                    dados.indiceLetra
+                ) % 7;
+
+
+            const letraEsperada =
+                letras[
+                    indiceLetraEsperada
+                ];
+
+
+            const letraGerada =
+                escala[indice].charAt(0);
+
+
+            if (
+                letraGerada !==
+                letraEsperada
+            ) {
+
+                throw new Error(
+                    "Grafia incorreta em " +
+                    token +
+                    ": esperado " +
+                    letraEsperada +
+                    ", encontrado " +
+                    escala[indice]
+                );
+
+            }
+
+        }
+    );
+
+}
+
+// ======================================================
 // TESTE SISTEMÁTICO DO GERADOR
 // ======================================================
 
@@ -2311,6 +2404,16 @@ function executarTestesGerador() {
                         "Quantidade de intervalos incorreta."
                     );
                 }
+
+                // ==========================================
+// 7B. VERIFICAR GRAFIA MUSICAL
+// ==========================================
+
+testarGrafiaMusical(
+    tonalidade,
+    escalaDefinicao,
+    escala
+);
 
 
                 // ==========================================
