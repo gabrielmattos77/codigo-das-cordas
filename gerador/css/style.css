@@ -308,10 +308,6 @@ td:nth-child(5) {
     height: 32px;
 }
 
-.espaco-corda {
-    display: none;
-}
-
 .numero-casa {
     display: flex;
 
@@ -332,13 +328,10 @@ td:nth-child(5) {
 .linha-corda {
     display: grid;
 
-    grid-template-columns:
-        50px
-        repeat(13, 62px);
+    grid-template-columns: repeat(13, 62px);
 
     width: max-content;
-
-    min-width: 856px;
+    min-width: 806px;
 
     height: 48px;
 
