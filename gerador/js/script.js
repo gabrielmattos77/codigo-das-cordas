@@ -680,7 +680,6 @@ function gerarCampoHarmonico(
            "Maior",
            "Maior",
            "Maior"
-],
         ],
 
         lidio: [
