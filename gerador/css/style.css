@@ -298,14 +298,16 @@ td:nth-child(5) {
 
 .numeracao-casas {
     display: grid;
+    grid-template-columns: 1fr repeat(12, 1fr);
+    width: 100%;
+    min-width: 0;
 
-    grid-template-columns: repeat(13, 62px);
+    height: 34px;
+}
 
-    width: max-content;
-
-    min-width: 806px;
-
-    height: 32px;
+/* Retira apenas o número 0, mas mantém o espaço */
+.numeracao-casas .numero-casa:first-child {
+    visibility: hidden;
 }
 
 .numero-casa {
@@ -316,7 +318,7 @@ td:nth-child(5) {
 
     color: #f4dfb5;
 
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -328,12 +330,12 @@ td:nth-child(5) {
 .linha-corda {
     display: grid;
 
-    grid-template-columns: repeat(13, 62px);
+    grid-template-columns: repeat(13, 1fr);
 
-    width: max-content;
-    min-width: 806px;
+    width: 100%;
+    min-width: 0;
 
-    height: 48px;
+    height: 50px;
 
     position: relative;
 }
@@ -372,21 +374,32 @@ td:nth-child(5) {
 .casa {
     position: relative;
 
-    width: 62px;
-    height: 48px;
+    width: 100%;
+    height: 50px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     background: transparent;
 
-    border-right: 2px solid rgba(220,220,220,.55);
+    border-right: 2px solid rgba(220, 220, 220, 0.55);
 
     z-index: 3;
 }
 
+/* =========================================
+   COLUNA 0 — CORDAS SOLTAS
+   ========================================= */
+
+.linha-corda .casa:first-of-type {
+    background: #4a2f1b !important;
+
+    border-left: 3px solid #c49a5c;
+
+    box-shadow:
+        inset -8px 0 12px rgba(0, 0, 0, 0.25);
+}
 
 /* =========================================
    CORDA METÁLICA
@@ -397,7 +410,7 @@ td:nth-child(5) {
 
     position: absolute;
 
-    left: 50px;
+    left: 0;
     right: 0;
 
     top: 50%;
@@ -416,7 +429,7 @@ td:nth-child(5) {
 
     pointer-events: none;
 
-z-index: 1;
+    z-index: 1;
 }
 
 
@@ -445,8 +458,8 @@ z-index: 1;
 .nome-nota {
     position: relative;
 
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
 
     display: flex;
 
@@ -455,7 +468,8 @@ z-index: 1;
 
     border-radius: 50%;
 
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
 
     z-index: 10;
 }
@@ -483,17 +497,20 @@ z-index: 1;
    ========================================= */
 
 .casa.tonica .nome-nota {
-    background: #f0c96a;
+    background: #f2ca68;
 
     color: #3a2514;
 
+    font-size: 15px;
     font-weight: 900;
 
-    border: 3px solid #fff0c0;
+    border: 3px solid #fff3c7;
 
     box-shadow:
-        0 0 0 2px rgba(90,50,15,.55),
-        0 3px 7px rgba(0,0,0,.45);
+        0 0 0 2px rgba(60, 30, 5, 0.75),
+        0 0 10px rgba(255, 220, 120, 0.95),
+        0 0 20px rgba(255, 200, 80, 0.65),
+        0 4px 9px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -591,38 +608,29 @@ z-index: 1;
         padding: 14px 8px 18px;
     }
 
-    .numeracao-casas {
-        grid-template-columns:
-            42px
-            repeat(13, 56px);
+   .numeracao-casas {
+    grid-template-columns: repeat(13, 1fr);
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+}
 
-        min-width: 770px;
-    }
-
-    .linha-corda {
-        grid-template-columns:
-            42px
-            repeat(13, 56px);
-
-        min-width: 770px;
-
-        height: 44px;
-    }
-
-    .nome-corda {
-        width: 42px;
-        height: 44px;
-    }
+.linha-corda {
+    grid-template-columns: repeat(13, 1fr);
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+}
 
     .casa {
-        width: 56px;
-        height: 44px;
-    }
+    width: 100%;
+    height: 44px;
+}
 
     .linha-corda::after {
-        left: 42px;
-    }
-
+    left: 0;
+}
+    
     .nome-nota {
         width: 33px;
         height: 33px;
