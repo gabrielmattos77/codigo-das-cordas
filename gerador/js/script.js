@@ -142,33 +142,57 @@ const escalas = {
     },
 
     cromatica: {
-        nome: "Cromática",
-        intervalos: [
-            0, 1, 2, 3, 4, 5,
-            6, 7, 8, 9, 10, 11
-        ]
-    },
+    nome: "Cromática",
 
+    intervalos: [
+        0, 1, 2, 3, 4, 5,
+        6, 7, 8, 9, 10, 11
+    ],
+
+    graus: [
+        0, 1, 1, 2, 2, 3,
+        4, 4, 5, 5, 6, 6
+    ]
+},
     tonsInteiros: {
-        nome: "Tons inteiros (Hexafônica)",
-        intervalos: [0, 2, 4, 6, 8, 10]
-    },
+    nome: "Tons inteiros (Hexafônica)",
 
-    diminutaTomSemitom: {
-        nome: "Diminuta Tom–Semitom",
-        intervalos: [
-            0, 2, 3, 5,
-            6, 8, 9, 11
-        ]
-    },
+    intervalos: [
+        0, 2, 4, 6, 8, 10
+    ],
+
+    graus: [
+        0, 1, 2, 3, 4, 5
+    ]
+},
+
+   diminutaTomSemitom: {
+    nome: "Diminuta Tom–Semitom",
+
+    intervalos: [
+        0, 2, 3, 5,
+        6, 8, 9, 11
+    ],
+
+    graus: [
+        0, 1, 2, 3,
+        4, 5, 6, 6
+    ]
+},
 
     diminutaSemitomTom: {
-        nome: "Diminuta Semitom–Tom",
-        intervalos: [
-            0, 1, 3, 4,
-            6, 7, 9, 10
-        ]
-    },
+    nome: "Diminuta Semitom–Tom",
+
+    intervalos: [
+        0, 1, 3, 4,
+        6, 7, 9, 10
+    ],
+
+    graus: [
+        0, 1, 2, 2,
+        3, 4, 5, 6
+    ]
+},
 
     meioDiminuta: {
         nome: "Meio-diminuta",
@@ -505,6 +529,7 @@ function calcularDistancias(intervalos) {
     const distancias = [];
 
 
+    // Distâncias entre as notas consecutivas
     for (
         let i = 1;
         i < intervalos.length;
@@ -515,14 +540,29 @@ function calcularDistancias(intervalos) {
             intervalos[i] -
             intervalos[i - 1];
 
-
         distancias.push(distancia);
 
     }
 
 
-    return distancias;
+    // ==================================================
+    // FECHAMENTO DA OITAVA
+    // ==================================================
 
+    if (intervalos.length > 0) {
+
+        const ultimaNota =
+            intervalos[intervalos.length - 1];
+
+        const distanciaFinal =
+            12 - ultimaNota;
+
+        distancias.push(distanciaFinal);
+
+    }
+
+
+    return distancias;
 }
 
 
@@ -632,14 +672,15 @@ function gerarCampoHarmonico(
             "Maior"
         ],
 
-        frigio: [
-            "Menor",
-            "Maior",
-            "Maior",
-            "Menor",
-            "Diminuto",
-            "Maior",
-            "Menor"
+       frigio: [
+           "Menor",
+           "Maior",
+           "Menor",
+           "Menor",
+           "Maior",
+           "Maior",
+           "Maior"
+],
         ],
 
         lidio: [
@@ -873,12 +914,12 @@ function gerarCampoHarmonico(
         frigio: [
             "Menor com 7ª menor",
             "Maior com 7ª maior",
-            "Dominante",
+            "Menor com 7ª menor",
             "Menor com 7ª menor",
             "Meio-diminuto",
             "Maior com 7ª maior",
-            "Menor com 7ª menor"
-        ],
+            "Dominante"
+         ],
 
         lidio: [
             "Maior com 7ª maior",
@@ -992,12 +1033,12 @@ function gerarCampoHarmonico(
         frigio: [
             "m7",
             "maj7",
-            "7",
+            "m7",
             "m7",
             "m7b5",
             "maj7",
-            "m7"
-        ],
+            "7"
+         ],
 
         lidio: [
             "maj7",
