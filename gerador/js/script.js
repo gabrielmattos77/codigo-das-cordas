@@ -675,11 +675,11 @@ function gerarCampoHarmonico(
        frigio: [
            "Menor",
            "Maior",
-           "Menor",
-           "Menor",
            "Maior",
+           "Menor",
+           "Diminuto",
            "Maior",
-           "Maior"
+           "Menor"
         ],
 
         lidio: [
@@ -1032,12 +1032,12 @@ function gerarCampoHarmonico(
         frigio: [
             "m7",
             "maj7",
-            "m7",
+            "7",
             "m7",
             "m7b5",
             "maj7",
-            "7"
-         ],
+            "m7"
+        ],
 
         lidio: [
             "maj7",
