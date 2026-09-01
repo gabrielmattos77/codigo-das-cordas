@@ -3055,5 +3055,427 @@ testarEscalasSimetricas(
 // EXECUTAR TESTE
 // ======================================================
 
-executarTestesGerador();
+// executarTestesGerador();
 
+// ======================================================
+// PASSO 3 — TESTE PROFUNDO DAS ESCALAS SIMÉTRICAS
+// ======================================================
+
+function executarTestesSimetricasProfundo() {
+
+    console.clear();
+
+    console.group(
+        "🎼 PASSO 3 — TESTE PROFUNDO DAS ESCALAS SIMÉTRICAS"
+    );
+
+
+    const tonalidades = [
+        "C",
+        "C#",
+        "Db",
+        "D",
+        "D#",
+        "Eb",
+        "E",
+        "F",
+        "F#",
+        "Gb",
+        "G",
+        "G#",
+        "Ab",
+        "A",
+        "A#",
+        "Bb",
+        "B"
+    ];
+
+
+    const testes = {
+
+        cromatica: {
+            estrutura: [
+                1, 1, 1, 1,
+                1, 1, 1, 1,
+                1, 1, 1, 1
+            ],
+
+            quantidade: 12
+        },
+
+        tonsInteiros: {
+            estrutura: [
+                2, 2, 2, 2, 2, 2
+            ],
+
+            quantidade: 6
+        },
+
+        diminutaTomSemitom: {
+            estrutura: [
+                2, 1,
+                2, 1,
+                2, 1,
+                2, 1
+            ],
+
+            quantidade: 8
+        },
+
+        diminutaSemitomTom: {
+            estrutura: [
+                1, 2,
+                1, 2,
+                1, 2,
+                1, 2
+            ],
+
+            quantidade: 8
+        }
+
+    };
+
+
+    let totalTestes = 0;
+    let aprovados = 0;
+    let erros = 0;
+
+    const listaErros = [];
+
+
+    Object.keys(testes).forEach(
+        function (nomeEscala) {
+
+            const teste =
+                testes[nomeEscala];
+
+            const definicao =
+                escalas[nomeEscala];
+
+
+            tonalidades.forEach(
+                function (tonalidade) {
+
+                    totalTestes++;
+
+
+                    try {
+
+                        // ----------------------------------
+                        // 1. EXISTÊNCIA
+                        // ----------------------------------
+
+                        if (!definicao) {
+
+                            throw new Error(
+                                "Escala não encontrada."
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 2. GERAR ESCALA
+                        // ----------------------------------
+
+                        const escala =
+                            gerarEscalaMusical(
+                                tonalidade,
+                                definicao
+                            );
+
+
+                        // ----------------------------------
+                        // 3. QUANTIDADE
+                        // ----------------------------------
+
+                        if (
+                            escala.length !==
+                            teste.quantidade
+                        ) {
+
+                            throw new Error(
+                                "Quantidade incorreta de notas."
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 4. INTERVALOS
+                        // ----------------------------------
+
+                        const intervalos =
+                            obterIntervalosEscala(
+                                definicao
+                            );
+
+
+                        const distancias =
+                            calcularDistancias(
+                                intervalos
+                            );
+
+
+                        // ----------------------------------
+                        // 5. ESTRUTURA
+                        // ----------------------------------
+
+                        if (
+                            JSON.stringify(
+                                distancias
+                            ) !==
+                            JSON.stringify(
+                                teste.estrutura
+                            )
+                        ) {
+
+                            throw new Error(
+                                "Estrutura incorreta: " +
+                                distancias.join(" - ")
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 6. TRANSPOSIÇÃO
+                        // ----------------------------------
+
+                        // A estrutura deve ser independente
+                        // da tonalidade.
+
+                        const outraTonalidade =
+                            tonalidade === "C"
+                                ? "F#"
+                                : "C";
+
+
+                        const outraEscala =
+                            gerarEscalaMusical(
+                                outraTonalidade,
+                                definicao
+                            );
+
+
+                        const outrosIntervalos =
+                            obterIntervalosEscala(
+                                definicao
+                            );
+
+
+                        const outrasDistancias =
+                            calcularDistancias(
+                                outrosIntervalos
+                            );
+
+
+                        if (
+                            JSON.stringify(
+                                distancias
+                            ) !==
+                            JSON.stringify(
+                                outrasDistancias
+                            )
+                        ) {
+
+                            throw new Error(
+                                "A estrutura mudou na transposição."
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 7. ALTURAS ÚNICAS
+                        // ----------------------------------
+
+                        const valores =
+                            escala.map(
+                                function (nota) {
+
+                                    return obterValorNotaMusical(
+                                        nota
+                                    );
+
+                                }
+                            );
+
+
+                        const unicos =
+                            new Set(
+                                valores
+                            );
+
+
+                        if (
+                            unicos.size !==
+                            escala.length
+                        ) {
+
+                            throw new Error(
+                                "Existem alturas duplicadas."
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 8. PRIMEIRA NOTA
+                        // ----------------------------------
+
+                        if (
+                            obterValorNotaMusical(
+                                escala[0]
+                            ) !==
+                            obterValorNotaMusical(
+                                tonalidade
+                            )
+                        ) {
+
+                            throw new Error(
+                                "A primeira nota não é a tônica."
+                            );
+
+                        }
+
+
+                        // ----------------------------------
+                        // 9. APROVADO
+                        // ----------------------------------
+
+                        aprovados++;
+
+                        console.log(
+                            "✅",
+                            tonalidade,
+                            "—",
+                            definicao.nome
+                        );
+
+                    }
+
+                    catch (erro) {
+
+                        erros++;
+
+                        const registro = {
+
+                            tonalidade:
+                                tonalidade,
+
+                            escala:
+                                definicao
+                                    ? definicao.nome
+                                    : nomeEscala,
+
+                            erro:
+                                erro.message
+
+                        };
+
+
+                        listaErros.push(
+                            registro
+                        );
+
+
+                        console.error(
+                            "❌",
+                            tonalidade,
+                            "—",
+                            definicao
+                                ? definicao.nome
+                                : nomeEscala,
+                            "→",
+                            erro.message
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    console.log("");
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        "PASSO 3 FINALIZADO"
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        "Total de testes:",
+        totalTestes
+    );
+
+    console.log(
+        "Aprovados:",
+        aprovados
+    );
+
+    console.log(
+        "Erros:",
+        erros
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+
+    if (erros === 0) {
+
+        console.log(
+            "🎉 TODAS AS ESCALAS SIMÉTRICAS PASSARAM!"
+        );
+
+    } else {
+
+        console.warn(
+            "⚠️ FORAM ENCONTRADOS ERROS."
+        );
+
+        console.table(
+            listaErros
+        );
+
+    }
+
+
+    console.groupEnd();
+
+
+    return {
+
+        totalTestes:
+            totalTestes,
+
+        aprovados:
+            aprovados,
+
+        erros:
+            erros,
+
+        listaErros:
+            listaErros
+
+    };
+
+}
+
+// ======================================================
+// EXECUTAR TESTE PROFUNDO
+// ======================================================
+
+executarTestesSimetricasProfundo();
