@@ -1678,6 +1678,8 @@ if (botao) {
                     }
                 );
 
+            // ======================================================
+
 
             // ------------------------------------------
             // ESTRUTURA
@@ -2082,3 +2084,536 @@ if (botao) {
     );
 
 }
+
+// ======================================================
+// TESTE SISTEMÁTICO DO GERADOR
+// ======================================================
+
+function executarTestesGerador() {
+
+    console.clear();
+
+    console.group(
+        "🎸 CÓDIGO DAS CORDAS — TESTE SISTEMÁTICO"
+    );
+
+    const tonalidades = [
+        "C",
+        "C#",
+        "Db",
+        "D",
+        "D#",
+        "Eb",
+        "E",
+        "F",
+        "F#",
+        "Gb",
+        "G",
+        "G#",
+        "Ab",
+        "A",
+        "A#",
+        "Bb",
+        "B"
+    ];
+
+    let totalTestes = 0;
+    let totalAprovados = 0;
+    let totalErros = 0;
+
+    const erros = [];
+
+    tonalidades.forEach(function (tonalidade) {
+
+        Object.keys(escalas).forEach(function (nomeEscala) {
+
+            totalTestes++;
+
+            const escalaDefinicao =
+                escalas[nomeEscala];
+
+            try {
+
+                // ==========================================
+                // 1. DEFINIÇÃO
+                // ==========================================
+
+                if (
+                    !escalaDefinicao ||
+                    !Array.isArray(
+                        escalaDefinicao.formula
+                    )
+                ) {
+                    throw new Error(
+                        "Definição da escala inválida."
+                    );
+                }
+
+
+                // ==========================================
+                // 2. GERAR ESCALA
+                // ==========================================
+
+                const escala =
+                    gerarEscalaMusical(
+                        tonalidade,
+                        escalaDefinicao
+                    );
+
+
+                if (
+                    !Array.isArray(escala) ||
+                    escala.length === 0
+                ) {
+                    throw new Error(
+                        "Escala vazia."
+                    );
+                }
+
+
+                // ==========================================
+                // 3. QUANTIDADE
+                // ==========================================
+
+                if (
+                    escala.length !==
+                    escalaDefinicao.formula.length
+                ) {
+                    throw new Error(
+                        "Quantidade de notas diferente da fórmula."
+                    );
+                }
+
+
+                // ==========================================
+                // 4. NOTAS VÁLIDAS
+                // ==========================================
+
+                escala.forEach(function (nota) {
+
+                    if (
+                        typeof nota !== "string" ||
+                        nota.length === 0
+                    ) {
+                        throw new Error(
+                            "Existe uma nota vazia."
+                        );
+                    }
+
+
+                    if (
+                        obterValorNotaMusical(nota) ===
+                        undefined
+                    ) {
+                        throw new Error(
+                            "Nota inválida: " + nota
+                        );
+                    }
+
+                });
+
+
+                // ==========================================
+                // 5. TÔNICA
+                // ==========================================
+
+                const valorTonica =
+                    obterValorNotaMusical(
+                        tonalidade
+                    );
+
+                const valorPrimeiraNota =
+                    obterValorNotaMusical(
+                        escala[0]
+                    );
+
+
+                if (
+                    valorTonica !==
+                    valorPrimeiraNota
+                ) {
+                    throw new Error(
+                        "A primeira nota não é a tônica."
+                    );
+                }
+
+
+                // ==========================================
+                // 6. CONFERIR TODAS AS FÓRMULAS
+                // ==========================================
+
+                escalaDefinicao.formula.forEach(
+                    function (
+                        token,
+                        indice
+                    ) {
+
+                        const intervalo =
+                            formulaParaSemitons(
+                                token
+                            );
+
+
+                        if (
+                            intervalo === undefined
+                        ) {
+                            throw new Error(
+                                "Fórmula inválida: " +
+                                token
+                            );
+                        }
+
+
+                        const valorNota =
+                            obterValorNotaMusical(
+                                escala[indice]
+                            );
+
+
+                        const alturaEsperada =
+                            (
+                                valorTonica +
+                                intervalo
+                            ) % 12;
+
+
+                        if (
+                            valorNota !==
+                            alturaEsperada
+                        ) {
+                            throw new Error(
+                                "Altura incorreta em " +
+                                token +
+                                ": " +
+                                escala[indice]
+                            );
+                        }
+
+                    }
+                );
+
+
+                // ==========================================
+                // 7. INTERVALOS
+                // ==========================================
+
+                const intervalos =
+                    obterIntervalosEscala(
+                        escalaDefinicao
+                    );
+
+
+                if (
+                    intervalos.length !==
+                    escalaDefinicao.formula.length
+                ) {
+                    throw new Error(
+                        "Quantidade de intervalos incorreta."
+                    );
+                }
+
+
+                // ==========================================
+                // 8. ESTRUTURA
+                // ==========================================
+
+                const distancias =
+                    calcularDistancias(
+                        intervalos
+                    );
+
+
+                if (
+                    distancias.length !==
+                    escala.length
+                ) {
+                    throw new Error(
+                        "Quantidade de distâncias incorreta."
+                    );
+                }
+
+
+                // ==========================================
+                // 9. FECHAMENTO DA OITAVA
+                // ==========================================
+
+                const soma =
+                    distancias.reduce(
+                        function (
+                            total,
+                            valor
+                        ) {
+
+                            return total + valor;
+
+                        },
+                        0
+                    );
+
+
+                if (
+                    soma !== 12
+                ) {
+                    throw new Error(
+                        "A estrutura não fecha 12 semitons. Soma = " +
+                        soma
+                    );
+                }
+
+
+                // ==========================================
+                // 10. CAMPO HARMÔNICO
+                // ==========================================
+
+                if (
+                    escala.length === 7
+                ) {
+
+                    const campo =
+                        gerarCampoHarmonico(
+                            escala
+                        );
+
+
+                    if (!campo) {
+                        throw new Error(
+                            "Campo harmônico não foi gerado."
+                        );
+                    }
+
+
+                    if (
+                        !Array.isArray(campo.triades) ||
+                        campo.triades.length !== 7
+                    ) {
+                        throw new Error(
+                            "Campo harmônico de tríades inválido."
+                        );
+                    }
+
+
+                    if (
+                        !Array.isArray(campo.tetrades) ||
+                        campo.tetrades.length !== 7
+                    ) {
+                        throw new Error(
+                            "Campo harmônico de tétrades inválido."
+                        );
+                    }
+
+
+                    // --------------------------------------
+                    // Verificar tríades
+                    // --------------------------------------
+
+                    campo.triades.forEach(
+                        function (acorde) {
+
+                            if (
+                                !acorde.acorde ||
+                                acorde.acorde.includes("?")
+                            ) {
+                                throw new Error(
+                                    "Tríade não identificada no grau " +
+                                    acorde.grau
+                                );
+                            }
+
+
+                            if (
+                                !acorde.qualidade ||
+                                acorde.qualidade ===
+                                "Estrutura não catalogada" ||
+                                acorde.qualidade ===
+                                "Desconhecida"
+                            ) {
+                                throw new Error(
+                                    "Qualidade de tríade inválida no grau " +
+                                    acorde.grau
+                                );
+                            }
+
+                        }
+                    );
+
+
+                    // --------------------------------------
+                    // Verificar tétrades
+                    // --------------------------------------
+
+                    campo.tetrades.forEach(
+                        function (acorde) {
+
+                            if (
+                                !acorde.acorde ||
+                                acorde.acorde.includes("?")
+                            ) {
+                                throw new Error(
+                                    "Tétrade não identificada no grau " +
+                                    acorde.grau
+                                );
+                            }
+
+
+                            if (
+                                !acorde.qualidade ||
+                                acorde.qualidade ===
+                                "Estrutura não catalogada" ||
+                                acorde.qualidade ===
+                                "Desconhecida"
+                            ) {
+                                throw new Error(
+                                    "Qualidade de tétrade inválida no grau " +
+                                    acorde.grau
+                                );
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                // ==========================================
+                // APROVADO
+                // ==========================================
+
+                totalAprovados++;
+
+                console.log(
+                    "✅",
+                    tonalidade,
+                    "—",
+                    escalaDefinicao.nome
+                );
+
+            }
+
+            catch (erro) {
+
+                totalErros++;
+
+                const registro = {
+
+                    tonalidade:
+                        tonalidade,
+
+                    escala:
+                        escalaDefinicao.nome,
+
+                    erro:
+                        erro.message
+
+                };
+
+
+                erros.push(
+                    registro
+                );
+
+
+                console.error(
+                    "❌",
+                    tonalidade,
+                    "—",
+                    escalaDefinicao.nome,
+                    "→",
+                    erro.message
+                );
+
+            }
+
+        });
+
+    });
+
+
+    // ==================================================
+    // RESUMO
+    // ==================================================
+
+    console.log("");
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        "TESTE SISTEMÁTICO FINALIZADO"
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        "Total de testes:",
+        totalTestes
+    );
+
+    console.log(
+        "Aprovados:",
+        totalAprovados
+    );
+
+    console.log(
+        "Erros:",
+        totalErros
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+
+    if (
+        totalErros === 0
+    ) {
+
+        console.log(
+            "🎉 TODOS OS TESTES PASSARAM!"
+        );
+
+    }
+
+    else {
+
+        console.warn(
+            "⚠️ FORAM ENCONTRADOS ERROS."
+        );
+
+        console.table(
+            erros
+        );
+
+    }
+
+
+    console.groupEnd();
+
+
+    return {
+
+        totalTestes:
+            totalTestes,
+
+        totalAprovados:
+            totalAprovados,
+
+        totalErros:
+            totalErros,
+
+        erros:
+            erros
+
+    };
+
+}
+
+
+// ======================================================
+// EXECUTAR TESTE
+// ======================================================
+
+executarTestesGerador();
+
