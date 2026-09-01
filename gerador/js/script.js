@@ -303,6 +303,48 @@ const valoresNaturais = {
 
 };
 
+// ======================================================
+// CONVERTER QUALQUER NOTA MUSICAL PARA SUA ALTURA
+// ======================================================
+
+function obterValorNotaMusical(nota) {
+
+    const correspondencias = {
+        C: 0,
+        D: 2,
+        E: 4,
+        F: 5,
+        G: 7,
+        A: 9,
+        B: 11
+    };
+
+    const correspondencia =
+        nota.match(/^([A-G])(#{1,2}|b{1,2})?$/);
+
+    if (!correspondencia) {
+        return undefined;
+    }
+
+    const letra = correspondencia[1];
+    const acidentes = correspondencia[2] || "";
+
+    let valor = correspondencias[letra];
+
+    for (const acidente of acidentes) {
+
+        if (acidente === "#") {
+            valor += 1;
+        }
+
+        if (acidente === "b") {
+            valor -= 1;
+        }
+
+    }
+
+    return ((valor % 12) + 12) % 12;
+}
 
 const letras = [
     "C",
@@ -1292,21 +1334,21 @@ function gerarBracoViolao(notasEscala) {
 
             // Valor numérico da nota encontrada
             const valorCasa =
-                valoresNotas[notaCasa];
+                obterValorNotaMusical(notaCasa);
 
 
             // Procurar a mesma altura dentro da escala
             const notaEscala =
                 notasEscala.find(
-                    function (nota) {
+                  function (nota) {
 
-                        return (
-                            valoresNotas[nota] ===
-                            valorCasa
-                        );
+            return (
+                obterValorNotaMusical(nota) ===
+                valorCasa
+            );
 
-                    }
-                );
+        }
+    );
 
 
             // A nota pertence à escala?
@@ -1317,8 +1359,8 @@ function gerarBracoViolao(notasEscala) {
             // Verificar se é a tônica
             const isTonica =
                 pertenceEscala &&
-                valoresNotas[notaEscala] ===
-                valoresNotas[notasEscala[0]];
+                obterValorNotaMusical(notaEscala) ===
+                obterValorNotaMusical(notasEscala[0]);
 
 
             // Se a nota pertencer à escala,
