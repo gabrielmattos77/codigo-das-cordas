@@ -1242,7 +1242,6 @@ function gerarBracoViolao(notasEscala) {
 
             <div class="numeracao-casas">
 
-                <div class="espaco-corda"></div>
     `;
 
 
@@ -1267,15 +1266,10 @@ function gerarBracoViolao(notasEscala) {
     // ==================================================
 
     afinacaoViolao.forEach(function (corda) {
+html += `
 
-        html += `
-
-            <div class="linha-corda">
-
-                <div class="nome-corda">
-                    ${corda}
-                </div>
-        `;
+    <div class="linha-corda">
+`;
 
 
         for (
