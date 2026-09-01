@@ -1,318 +1,31 @@
 // ======================================================
+// CÓDIGO DAS CORDAS — GERADOR DE ESCALAS
+// Núcleo musical completo
+// ======================================================
+
+
+// ======================================================
 // NOTAS CROMÁTICAS
 // ======================================================
 
 const notasCromaticas = [
-    "C", "C#", "D", "D#", "E", "F",
-    "F#", "G", "G#", "A", "A#", "B"
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#",
+    "A",
+    "A#",
+    "B"
 ];
 
 
 // ======================================================
-// VALORES DAS NOTAS
-// ======================================================
-
-const valoresNotas = {
-
-    "C": 0,
-
-    "C#": 1,
-    "Db": 1,
-
-    "D": 2,
-
-    "D#": 3,
-    "Eb": 3,
-
-    "E": 4,
-
-    "F": 5,
-
-    "F#": 6,
-    "Gb": 6,
-
-    "G": 7,
-
-    "G#": 8,
-    "Ab": 8,
-
-    "A": 9,
-
-    "A#": 10,
-    "Bb": 10,
-
-    "B": 11
-};
-
-
-// ======================================================
-// ESCALAS
-// ======================================================
-
-const escalas = {
-
-    maior: {
-        nome: "Maior",
-        intervalos: [0, 2, 4, 5, 7, 9, 11],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    menorNatural: {
-        nome: "Menor natural",
-        intervalos: [0, 2, 3, 5, 7, 8, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    menorHarmonica: {
-        nome: "Menor harmônica",
-        intervalos: [0, 2, 3, 5, 7, 8, 11],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    menorMelodica: {
-        nome: "Menor melódica",
-        intervalos: [0, 2, 3, 5, 7, 9, 11],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    jonio: {
-        nome: "Jônio",
-        intervalos: [0, 2, 4, 5, 7, 9, 11],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    dorico: {
-        nome: "Dórico",
-        intervalos: [0, 2, 3, 5, 7, 9, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    frigio: {
-        nome: "Frígio",
-        intervalos: [0, 1, 3, 5, 7, 8, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    lidio: {
-        nome: "Lídio",
-        intervalos: [0, 2, 4, 6, 7, 9, 11],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    mixolidio: {
-        nome: "Mixolídio",
-        intervalos: [0, 2, 4, 5, 7, 9, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    eolio: {
-        nome: "Eólio",
-        intervalos: [0, 2, 3, 5, 7, 8, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    locrio: {
-        nome: "Lócrio",
-        intervalos: [0, 1, 3, 5, 6, 8, 10],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    },
-
-    pentatonicaMaior: {
-        nome: "Pentatônica maior",
-        intervalos: [0, 2, 4, 7, 9],
-        graus: [0, 1, 2, 4, 5]
-    },
-
-    pentatonicaMenor: {
-        nome: "Pentatônica menor",
-        intervalos: [0, 3, 5, 7, 10],
-        graus: [0, 2, 3, 4, 6]
-    },
-
-    bluesMaior: {
-        nome: "Blues maior",
-        intervalos: [0, 2, 3, 4, 7, 9],
-        graus: [0, 1, 2, 2, 4, 5]
-    },
-
-    bluesMenor: {
-        nome: "Blues menor",
-        intervalos: [0, 3, 5, 6, 7, 10],
-        graus: [0, 2, 3, 3, 4, 6]
-    },
-
-    cromatica: {
-    nome: "Cromática",
-
-    intervalos: [
-        0, 1, 2, 3, 4, 5,
-        6, 7, 8, 9, 10, 11
-    ],
-
-    graus: [
-        0, 1, 1, 2, 2, 3,
-        4, 4, 5, 5, 6, 6
-    ]
-},
-    tonsInteiros: {
-    nome: "Tons inteiros (Hexafônica)",
-
-    intervalos: [
-        0, 2, 4, 6, 8, 10
-    ],
-
-    graus: [
-        0, 1, 2, 3, 4, 5
-    ]
-},
-
-   diminutaTomSemitom: {
-    nome: "Diminuta Tom–Semitom",
-
-    intervalos: [
-        0, 2, 3, 5,
-        6, 8, 9, 11
-    ],
-
-    graus: [
-        0, 1, 2, 3,
-        4, 5, 6, 6
-    ]
-},
-
-    diminutaSemitomTom: {
-    nome: "Diminuta Semitom–Tom",
-
-    intervalos: [
-        0, 1, 3, 4,
-        6, 7, 9, 10
-    ],
-
-    graus: [
-        0, 1, 2, 2,
-        3, 4, 5, 6
-    ]
-},
-
-    meioDiminuta: {
-        nome: "Meio-diminuta",
-        intervalos: [
-            0, 2, 3, 5,
-            6, 8, 10
-        ],
-        graus: [0, 1, 2, 3, 4, 5, 6]
-    }
-
-};
-
-
-// ======================================================
-// FÓRMULAS MUSICAIS
-// ======================================================
-
-const formulas = {
-
-    maior: [
-        "1", "2", "3", "4", "5", "6", "7"
-    ],
-
-    menorNatural: [
-        "1", "2", "♭3", "4",
-        "5", "♭6", "♭7"
-    ],
-
-    menorHarmonica: [
-        "1", "2", "♭3", "4",
-        "5", "♭6", "7"
-    ],
-
-    menorMelodica: [
-        "1", "2", "♭3", "4",
-        "5", "6", "7"
-    ],
-
-    jonio: [
-        "1", "2", "3", "4",
-        "5", "6", "7"
-    ],
-
-    dorico: [
-        "1", "2", "♭3", "4",
-        "5", "6", "♭7"
-    ],
-
-    frigio: [
-        "1", "♭2", "♭3", "4",
-        "5", "♭6", "♭7"
-    ],
-
-    lidio: [
-        "1", "2", "3", "♯4",
-        "5", "6", "7"
-    ],
-
-    mixolidio: [
-        "1", "2", "3", "4",
-        "5", "6", "♭7"
-    ],
-
-    eolio: [
-        "1", "2", "♭3", "4",
-        "5", "♭6", "♭7"
-    ],
-
-    locrio: [
-        "1", "♭2", "♭3", "4",
-        "♭5", "♭6", "♭7"
-    ],
-
-    pentatonicaMaior: [
-        "1", "2", "3", "5", "6"
-    ],
-
-    pentatonicaMenor: [
-        "1", "♭3", "4", "5", "♭7"
-    ],
-
-    bluesMaior: [
-        "1", "2", "♭3", "3", "5", "6"
-    ],
-
-    bluesMenor: [
-        "1", "♭3", "4", "♭5", "5", "♭7"
-    ],
-
-    cromatica: [
-        "1", "♭2", "2", "♭3",
-        "3", "4", "♯4", "5",
-        "♭6", "6", "♭7", "7"
-    ],
-
-    tonsInteiros: [
-        "1", "2", "3", "♯4",
-        "♯5", "♭7"
-    ],
-
-    diminutaTomSemitom: [
-        "1", "2", "♭3", "4",
-        "♭5", "♯5", "6", "7"
-    ],
-
-    diminutaSemitomTom: [
-        "1", "♭2", "♭3", "♭4",
-        "♭5", "♭6", "6", "7"
-    ],
-
-    meioDiminuta: [
-        "1", "2", "♭3", "4",
-        "♭5", "♭6", "♭7"
-    ]
-
-};
-
-
-// ======================================================
-// LETRAS MUSICAIS
+// VALORES DAS NOTAS NATURAIS
 // ======================================================
 
 const valoresNaturais = {
@@ -327,48 +40,10 @@ const valoresNaturais = {
 
 };
 
+
 // ======================================================
-// CONVERTER QUALQUER NOTA MUSICAL PARA SUA ALTURA
+// LETRAS MUSICAIS
 // ======================================================
-
-function obterValorNotaMusical(nota) {
-
-    const correspondencias = {
-        C: 0,
-        D: 2,
-        E: 4,
-        F: 5,
-        G: 7,
-        A: 9,
-        B: 11
-    };
-
-    const correspondencia =
-        nota.match(/^([A-G])(#{1,2}|b{1,2})?$/);
-
-    if (!correspondencia) {
-        return undefined;
-    }
-
-    const letra = correspondencia[1];
-    const acidentes = correspondencia[2] || "";
-
-    let valor = correspondencias[letra];
-
-    for (const acidente of acidentes) {
-
-        if (acidente === "#") {
-            valor += 1;
-        }
-
-        if (acidente === "b") {
-            valor -= 1;
-        }
-
-    }
-
-    return ((valor % 12) + 12) % 12;
-}
 
 const letras = [
     "C",
@@ -382,51 +57,512 @@ const letras = [
 
 
 // ======================================================
-// OBTER LETRA DA TÔNICA
+// VALORES DAS NOTAS
 // ======================================================
 
-function obterLetraTonica(nota) {
+const valoresNotas = {
 
-    return nota
-        .replace("#", "")
-        .replace("b", "");
+    C: 0,
+
+    "C#": 1,
+    Db: 1,
+
+    D: 2,
+
+    "D#": 3,
+    Eb: 3,
+
+    E: 4,
+
+    F: 5,
+
+    "F#": 6,
+    Gb: 6,
+
+    G: 7,
+
+    "G#": 8,
+    Ab: 8,
+
+    A: 9,
+
+    "A#": 10,
+    Bb: 10,
+
+    B: 11
+
+};
+
+
+// ======================================================
+// DEFINIÇÃO DAS ESCALAS
+//
+// A FÓRMULA É A FONTE DE VERDADE.
+//
+// O programa calcula:
+// fórmula → semitons → letras → notas
+// ======================================================
+
+const escalas = {
+
+    // --------------------------------------------------
+    // DIATÔNICAS
+    // --------------------------------------------------
+
+    maior: {
+        nome: "Maior",
+        formula: [
+            "1", "2", "3", "4",
+            "5", "6", "7"
+        ]
+    },
+
+    menorNatural: {
+        nome: "Menor natural",
+        formula: [
+            "1", "2", "♭3", "4",
+            "5", "♭6", "♭7"
+        ]
+    },
+
+    menorHarmonica: {
+        nome: "Menor harmônica",
+        formula: [
+            "1", "2", "♭3", "4",
+            "5", "♭6", "7"
+        ]
+    },
+
+    menorMelodica: {
+        nome: "Menor melódica",
+        formula: [
+            "1", "2", "♭3", "4",
+            "5", "6", "7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // MODOS GREGOS
+    // --------------------------------------------------
+
+    jonio: {
+        nome: "Jônio",
+        formula: [
+            "1", "2", "3", "4",
+            "5", "6", "7"
+        ]
+    },
+
+    dorico: {
+        nome: "Dórico",
+        formula: [
+            "1", "2", "♭3", "4",
+            "5", "6", "♭7"
+        ]
+    },
+
+    frigio: {
+        nome: "Frígio",
+        formula: [
+            "1", "♭2", "♭3", "4",
+            "5", "♭6", "♭7"
+        ]
+    },
+
+    lidio: {
+        nome: "Lídio",
+        formula: [
+            "1", "2", "3", "♯4",
+            "5", "6", "7"
+        ]
+    },
+
+    mixolidio: {
+        nome: "Mixolídio",
+        formula: [
+            "1", "2", "3", "4",
+            "5", "6", "♭7"
+        ]
+    },
+
+    eolio: {
+        nome: "Eólio",
+        formula: [
+            "1", "2", "♭3", "4",
+            "5", "♭6", "♭7"
+        ]
+    },
+
+    locrio: {
+        nome: "Lócrio",
+        formula: [
+            "1", "♭2", "♭3", "4",
+            "♭5", "♭6", "♭7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // PENTATÔNICAS
+    // --------------------------------------------------
+
+    pentatonicaMaior: {
+        nome: "Pentatônica maior",
+        formula: [
+            "1", "2", "3", "5", "6"
+        ]
+    },
+
+    pentatonicaMenor: {
+        nome: "Pentatônica menor",
+        formula: [
+            "1", "♭3", "4", "5", "♭7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // BLUES
+    // --------------------------------------------------
+
+    bluesMaior: {
+        nome: "Blues maior",
+        formula: [
+            "1", "2", "♭3", "3",
+            "5", "6"
+        ]
+    },
+
+    bluesMenor: {
+        nome: "Blues menor",
+        formula: [
+            "1", "♭3", "4", "♭5",
+            "5", "♭7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // CROMÁTICA
+    // --------------------------------------------------
+
+    cromatica: {
+        nome: "Cromática",
+        formula: [
+            "1", "♭2", "2", "♭3",
+            "3", "4", "♯4", "5",
+            "♭6", "6", "♭7", "7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // TONS INTEIROS
+    // --------------------------------------------------
+
+    tonsInteiros: {
+        nome: "Tons inteiros (Hexafônica)",
+        formula: [
+            "1", "2", "3",
+            "♯4", "♯5", "♭7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // DIMINUTA TOM–SEMITOM
+    // --------------------------------------------------
+
+    diminutaTomSemitom: {
+        nome: "Diminuta Tom–Semitom",
+        formula: [
+            "1", "2", "♭3", "4",
+            "♭5", "♭6", "6", "7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // DIMINUTA SEMITOM–TOM
+    // --------------------------------------------------
+
+    diminutaSemitomTom: {
+        nome: "Diminuta Semitom–Tom",
+        formula: [
+            "1", "♭2", "♭3", "3",
+            "♯4", "5", "6", "♭7"
+        ]
+    },
+
+
+    // --------------------------------------------------
+    // MEIO-DIMINUTA
+    // --------------------------------------------------
+
+    meioDiminuta: {
+        nome: "Meio-diminuta",
+        formula: [
+            "1", "2", "♭3", "4",
+            "♭5", "♭6", "♭7"
+        ]
+    }
+
+};
+
+
+// ======================================================
+// CONVERTER TOKEN DA FÓRMULA
+// PARA GRAU E QUANTIDADE DE ACIDENTES
+// ======================================================
+
+function analisarFormula(token) {
+
+    const correspondencia =
+        token.match(
+            /^([♭b♯#]*)([1-7])$/
+        );
+
+
+    if (!correspondencia) {
+
+        return null;
+
+    }
+
+
+    const acidentes =
+        correspondencia[1] || "";
+
+
+    const grau =
+        Number(
+            correspondencia[2]
+        );
+
+
+    let alteracao = 0;
+
+
+    for (
+        const acidente of acidentes
+    ) {
+
+        if (
+            acidente === "♯" ||
+            acidente === "#"
+        ) {
+
+            alteracao += 1;
+
+        }
+
+        else if (
+            acidente === "♭" ||
+            acidente === "b"
+        ) {
+
+            alteracao -= 1;
+
+        }
+
+    }
+
+
+    return {
+
+        grau: grau,
+
+        indiceLetra: grau - 1,
+
+        alteracao: alteracao
+
+    };
 
 }
 
 
 // ======================================================
-// GERAR NOTA GRAFADA
+// CONVERTER FÓRMULA EM SEMITONS
 // ======================================================
 
-function gerarNotaGrafada(
-    notaTonica,
-    intervalo,
-    grau
-) {
+function formulaParaSemitons(token) {
 
-    const letraTonica =
-        obterLetraTonica(notaTonica);
+    const dados =
+        analisarFormula(token);
 
-    const indiceLetraTonica =
-        letras.indexOf(letraTonica);
 
-    if (indiceLetraTonica === -1) {
+    if (!dados) {
 
-        const valor =
-            (
-                valoresNotas[notaTonica] +
-                intervalo
-            ) % 12;
-
-        return notasCromaticas[valor];
+        return undefined;
 
     }
 
 
+    const semitonsDiatonicos = {
+
+    1: 0,
+    2: 2,
+    3: 4,
+    4: 5,
+    5: 7,
+    6: 9,
+    7: 11
+
+};
+
+
+    const base =
+    semitonsDiatonicos[
+        dados.grau
+    ];
+
+
+    return (
+        base +
+        dados.alteracao +
+        12
+    ) % 12;
+
+}
+
+
+// ======================================================
+// CONVERTER NOTA MUSICAL PARA ALTURA
+// ======================================================
+
+function obterValorNotaMusical(nota) {
+
+    if (
+        typeof nota !== "string" ||
+        nota.length === 0
+    ) {
+
+        return undefined;
+
+    }
+
+
+    const correspondencia =
+        nota.match(
+            /^([A-G])([#b]*)$/
+        );
+
+
+    if (!correspondencia) {
+
+        return undefined;
+
+    }
+
+
+    const letra =
+        correspondencia[1];
+
+
+    const acidentes =
+        correspondencia[2] || "";
+
+
+    let valor =
+        valoresNaturais[letra];
+
+
+    for (
+        const acidente of acidentes
+    ) {
+
+        if (acidente === "#") {
+
+            valor += 1;
+
+        }
+
+        else if (
+            acidente === "b"
+        ) {
+
+            valor -= 1;
+
+        }
+
+    }
+
+
+    return (
+        (valor % 12) + 12
+    ) % 12;
+
+}
+
+
+// ======================================================
+// LETRA DA TÔNICA
+// ======================================================
+
+function obterLetraTonica(nota) {
+
+    return nota.charAt(0);
+
+}
+
+
+// ======================================================
+// GERAR UMA NOTA GRAFADA
+// ======================================================
+
+function gerarNotaGrafada(
+    notaTonica,
+    token
+) {
+
+    const dados =
+        analisarFormula(token);
+
+
+    if (!dados) {
+
+        return "";
+
+    }
+
+
+    const letraTonica =
+        obterLetraTonica(
+            notaTonica
+        );
+
+
+    const indiceLetraTonica =
+        letras.indexOf(
+            letraTonica
+        );
+
+
+    const valorTonica =
+        obterValorNotaMusical(
+            notaTonica
+        );
+
+
+    if (
+        indiceLetraTonica === -1 ||
+        valorTonica === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    // --------------------------------------------------
+    // Letra natural determinada pelo grau
+    // --------------------------------------------------
+
     const indiceLetra =
         (
             indiceLetraTonica +
-            grau
+            dados.indiceLetra
         ) % 7;
 
 
@@ -434,10 +570,14 @@ function gerarNotaGrafada(
         letras[indiceLetra];
 
 
+    // --------------------------------------------------
+    // Altura que a fórmula exige
+    // --------------------------------------------------
+
     const valorEsperado =
         (
-            valoresNotas[notaTonica] +
-            intervalo
+            valorTonica +
+            formulaParaSemitons(token)
         ) % 12;
 
 
@@ -445,47 +585,133 @@ function gerarNotaGrafada(
         valoresNaturais[letra];
 
 
+    // --------------------------------------------------
+    // Descobrir quantos acidentes a letra precisa
+    // --------------------------------------------------
+
     let diferenca =
         valorEsperado -
         valorNatural;
 
 
-    if (diferenca > 6) {
+    // Escolher a representação equivalente mais curta.
+    while (
+        diferenca > 6
+    ) {
+
         diferenca -= 12;
+
     }
 
 
-    if (diferenca < -6) {
+    while (
+        diferenca < -6
+    ) {
+
         diferenca += 12;
+
     }
 
 
-    if (diferenca === 0) {
+    if (
+        diferenca === 0
+    ) {
+
         return letra;
+
     }
 
 
-    if (diferenca === 1) {
-        return letra + "#";
+    if (
+        diferenca > 0
+    ) {
+
+        return (
+            letra +
+            "#".repeat(
+                diferenca
+            )
+        );
+
     }
 
 
-    if (diferenca === 2) {
-        return letra + "##";
+    return (
+        letra +
+        "b".repeat(
+            Math.abs(
+                diferenca
+            )
+        )
+    );
+
+}
+
+
+// ======================================================
+// GERAR ESCALA MUSICAL
+// ======================================================
+
+function gerarEscalaMusical(
+    notaTonica,
+    escalaSelecionada
+) {
+
+    if (
+        !escalaSelecionada ||
+        !Array.isArray(
+            escalaSelecionada.formula
+        )
+    ) {
+
+        return [];
+
     }
 
 
-    if (diferenca === -1) {
-        return letra + "b";
+    return escalaSelecionada.formula.map(
+        function (token) {
+
+            return gerarNotaGrafada(
+                notaTonica,
+                token
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// OBTER INTERVALOS DA ESCALA
+// ======================================================
+
+function obterIntervalosEscala(
+    escalaSelecionada
+) {
+
+    if (
+        !escalaSelecionada ||
+        !Array.isArray(
+            escalaSelecionada.formula
+        )
+    ) {
+
+        return [];
+
     }
 
 
-    if (diferenca === -2) {
-        return letra + "bb";
-    }
+    return escalaSelecionada.formula.map(
+        function (token) {
 
+            return formulaParaSemitons(
+                token
+            );
 
-    return letra;
+        }
+    );
 
 }
 
@@ -494,7 +720,9 @@ function gerarNotaGrafada(
 // NOMES DOS INTERVALOS
 // ======================================================
 
-function obterNomeIntervalo(semitons) {
+function obterNomeIntervalo(
+    semitons
+) {
 
     const intervalos = {
 
@@ -514,55 +742,89 @@ function obterNomeIntervalo(semitons) {
     };
 
 
-    return intervalos[semitons] ||
-        "Intervalo desconhecido";
+    return (
+        intervalos[semitons] ||
+        "Intervalo desconhecido"
+    );
 
 }
 
 
 // ======================================================
-// DISTÂNCIA ENTRE NOTAS
+// CALCULAR DISTÂNCIAS DA ESCALA
 // ======================================================
 
-function calcularDistancias(intervalos) {
+function calcularDistancias(
+    intervalos
+) {
+
+    if (
+        !Array.isArray(intervalos) ||
+        intervalos.length === 0
+    ) {
+
+        return [];
+
+    }
+
 
     const distancias = [];
 
 
-    // Distâncias entre as notas consecutivas
     for (
         let i = 1;
         i < intervalos.length;
         i++
     ) {
 
-        const distancia =
+        let distancia =
             intervalos[i] -
             intervalos[i - 1];
 
-        distancias.push(distancia);
+
+        if (
+            distancia < 0
+        ) {
+
+            distancia += 12;
+
+        }
+
+
+        distancias.push(
+            distancia
+        );
 
     }
 
 
-    // ==================================================
-    // FECHAMENTO DA OITAVA
-    // ==================================================
+    // --------------------------------------------------
+    // Fechamento da oitava
+    // --------------------------------------------------
 
-    if (intervalos.length > 0) {
+    let fechamento =
+        12 -
+        intervalos[
+            intervalos.length - 1
+        ];
 
-        const ultimaNota =
-            intervalos[intervalos.length - 1];
 
-        const distanciaFinal =
-            12 - ultimaNota;
+    if (
+        fechamento === 12
+    ) {
 
-        distancias.push(distanciaFinal);
+        fechamento = 0;
 
     }
+
+
+    distancias.push(
+        fechamento
+    );
 
 
     return distancias;
+
 }
 
 
@@ -570,32 +832,324 @@ function calcularDistancias(intervalos) {
 // NOME DA ESTRUTURA
 // ======================================================
 
-function obterNomeEstrutura(distancias) {
+function obterNomeEstrutura(
+    distancias
+) {
 
     return distancias.map(
         function (distancia) {
 
-            if (distancia === 1) {
+            if (
+                distancia === 1
+            ) {
+
                 return "ST";
+
             }
 
-            if (distancia === 2) {
+            if (
+                distancia === 2
+            ) {
+
                 return "T";
+
             }
 
-            if (distancia === 3) {
+            if (
+                distancia === 3
+            ) {
+
                 return "3ST";
+
             }
 
-            if (distancia === 4) {
+            if (
+                distancia === 4
+            ) {
+
                 return "4ST";
+
             }
 
-            if (distancia === 5) {
+            if (
+                distancia === 5
+            ) {
+
                 return "5ST";
+
             }
 
-            return distancia + "ST";
+
+            return (
+                distancia +
+                "ST"
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// IDENTIFICAR TRÍADE
+// ======================================================
+
+function identificarTriade(
+    notasAcorde
+) {
+
+    if (
+        !Array.isArray(notasAcorde) ||
+        notasAcorde.length !== 3
+    ) {
+
+        return {
+
+            simbolo: "?",
+            qualidade: "Desconhecida"
+
+        };
+
+    }
+
+
+    const valores =
+        notasAcorde.map(
+            obterValorNotaMusical
+        );
+
+
+    if (
+        valores.some(
+            function (valor) {
+                return valor === undefined;
+            }
+        )
+    ) {
+
+        return {
+
+            simbolo: "?",
+            qualidade: "Desconhecida"
+
+        };
+
+    }
+
+
+    const raiz =
+        valores[0];
+
+
+    const intervalos =
+        valores.map(
+            function (
+                valor,
+                indice
+            ) {
+
+                if (
+                    indice === 0
+                ) {
+
+                    return 0;
+
+                }
+
+
+                return (
+                    valor -
+                    raiz +
+                    12
+                ) % 12;
+
+            }
+        );
+
+
+    const chave =
+        intervalos.join(",");
+
+
+    const estruturas = {
+
+        "0,4,7": {
+            simbolo: "",
+            qualidade: "Maior"
+        },
+
+        "0,3,7": {
+            simbolo: "m",
+            qualidade: "Menor"
+        },
+
+        "0,3,6": {
+            simbolo: "dim",
+            qualidade: "Diminuto"
+        },
+
+        "0,4,8": {
+            simbolo: "+",
+            qualidade: "Aumentado"
+        }
+
+    };
+
+
+    return (
+        estruturas[chave] || {
+
+            simbolo: "?",
+            qualidade:
+                "Estrutura não catalogada"
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// IDENTIFICAR TÉTRADE
+// ======================================================
+
+function identificarTetrade(
+    notasAcorde
+) {
+
+    if (
+        !Array.isArray(notasAcorde) ||
+        notasAcorde.length !== 4
+    ) {
+
+        return {
+
+            simbolo: "?",
+            qualidade: "Desconhecida"
+
+        };
+
+    }
+
+
+    const valores =
+        notasAcorde.map(
+            obterValorNotaMusical
+        );
+
+
+    if (
+        valores.some(
+            function (valor) {
+                return valor === undefined;
+            }
+        )
+    ) {
+
+        return {
+
+            simbolo: "?",
+            qualidade: "Desconhecida"
+
+        };
+
+    }
+
+
+    const raiz =
+        valores[0];
+
+
+    const intervalos =
+        valores.map(
+            function (
+                valor,
+                indice
+            ) {
+
+                if (
+                    indice === 0
+                ) {
+
+                    return 0;
+
+                }
+
+
+                return (
+                    valor -
+                    raiz +
+                    12
+                ) % 12;
+
+            }
+        );
+
+
+    const chave =
+        intervalos.join(",");
+
+
+    const estruturas = {
+
+        "0,4,7,11": {
+            simbolo: "maj7",
+            qualidade:
+                "Maior com 7ª maior"
+        },
+
+        "0,3,7,10": {
+            simbolo: "m7",
+            qualidade:
+                "Menor com 7ª menor"
+        },
+
+        "0,4,7,10": {
+            simbolo: "7",
+            qualidade:
+                "Dominante"
+        },
+
+        "0,3,6,10": {
+            simbolo: "m7b5",
+            qualidade:
+                "Meio-diminuto"
+        },
+
+        "0,3,6,9": {
+            simbolo: "dim7",
+            qualidade:
+                "Diminuto"
+        },
+
+        "0,3,7,11": {
+            simbolo: "mMaj7",
+            qualidade:
+                "Menor com 7ª maior"
+        },
+
+        "0,4,8,11": {
+            simbolo: "maj7#5",
+            qualidade:
+                "Aumentado com 7ª maior"
+        },
+
+        "0,4,8,10": {
+            simbolo: "7#5",
+            qualidade:
+                "Aumentado com 7ª menor"
+        }
+
+    };
+
+
+    return (
+        estruturas[chave] || {
+
+            simbolo: "?",
+            qualidade:
+                "Estrutura não catalogada"
 
         }
     );
@@ -608,12 +1162,8 @@ function obterNomeEstrutura(distancias) {
 // ======================================================
 
 function gerarCampoHarmonico(
-    notasEscala,
-    tipoEscala
+    notasEscala
 ) {
-
-    // Campo harmônico diatônico:
-    // somente escalas de 7 notas.
 
     if (
         !Array.isArray(notasEscala) ||
@@ -636,518 +1186,12 @@ function gerarCampoHarmonico(
     ];
 
 
-    // ==================================================
-    // QUALIDADES DAS TRÍADES
-    // ==================================================
-
-    const qualidadesTriades = {
-
-        maior: [
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior",
-            "Menor",
-            "Diminuto"
-        ],
-
-        jonio: [
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior",
-            "Menor",
-            "Diminuto"
-        ],
-
-        dorico: [
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior",
-            "Menor",
-            "Diminuto",
-            "Maior"
-        ],
-
-       frigio: [
-           "Menor",
-           "Maior",
-           "Maior",
-           "Menor",
-           "Diminuto",
-           "Maior",
-           "Menor"
-        ],
-
-        lidio: [
-            "Maior",
-            "Maior",
-            "Menor",
-            "Diminuto",
-            "Maior",
-            "Menor",
-            "Menor"
-        ],
-
-        mixolidio: [
-            "Maior",
-            "Menor",
-            "Diminuto",
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior"
-        ],
-
-        eolio: [
-            "Menor",
-            "Diminuto",
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior"
-        ],
-
-        menorNatural: [
-            "Menor",
-            "Diminuto",
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior"
-        ],
-
-        locrio: [
-            "Diminuto",
-            "Maior",
-            "Menor",
-            "Menor",
-            "Maior",
-            "Maior",
-            "Menor"
-        ],
-
-        menorHarmonica: [
-            "Menor",
-            "Diminuto",
-            "Aumentado",
-            "Menor",
-            "Maior",
-            "Maior",
-            "Diminuto"
-        ],
-
-        menorMelodica: [
-            "Menor",
-            "Menor",
-            "Aumentado",
-            "Maior",
-            "Maior",
-            "Diminuto",
-            "Diminuto"
-        ]
-
-    };
-
-
-    // ==================================================
-    // SÍMBOLOS DAS TRÍADES
-    // ==================================================
-
-    const simbolosTriades = {
-
-        maior: [
-            "",
-            "m",
-            "m",
-            "",
-            "",
-            "m",
-            "dim"
-        ],
-
-        jonio: [
-            "",
-            "m",
-            "m",
-            "",
-            "",
-            "m",
-            "dim"
-        ],
-
-        dorico: [
-            "m",
-            "m",
-            "",
-            "",
-            "m",
-            "dim",
-            ""
-        ],
-
-        frigio: [
-            "m",
-            "",
-            "",
-            "m",
-            "dim",
-            "",
-            "m"
-        ],
-
-        lidio: [
-            "",
-            "",
-            "m",
-            "dim",
-            "",
-            "m",
-            "m"
-        ],
-
-        mixolidio: [
-            "",
-            "m",
-            "dim",
-            "",
-            "m",
-            "m",
-            ""
-        ],
-
-        eolio: [
-            "m",
-            "dim",
-            "",
-            "m",
-            "m",
-            "",
-            ""
-        ],
-
-        menorNatural: [
-            "m",
-            "dim",
-            "",
-            "m",
-            "m",
-            "",
-            ""
-        ],
-
-        locrio: [
-            "dim",
-            "",
-            "m",
-            "m",
-            "",
-            "",
-            "m"
-        ],
-
-        menorHarmonica: [
-            "m",
-            "dim",
-            "+",
-            "m",
-            "",
-            "",
-            "dim"
-        ],
-
-        menorMelodica: [
-            "m",
-            "m",
-            "+",
-            "",
-            "",
-            "dim",
-            "dim"
-        ]
-
-    };
-
-
-    // ==================================================
-    // QUALIDADES DAS TÉTRADES
-    // ==================================================
-
-    const qualidadesTetrades = {
-
-        maior: [
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto"
-        ],
-
-        jonio: [
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto"
-        ],
-
-        dorico: [
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior"
-        ],
-
-        frigio: [
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor"
-         ],
-
-        lidio: [
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor"
-        ],
-
-        mixolidio: [
-            "Dominante",
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior"
-        ],
-
-        eolio: [
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante"
-        ],
-
-        menorNatural: [
-            "Menor com 7ª menor",
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante"
-        ],
-
-        locrio: [
-            "Meio-diminuto",
-            "Maior com 7ª maior",
-            "Menor com 7ª menor",
-            "Menor com 7ª menor",
-            "Maior com 7ª maior",
-            "Dominante",
-            "Menor com 7ª menor"
-        ],
-
-        menorHarmonica: [
-            "Menor com 7ª maior",
-            "Meio-diminuto",
-            "Aumentado com 7ª maior",
-            "Menor com 7ª menor",
-            "Dominante",
-            "Maior com 7ª maior",
-            "Diminuto"
-        ],
-
-        menorMelodica: [
-            "Menor com 7ª maior",
-            "Menor com 7ª menor",
-            "Aumentado com 7ª maior",
-            "Dominante",
-            "Dominante",
-            "Meio-diminuto",
-            "Meio-diminuto"
-        ]
-
-    };
-
-
-    // ==================================================
-    // SÍMBOLOS DAS TÉTRADES
-    // ==================================================
-
-    const simbolosTetrades = {
-
-        maior: [
-            "maj7",
-            "m7",
-            "m7",
-            "maj7",
-            "7",
-            "m7",
-            "m7b5"
-        ],
-
-        jonio: [
-            "maj7",
-            "m7",
-            "m7",
-            "maj7",
-            "7",
-            "m7",
-            "m7b5"
-        ],
-
-        dorico: [
-            "m7",
-            "m7",
-            "maj7",
-            "7",
-            "m7",
-            "m7b5",
-            "maj7"
-        ],
-
-        frigio: [
-            "m7",
-            "maj7",
-            "7",
-            "m7",
-            "m7b5",
-            "maj7",
-            "m7"
-        ],
-
-        lidio: [
-            "maj7",
-            "7",
-            "m7",
-            "m7b5",
-            "maj7",
-            "m7",
-            "m7"
-        ],
-
-        mixolidio: [
-            "7",
-            "m7",
-            "m7b5",
-            "maj7",
-            "m7",
-            "m7",
-            "maj7"
-        ],
-
-        eolio: [
-            "m7",
-            "m7b5",
-            "maj7",
-            "m7",
-            "m7",
-            "maj7",
-            "7"
-        ],
-
-        menorNatural: [
-            "m7",
-            "m7b5",
-            "maj7",
-            "m7",
-            "m7",
-            "maj7",
-            "7"
-        ],
-
-        locrio: [
-            "m7b5",
-            "maj7",
-            "m7",
-            "m7",
-            "maj7",
-            "7",
-            "m7"
-        ],
-
-        menorHarmonica: [
-            "mMaj7",
-            "m7b5",
-            "maj7#5",
-            "m7",
-            "7",
-            "maj7",
-            "dim7"
-        ],
-
-        menorMelodica: [
-            "mMaj7",
-            "m7",
-            "maj7#5",
-            "7",
-            "7",
-            "m7b5",
-            "m7b5"
-        ]
-
-    };
-
-
-    // ==================================================
-    // VERIFICAR HARMONIZAÇÃO
-    // ==================================================
-
-    const qualidadesTriade =
-        qualidadesTriades[tipoEscala];
-
-    const simbolosTriade =
-        simbolosTriades[tipoEscala];
-
-    const qualidadesTetrade =
-        qualidadesTetrades[tipoEscala];
-
-    const simbolosTetrade =
-        simbolosTetrades[tipoEscala];
-
-
-    if (
-        !qualidadesTriade ||
-        !simbolosTriade ||
-        !qualidadesTetrade ||
-        !simbolosTetrade
-    ) {
-
-        return null;
-
-    }
-
-
-    // ==================================================
-    // TRÍADES
-    // ==================================================
-
-    const triadesResultado =
+    const triades =
         grausCampo.map(
-            function (grau, indice) {
+            function (
+                grau,
+                indice
+            ) {
 
                 const notasAcorde = [
 
@@ -1164,18 +1208,25 @@ function gerarCampoHarmonico(
                 ];
 
 
+                const estrutura =
+                    identificarTriade(
+                        notasAcorde
+                    );
+
+
                 return {
 
                     grau: grau,
 
                     acorde:
                         notasAcorde[0] +
-                        simbolosTriade[indice],
+                        estrutura.simbolo,
 
-                    notas: notasAcorde,
+                    notas:
+                        notasAcorde,
 
                     qualidade:
-                        qualidadesTriade[indice]
+                        estrutura.qualidade
 
                 };
 
@@ -1183,13 +1234,12 @@ function gerarCampoHarmonico(
         );
 
 
-    // ==================================================
-    // TÉTRADES
-    // ==================================================
-
-    const tetradesResultado =
+    const tetrades =
         grausCampo.map(
-            function (grau, indice) {
+            function (
+                grau,
+                indice
+            ) {
 
                 const notasAcorde = [
 
@@ -1210,18 +1260,25 @@ function gerarCampoHarmonico(
                 ];
 
 
+                const estrutura =
+                    identificarTetrade(
+                        notasAcorde
+                    );
+
+
                 return {
 
                     grau: grau,
 
                     acorde:
                         notasAcorde[0] +
-                        simbolosTetrade[indice],
+                        estrutura.simbolo,
 
-                    notas: notasAcorde,
+                    notas:
+                        notasAcorde,
 
                     qualidade:
-                        qualidadesTetrade[indice]
+                        estrutura.qualidade
 
                 };
 
@@ -1231,9 +1288,9 @@ function gerarCampoHarmonico(
 
     return {
 
-        triades: triadesResultado,
+        triades: triades,
 
-        tetrades: tetradesResultado
+        tetrades: tetrades
 
     };
 
@@ -1245,23 +1302,37 @@ function gerarCampoHarmonico(
 // ======================================================
 
 const botao =
-    document.getElementById("gerarEscala");
+    document.getElementById(
+        "gerarEscala"
+    );
+
 
 const seletorNota =
-    document.getElementById("nota");
+    document.getElementById(
+        "nota"
+    );
+
 
 const seletorEscala =
-    document.getElementById("tipoEscala");
+    document.getElementById(
+        "tipoEscala"
+    );
+
 
 const resultado =
-    document.getElementById("resultado");
+    document.getElementById(
+        "resultado"
+    );
+
 
 const bracoViolao =
-    document.getElementById("bracoViolao");
+    document.getElementById(
+        "bracoViolao"
+    );
 
 
 // ======================================================
-// BRAÇO DO VIOLÃO
+// AFINAÇÃO DO VIOLÃO
 // ======================================================
 
 const afinacaoViolao = [
@@ -1278,7 +1349,7 @@ const notasPorCasa = 12;
 
 
 // ======================================================
-// OBTER NOTA POR CASA
+// OBTER NOTA FÍSICA DA CASA
 // ======================================================
 
 function obterNotaPorCasa(
@@ -1287,7 +1358,18 @@ function obterNotaPorCasa(
 ) {
 
     const valorInicial =
-        valoresNotas[notaInicial];
+        obterValorNotaMusical(
+            notaInicial
+        );
+
+
+    if (
+        valorInicial === undefined
+    ) {
+
+        return "";
+
+    }
 
 
     const valor =
@@ -1297,21 +1379,31 @@ function obterNotaPorCasa(
         ) % 12;
 
 
-    return notasCromaticas[valor];
+    return notasCromaticas[
+        valor
+    ];
 
 }
+
 
 // ======================================================
 // GERAR BRAÇO DO VIOLÃO
 // ======================================================
 
-function gerarBracoViolao(notasEscala) {
+function gerarBracoViolao(
+    notasEscala
+) {
 
     if (!bracoViolao) {
+
         return;
+
     }
 
-    const numeroDeCasas = 12;
+
+    const numeroDeCasas =
+        notasPorCasa;
+
 
     let html = `
 
@@ -1324,119 +1416,140 @@ function gerarBracoViolao(notasEscala) {
             <div class="numeracao-casas">
     `;
 
-    // ==================================================
-    // NUMERAÇÃO DAS CASAS
-    // ==================================================
 
-    for (let casa = 0; casa <= numeroDeCasas; casa++) {
+    // --------------------------------------------------
+    // NUMERAÇÃO DAS CASAS
+    // --------------------------------------------------
+
+    for (
+        let casa = 0;
+        casa <= numeroDeCasas;
+        casa++
+    ) {
 
         html += `
+
             <div class="numero-casa">
                 ${casa}
             </div>
+
         `;
+
     }
 
+
     html += `
+
             </div>
     `;
 
 
-    // ==================================================
+    // --------------------------------------------------
     // CORDAS
-    // ==================================================
+    // --------------------------------------------------
 
-    afinacaoViolao.forEach(function (corda) {
+    afinacaoViolao.forEach(
+        function (corda) {
 
-        html += `
+            html += `
 
-            <div class="linha-corda">
-        `;
-
-
-        // ==================================================
-        // CASAS
-        // ==================================================
-
-        for (
-            let casa = 0;
-            casa <= numeroDeCasas;
-            casa++
-        ) {
-
-            // Nota física encontrada na casa
-            const notaCasa =
-                obterNotaPorCasa(
-                    corda,
-                    casa
-                );
+                <div class="linha-corda">
+            `;
 
 
-            // Valor numérico da nota encontrada
-            const valorCasa =
-                obterValorNotaMusical(notaCasa);
+            for (
+                let casa = 0;
+                casa <= numeroDeCasas;
+                casa++
+            ) {
+
+                const notaCasa =
+                    obterNotaPorCasa(
+                        corda,
+                        casa
+                    );
 
 
-            // Procurar a mesma altura dentro da escala
-            const notaEscala =
-                notasEscala.find(
-                  function (nota) {
-
-            return (
-                obterValorNotaMusical(nota) ===
-                valorCasa
-            );
-
-        }
-    );
+                const valorCasa =
+                    obterValorNotaMusical(
+                        notaCasa
+                    );
 
 
-            // A nota pertence à escala?
-            const pertenceEscala =
-                notaEscala !== undefined;
+                const notaEscala =
+                    notasEscala.find(
+                        function (
+                            nota
+                        ) {
+
+                            return (
+                                obterValorNotaMusical(
+                                    nota
+                                ) ===
+                                valorCasa
+                            );
+
+                        }
+                    );
 
 
-            // Verificar se é a tônica
-            const isTonica =
-                pertenceEscala &&
-                obterValorNotaMusical(notaEscala) ===
-                obterValorNotaMusical(notasEscala[0]);
+                const pertenceEscala =
+                    notaEscala !== undefined;
 
 
-            // Se a nota pertencer à escala,
-            // mostrar a grafia usada pela própria escala.
-            const notaExibida =
-                pertenceEscala
-                    ? notaEscala
-                    : notaCasa;
+                const isTonica =
+                    pertenceEscala &&
+                    obterValorNotaMusical(
+                        notaEscala
+                    ) ===
+                    obterValorNotaMusical(
+                        notasEscala[0]
+                    );
+
+
+                const notaExibida =
+                    pertenceEscala
+                        ? notaEscala
+                        : notaCasa;
+
+
+                html += `
+
+                    <div
+                        class="
+                            casa
+                            ${
+                                pertenceEscala
+                                    ? "nota-escala"
+                                    : ""
+                            }
+                            ${
+                                isTonica
+                                    ? "tonica"
+                                    : ""
+                            }
+                        "
+                    >
+
+                        <span class="nome-nota">
+                            ${notaExibida}
+                        </span>
+
+                    </div>
+
+                `;
+
+            }
 
 
             html += `
 
-                <div
-                    class="
-                        casa
-                        ${pertenceEscala ? "nota-escala" : ""}
-                        ${isTonica ? "tonica" : ""}
-                    "
-                >
-
-                    <span class="nome-nota">
-                        ${notaExibida}
-                    </span>
-
                 </div>
 
             `;
+
         }
-
-
-        html += `
-
-            </div>
-
-        `;
-    });
+    );
 
 
     html += `
@@ -1446,8 +1559,11 @@ function gerarBracoViolao(notasEscala) {
     `;
 
 
-    bracoViolao.innerHTML = html;
+    bracoViolao.innerHTML =
+        html;
+
 }
+
 
 // ======================================================
 // VERIFICAÇÃO DOS ELEMENTOS
@@ -1468,7 +1584,7 @@ if (
 
 
 // ======================================================
-// GERAR ESCALA
+// EVENTO DO BOTÃO
 // ======================================================
 
 if (botao) {
@@ -1489,9 +1605,9 @@ if (botao) {
                 escalas[tipoEscala];
 
 
-            // ==========================================
-            // VERIFICAR ESCALA
-            // ==========================================
+            // ------------------------------------------
+            // VALIDAR ESCALA
+            // ------------------------------------------
 
             if (!escalaSelecionada) {
 
@@ -1503,91 +1619,57 @@ if (botao) {
             }
 
 
-            // ==========================================
-            // GERAR NOTAS
-            // ==========================================
+            // ------------------------------------------
+            // GERAR ESCALA
+            // ------------------------------------------
 
             const escala =
-                escalaSelecionada.intervalos.map(
-                    function (intervalo, indice) {
-
-                        if (
-                            escalaSelecionada.graus &&
-                            escalaSelecionada.graus[indice] !== undefined
-                        ) {
-
-                            return gerarNotaGrafada(
-
-                                notaEscolhida,
-
-                                intervalo,
-
-                                escalaSelecionada.graus[indice]
-
-                            );
-
-                        }
-
-
-                        const valor =
-                            (
-                                valoresNotas[notaEscolhida] +
-                                intervalo
-                            ) % 12;
-
-
-                        return notasCromaticas[valor];
-
-                    }
+                gerarEscalaMusical(
+                    notaEscolhida,
+                    escalaSelecionada
                 );
 
 
-            // ==========================================
-            // BRAÇO DO VIOLÃO
-            // ==========================================
+            if (
+                escala.length === 0
+            ) {
 
-            gerarBracoViolao(escala);
+                resultado.textContent =
+                    "Não foi possível gerar a escala.";
 
+                return;
 
-            // ==========================================
-            // GRAUS
-            // ==========================================
-
-            const nomesGraus = [
-
-                "I",
-                "II",
-                "III",
-                "IV",
-                "V",
-                "VI",
-                "VII",
-                "VIII",
-                "IX",
-                "X",
-                "XI",
-                "XII"
-
-            ];
+            }
 
 
-            const graus =
-                escala.map(
-                    function (_, indice) {
+            // ------------------------------------------
+            // BRAÇO
+            // ------------------------------------------
 
-                        return nomesGraus[indice];
+            gerarBracoViolao(
+                escala
+            );
 
-                    }
+
+            // ------------------------------------------
+            // INTERVALOS
+            // ------------------------------------------
+
+            const intervalos =
+                obterIntervalosEscala(
+                    escalaSelecionada
                 );
 
 
-            // ==========================================
+            // ------------------------------------------
             // NOMES DOS INTERVALOS
-            // ==========================================
+            // ------------------------------------------
 
             const nomesDosIntervalos =
-                escalaSelecionada.intervalos.map(
-                    function (intervalo) {
+                intervalos.map(
+                    function (
+                        intervalo
+                    ) {
 
                         return obterNomeIntervalo(
                             intervalo
@@ -1597,53 +1679,51 @@ if (botao) {
                 );
 
 
-            // ==========================================
-            // FÓRMULA
-            // ==========================================
-
-            const formula =
-                formulas[tipoEscala] || [];
-
-
-            // ==========================================
-            // DISTÂNCIAS
-            // ==========================================
+            // ------------------------------------------
+            // ESTRUTURA
+            // ------------------------------------------
 
             const distancias =
                 calcularDistancias(
-                    escalaSelecionada.intervalos
+                    intervalos
                 );
 
 
-            // ==========================================
-            // ESTRUTURA
-            // ==========================================
-
-            const nomesIntervalos =
+            const nomesEstrutura =
                 obterNomeEstrutura(
                     distancias
                 );
 
 
-            // ==========================================
+            // ------------------------------------------
+            // FÓRMULA
+            // ------------------------------------------
+
+            const formula =
+                escalaSelecionada.formula;
+
+
+            // ------------------------------------------
             // CAMPO HARMÔNICO
-            // ==========================================
+            // ------------------------------------------
 
             const campoHarmonico =
                 gerarCampoHarmonico(
-                    escala,
-                    tipoEscala
+                    escala
                 );
 
 
-            // ==========================================
+            // ------------------------------------------
             // RESULTADO
-            // ==========================================
+            // ------------------------------------------
 
             resultado.innerHTML = `
 
                 <h3>
-                    🎵 ${notaEscolhida} — ${escalaSelecionada.nome}
+                    🎵
+                    ${notaEscolhida}
+                    —
+                    ${escalaSelecionada.nome}
                 </h3>
 
 
@@ -1656,7 +1736,11 @@ if (botao) {
                         </strong>
 
                         <p>
-                            ${escala.join(" - ")}
+                            ${
+                                escala.join(
+                                    " - "
+                                )
+                            }
                         </p>
 
                     </div>
@@ -1669,7 +1753,11 @@ if (botao) {
                         </strong>
 
                         <p>
-                            ${nomesIntervalos.join(" - ")}
+                            ${
+                                nomesEstrutura.join(
+                                    " - "
+                                )
+                            }
                         </p>
 
                     </div>
@@ -1682,7 +1770,11 @@ if (botao) {
                         </strong>
 
                         <p>
-                            ${formula.join(" - ")}
+                            ${
+                                formula.join(
+                                    " - "
+                                )
+                            }
                         </p>
 
                     </div>
@@ -1725,39 +1817,56 @@ if (botao) {
 
                         <tbody>
 
-                            ${escala.map(
-                                function (nota, indice) {
+                            ${
+                                escala.map(
+                                    function (
+                                        nota,
+                                        indice
+                                    ) {
 
-                                    return `
+                                        return `
 
-                                        <tr>
+                                            <tr>
 
-                                            <td>
-                                                ${graus[indice]}
-                                            </td>
+                                                <td>
+                                                    ${
+                                                        indice + 1
+                                                    }
+                                                </td>
 
-                                            <td>
-                                                ${nota}
-                                            </td>
+                                                <td>
+                                                    ${nota}
+                                                </td>
 
-                                            <td>
-                                                ${formula[indice] || "-"}
-                                            </td>
+                                                <td>
+                                                    ${
+                                                        formula[indice]
+                                                    }
+                                                </td>
 
-                                            <td>
-                                                ${nomesDosIntervalos[indice]}
-                                            </td>
+                                                <td>
+                                                    ${
+                                                        nomesDosIntervalos[
+                                                            indice
+                                                        ]
+                                                    }
+                                                </td>
 
-                                            <td>
-                                                ${escalaSelecionada.intervalos[indice]}
-                                            </td>
+                                                <td>
+                                                    ${
+                                                        intervalos[
+                                                            indice
+                                                        ]
+                                                    }
+                                                </td>
 
-                                        </tr>
+                                            </tr>
 
-                                    `;
+                                        `;
 
-                                }
-                            ).join("")}
+                                    }
+                                ).join("")
+                            }
 
                         </tbody>
 
@@ -1812,37 +1921,51 @@ if (botao) {
 
                                 <tbody>
 
-                                    ${campoHarmonico.triades.map(
-                                        function (acorde) {
+                                    ${
+                                        campoHarmonico.triades.map(
+                                            function (
+                                                acorde
+                                            ) {
 
-                                            return `
+                                                return `
 
-                                                <tr>
+                                                    <tr>
 
-                                                    <td>
-                                                        ${acorde.grau}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.grau
+                                                            }
+                                                        </td>
 
-                                                    <td>
-                                                        <strong>
-                                                            ${acorde.acorde}
-                                                        </strong>
-                                                    </td>
+                                                        <td>
+                                                            <strong>
+                                                                ${
+                                                                    acorde.acorde
+                                                                }
+                                                            </strong>
+                                                        </td>
 
-                                                    <td>
-                                                        ${acorde.notas.join(" - ")}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.notas.join(
+                                                                    " - "
+                                                                )
+                                                            }
+                                                        </td>
 
-                                                    <td>
-                                                        ${acorde.qualidade}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.qualidade
+                                                            }
+                                                        </td>
 
-                                                </tr>
+                                                    </tr>
 
-                                            `;
+                                                `;
 
-                                        }
-                                    ).join("")}
+                                            }
+                                        ).join("")
+                                    }
 
                                 </tbody>
 
@@ -1895,37 +2018,51 @@ if (botao) {
 
                                 <tbody>
 
-                                    ${campoHarmonico.tetrades.map(
-                                        function (acorde) {
+                                    ${
+                                        campoHarmonico.tetrades.map(
+                                            function (
+                                                acorde
+                                            ) {
 
-                                            return `
+                                                return `
 
-                                                <tr>
+                                                    <tr>
 
-                                                    <td>
-                                                        ${acorde.grau}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.grau
+                                                            }
+                                                        </td>
 
-                                                    <td>
-                                                        <strong>
-                                                            ${acorde.acorde}
-                                                        </strong>
-                                                    </td>
+                                                        <td>
+                                                            <strong>
+                                                                ${
+                                                                    acorde.acorde
+                                                                }
+                                                            </strong>
+                                                        </td>
 
-                                                    <td>
-                                                        ${acorde.notas.join(" - ")}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.notas.join(
+                                                                    " - "
+                                                                )
+                                                            }
+                                                        </td>
 
-                                                    <td>
-                                                        ${acorde.qualidade}
-                                                    </td>
+                                                        <td>
+                                                            ${
+                                                                acorde.qualidade
+                                                            }
+                                                        </td>
 
-                                                </tr>
+                                                    </tr>
 
-                                            `;
+                                                `;
 
-                                        }
-                                    ).join("")}
+                                            }
+                                        ).join("")
+                                    }
 
                                 </tbody>
 
