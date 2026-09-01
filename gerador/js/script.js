@@ -2179,6 +2179,334 @@ function testarGrafiaMusical(
 }
 
 // ======================================================
+// TESTE ESPECÍFICO DAS ESCALAS SIMÉTRICAS
+// ======================================================
+
+function testarEscalasSimetricas(
+    tonalidade,
+    nomeEscala,
+    escala
+) {
+
+    const escalasSimetricas = [
+        "cromatica",
+        "tonsInteiros",
+        "diminutaTomSemitom",
+        "diminutaSemitomTom"
+    ];
+
+
+    // Não testar escalas que não são simétricas.
+    if (
+        !escalasSimetricas.includes(
+            nomeEscala
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const definicao =
+        escalas[nomeEscala];
+
+
+    if (!definicao) {
+
+        throw new Error(
+            "Escala simétrica não encontrada: " +
+            nomeEscala
+        );
+
+    }
+
+
+    // ==================================================
+    // 1. INTERVALOS DA FÓRMULA
+    // ==================================================
+
+    const intervalosEsperados =
+        definicao.formula.map(
+            function (token) {
+
+                const intervalo =
+                    formulaParaSemitons(
+                        token
+                    );
+
+
+                if (
+                    intervalo === undefined
+                ) {
+
+                    throw new Error(
+                        "Fórmula inválida: " +
+                        token
+                    );
+
+                }
+
+
+                return intervalo;
+
+            }
+        );
+
+
+    // ==================================================
+    // 2. VERIFICAR ALTURAS
+    // ==================================================
+
+    const valorTonica =
+        obterValorNotaMusical(
+            tonalidade
+        );
+
+
+    escala.forEach(
+        function (
+            nota,
+            indice
+        ) {
+
+            const valorNota =
+                obterValorNotaMusical(
+                    nota
+                );
+
+
+            const alturaEsperada =
+                (
+                    valorTonica +
+                    intervalosEsperados[indice]
+                ) % 12;
+
+
+            if (
+                valorNota !== alturaEsperada
+            ) {
+
+                throw new Error(
+                    "Altura incorreta na escala simétrica: " +
+                    tonalidade +
+                    " — " +
+                    definicao.nome +
+                    " — " +
+                    definicao.formula[indice] +
+                    " → " +
+                    nota
+                );
+
+            }
+
+        }
+    );
+
+
+    // ==================================================
+    // 3. NÃO PODE HAVER ALTURAS DUPLICADAS
+    // ==================================================
+
+    const valoresEscala =
+        escala.map(
+            function (nota) {
+
+                return obterValorNotaMusical(
+                    nota
+                );
+
+            }
+        );
+
+
+    const alturasUnicas =
+        new Set(
+            valoresEscala
+        );
+
+
+    if (
+        alturasUnicas.size !==
+        escala.length
+    ) {
+
+        throw new Error(
+            "A escala simétrica possui alturas duplicadas: " +
+            tonalidade +
+            " — " +
+            definicao.nome
+        );
+
+    }
+
+
+    // ==================================================
+    // 4. VERIFICAR ESTRUTURA
+    // ==================================================
+
+    const intervalos =
+        obterIntervalosEscala(
+            definicao
+        );
+
+
+    const distancias =
+        calcularDistancias(
+            intervalos
+        );
+
+
+    const soma =
+        distancias.reduce(
+            function (
+                total,
+                valor
+            ) {
+
+                return total + valor;
+
+            },
+            0
+        );
+
+
+    if (
+        soma !== 12
+    ) {
+
+        throw new Error(
+            "A escala simétrica não fecha a oitava: " +
+            definicao.nome
+        );
+
+    }
+
+
+    // ==================================================
+    // 5. CROMÁTICA
+    // ==================================================
+
+    if (
+        nomeEscala === "cromatica"
+    ) {
+
+        distancias.forEach(
+            function (
+                distancia
+            ) {
+
+                if (
+                    distancia !== 1
+                ) {
+
+                    throw new Error(
+                        "A escala cromática deve possuir somente semitons."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ==================================================
+    // 6. TONS INTEIROS
+    // ==================================================
+
+    if (
+        nomeEscala === "tonsInteiros"
+    ) {
+
+        distancias.forEach(
+            function (
+                distancia
+            ) {
+
+                if (
+                    distancia !== 2
+                ) {
+
+                    throw new Error(
+                        "A escala de tons inteiros deve possuir somente tons."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ==================================================
+    // 7. DIMINUTA TOM–SEMITOM
+    // ==================================================
+
+    if (
+        nomeEscala ===
+        "diminutaTomSemitom"
+    ) {
+
+        const estruturaEsperada = [
+            2, 1,
+            2, 1,
+            2, 1,
+            2, 1
+        ];
+
+
+        if (
+            JSON.stringify(distancias) !==
+            JSON.stringify(estruturaEsperada)
+        ) {
+
+            throw new Error(
+                "Estrutura da Diminuta Tom–Semitom incorreta: " +
+                distancias.join(" - ")
+            );
+
+        }
+
+    }
+
+
+    // ==================================================
+    // 8. DIMINUTA SEMITOM–TOM
+    // ==================================================
+
+    if (
+        nomeEscala ===
+        "diminutaSemitomTom"
+    ) {
+
+        const estruturaEsperada = [
+            1, 2,
+            1, 2,
+            1, 2,
+            1, 2
+        ];
+
+
+        if (
+            JSON.stringify(distancias) !==
+            JSON.stringify(estruturaEsperada)
+        ) {
+
+            throw new Error(
+                "Estrutura da Diminuta Semitom–Tom incorreta: " +
+                distancias.join(" - ")
+            );
+
+        }
+
+    }
+
+}
+
+// ======================================================
 // TESTE SISTEMÁTICO DO GERADOR
 // ======================================================
 
@@ -2415,6 +2743,15 @@ testarGrafiaMusical(
     escala
 );
 
+     // ==========================================
+// 7C. VERIFICAR ESCALAS SIMÉTRICAS
+// ==========================================
+
+testarEscalasSimetricas(
+    tonalidade,
+    nomeEscala,
+    escala
+);           
 
                 // ==========================================
                 // 8. ESTRUTURA
