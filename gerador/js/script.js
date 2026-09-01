@@ -913,11 +913,11 @@ function gerarCampoHarmonico(
         frigio: [
             "Menor com 7ª menor",
             "Maior com 7ª maior",
-            "Menor com 7ª menor",
+            "Dominante",
             "Menor com 7ª menor",
             "Meio-diminuto",
             "Maior com 7ª maior",
-            "Dominante"
+            "Menor com 7ª menor"
          ],
 
         lidio: [
