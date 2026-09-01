@@ -1219,7 +1219,6 @@ function obterNotaPorCasa(
 
 }
 
-
 // ======================================================
 // GERAR BRAÇO DO VIOLÃO
 // ======================================================
@@ -1241,11 +1240,12 @@ function gerarBracoViolao(notasEscala) {
         <div class="braco">
 
             <div class="numeracao-casas">
-
     `;
 
-
+    // ==================================================
     // NUMERAÇÃO DAS CASAS
+    // ==================================================
+
     for (let casa = 0; casa <= numeroDeCasas; casa++) {
 
         html += `
@@ -1254,7 +1254,6 @@ function gerarBracoViolao(notasEscala) {
             </div>
         `;
     }
-
 
     html += `
             </div>
@@ -1266,11 +1265,16 @@ function gerarBracoViolao(notasEscala) {
     // ==================================================
 
     afinacaoViolao.forEach(function (corda) {
-html += `
 
-    <div class="linha-corda">
-`;
+        html += `
 
+            <div class="linha-corda">
+        `;
+
+
+        // ==================================================
+        // CASAS
+        // ==================================================
 
         for (
             let casa = 0;
@@ -1278,18 +1282,51 @@ html += `
             casa++
         ) {
 
-            const nota = obterNotaPorCasa(
-                corda,
-                casa
-            );
+            // Nota física encontrada na casa
+            const notaCasa =
+                obterNotaPorCasa(
+                    corda,
+                    casa
+                );
 
 
+            // Valor numérico da nota encontrada
+            const valorCasa =
+                valoresNotas[notaCasa];
+
+
+            // Procurar a mesma altura dentro da escala
+            const notaEscala =
+                notasEscala.find(
+                    function (nota) {
+
+                        return (
+                            valoresNotas[nota] ===
+                            valorCasa
+                        );
+
+                    }
+                );
+
+
+            // A nota pertence à escala?
             const pertenceEscala =
-                notasEscala.includes(nota);
+                notaEscala !== undefined;
 
 
+            // Verificar se é a tônica
             const isTonica =
-                nota === notasEscala[0];
+                pertenceEscala &&
+                valoresNotas[notaEscala] ===
+                valoresNotas[notasEscala[0]];
+
+
+            // Se a nota pertencer à escala,
+            // mostrar a grafia usada pela própria escala.
+            const notaExibida =
+                pertenceEscala
+                    ? notaEscala
+                    : notaCasa;
 
 
             html += `
@@ -1303,7 +1340,7 @@ html += `
                 >
 
                     <span class="nome-nota">
-                        ${nota}
+                        ${notaExibida}
                     </span>
 
                 </div>
