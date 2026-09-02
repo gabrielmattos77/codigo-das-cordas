@@ -992,6 +992,16 @@ function identificarTriade(
         "0,4,8": {
             simbolo: "+",
             qualidade: "Aumentado"
+        },
+
+        "0,2,7": {
+            simbolo: "sus2",
+            qualidade: "Suspenso 2"
+        },
+
+        "0,5,7": {
+            simbolo: "sus4",
+            qualidade: "Suspenso 4"
         }
 
     };
@@ -1139,6 +1149,30 @@ function identificarTetrade(
             simbolo: "7#5",
             qualidade:
                 "Aumentado com 7ª menor"
+        },
+
+        "0,2,7,10": {
+            simbolo: "7sus2",
+            qualidade:
+                "Dominante suspenso 2"
+        },
+
+        "0,5,7,10": {
+            simbolo: "7sus4",
+            qualidade:
+                "Dominante suspenso 4"
+        },
+
+        "0,4,7,9": {
+            simbolo: "6",
+            qualidade:
+                "Maior com 6ª"
+        },
+
+        "0,3,7,9": {
+            simbolo: "m6",
+            qualidade:
+                "Menor com 6ª"
         }
 
     };
@@ -1427,10 +1461,26 @@ function gerarBracoViolao(
         casa++
     ) {
 
+        const marcadorCasa =
+            [3, 5, 7, 9, 12].includes(casa);
+
+        const marcadorDuplo =
+            casa === 12;
+
         html += `
 
             <div class="numero-casa">
-                ${casa}
+
+                <span>${casa}</span>
+
+                ${
+                    marcadorCasa
+                        ? `
+                            <span class="marcador-numero ${marcadorDuplo ? "marcador-numero-duplo" : ""}"></span>
+                        `
+                        : ""
+                }
+
             </div>
 
         `;
@@ -1453,7 +1503,7 @@ function gerarBracoViolao(
 
             html += `
 
-                <div class="linha-corda">
+                <div class="linha-corda corda-${afinacaoViolao.indexOf(corda) + 1}">
             `;
 
 
@@ -1468,6 +1518,12 @@ function gerarBracoViolao(
                         corda,
                         casa
                     );
+
+                const cordaIndex =
+                    afinacaoViolao.indexOf(corda);
+
+                const ehCordaSolta =
+                    casa === 0;
 
 
                 const valorCasa =
@@ -1513,6 +1569,13 @@ function gerarBracoViolao(
                         : notaCasa;
 
 
+                const marcadorCasa =
+                    [3, 5, 7, 9, 12].includes(casa);
+
+                const marcadorDuplo =
+                    casa === 12;
+
+
                 html += `
 
                     <div
@@ -1529,7 +1592,24 @@ function gerarBracoViolao(
                                     : ""
                             }
                         "
+                        data-nota="${notaExibida}"
+                        data-grau="${
+                            pertenceEscala
+                                ? notasEscala.indexOf(notaEscala) + 1
+                                : ""
+                        }"
+                        data-tonica="${isTonica}"
+                        data-casa="${casa}"
+                        data-corda="${corda}"
                     >
+
+                        ${
+                            marcadorCasa
+                                ? `
+                                    <span class="marcador-casa ${marcadorDuplo ? "marcador-duplo" : ""}"></span>
+                                `
+                                : ""
+                        }
 
                         <span class="nome-nota">
                             ${notaExibida}
@@ -1709,10 +1789,28 @@ if (botao) {
             // CAMPO HARMÔNICO
             // ------------------------------------------
 
+            const escalasComCampoHarmonico =
+                [
+                    "pentatonicaMaior",
+                    "pentatonicaMenor",
+                    "bluesMaior",
+                    "bluesMenor",
+                    "cromatica",
+                    "tonsInteiros",
+                    "diminutaTomSemitom",
+                    "diminutaSemitomTom"
+                ];
+
             const campoHarmonico =
-                gerarCampoHarmonico(
-                    escala
-                );
+                escalasComCampoHarmonico.includes(
+                    tipoEscala
+                )
+                    ? gerarCampoHarmonicoEscala(
+                        escala
+                    )
+                    : gerarCampoHarmonico(
+                        escala
+                    );
 
 
             // ------------------------------------------
@@ -1888,7 +1986,7 @@ if (botao) {
                     <div class="campo-harmonico">
 
                         <h3>
-                            🎹 Campo Harmônico — Tríades
+                            ${escalasComCampoHarmonico.includes(tipoEscala) ? "🎹 Estruturas Harmônicas da Escala — 3 notas" : "🎹 Campo Harmônico — Tríades"}
                         </h3>
 
 
@@ -1985,7 +2083,7 @@ if (botao) {
                     <div class="campo-harmonico">
 
                         <h3>
-                            🎹 Campo Harmônico — Tétrades
+                            ${escalasComCampoHarmonico.includes(tipoEscala) ? "🎹 Estruturas Harmônicas da Escala — 4 notas" : "🎹 Campo Harmônico — Tétrades"}
                         </h3>
 
 
@@ -3479,4 +3577,269 @@ function executarTestesSimetricasProfundo() {
 // ======================================================
 
 executarTestesSimetricasProfundo();
+
+// ======================================================
+// INTERAÇÃO COM AS NOTAS DO BRAÇO
+// ======================================================
+
+document.addEventListener(
+    "click",
+    function (evento) {
+
+        const casa =
+            evento.target.closest(".casa");
+
+        if (!casa) {
+            return;
+        }
+
+        const nota =
+            casa.dataset.nota;
+
+        const grau =
+            Number(casa.dataset.grau);
+
+        const tonica =
+            casa.dataset.tonica === "true";
+
+        const numeroCasa =
+            Number(casa.dataset.casa);
+
+        const corda =
+            casa.dataset.corda;
+
+        if (!grau) {
+            return;
+        }
+
+
+        // --------------------------------------------------
+        // OITAVA
+        // --------------------------------------------------
+
+        const oitava =
+            tonica && numeroCasa === 12
+                ? "8ª"
+                : "";
+
+
+        // --------------------------------------------------
+        // MENSAGEM
+        // --------------------------------------------------
+
+        let mensagem =
+            `Nota: ${nota}\n` +
+            `Grau: ${grau}º\n` +
+            `Corda: ${corda}\n` +
+            `Casa: ${numeroCasa}`;
+
+
+        if (oitava) {
+            mensagem += `\nOitava: ${oitava}`;
+        }
+
+
+        if (tonica) {
+            mensagem += "\nTônica";
+        }
+
+
+        alert(mensagem);
+
+    }
+);
+
+
+// ======================================================
+// CAMPO HARMÔNICO — ESCALAS NÃO HEPTATÔNICAS
+// ======================================================
+
+function gerarCampoHarmonicoEscala(
+    notasEscala
+) {
+
+    if (
+        !Array.isArray(notasEscala) ||
+        notasEscala.length < 5
+    ) {
+        return null;
+    }
+
+
+    const grausRomanos = [
+        "I", "II", "III", "IV",
+        "V", "VI", "VII", "VIII",
+        "IX", "X", "XI", "XII"
+    ];
+
+
+    const graus =
+        notasEscala.map(
+            function (_, indice) {
+                return grausRomanos[indice];
+            }
+        );
+
+
+    function gerarAcorde(
+        indice,
+        quantidade
+    ) {
+
+        const indices = [];
+
+        for (
+            let passo = 0;
+            passo < quantidade;
+            passo++
+        ) {
+
+            const posicao =
+                (
+                    indice +
+                    passo * 2
+                ) % notasEscala.length;
+
+            indices.push(posicao);
+
+        }
+
+
+        return indices.map(
+            function (posicao) {
+                return notasEscala[posicao];
+            }
+        );
+
+    }
+
+
+    function gerarEstrutura(
+        indice,
+        quantidade
+    ) {
+
+        const estruturas = [];
+
+        for (
+            let passo = 0;
+            passo < quantidade;
+            passo++
+        ) {
+
+            const posicao =
+                (
+                    indice +
+                    passo * 2
+                ) % notasEscala.length;
+
+            estruturas.push(
+                grausRomanos[posicao]
+            );
+
+        }
+
+        return estruturas.join(" – ");
+
+    }
+
+
+    const triades =
+        graus.map(
+            function (grau, indice) {
+
+                const notasAcorde =
+                    gerarAcorde(
+                        indice,
+                        3
+                    );
+
+                const estrutura =
+                    identificarTriade(
+                        notasAcorde
+                    );
+
+                const reconhecida =
+                    estrutura &&
+                    estrutura.simbolo !== "?";
+
+
+                return {
+                    grau: grau,
+
+                    acorde:
+                        reconhecida
+                            ? notasAcorde[0] +
+                              estrutura.simbolo
+                            : notasAcorde.join(" - "),
+
+                    notas:
+                        notasAcorde,
+
+                    qualidade:
+                        reconhecida
+                            ? estrutura.qualidade
+                            : "Estrutura da escala: " +
+                              gerarEstrutura(
+                                  indice,
+                                  3
+                              )
+                };
+
+            }
+        );
+
+
+    const tetrades =
+        graus.map(
+            function (grau, indice) {
+
+                const notasAcorde =
+                    gerarAcorde(
+                        indice,
+                        4
+                    );
+
+                const estrutura =
+                    identificarTetrade(
+                        notasAcorde
+                    );
+
+                const reconhecida =
+                    estrutura &&
+                    estrutura.simbolo !== "?";
+
+
+                return {
+                    grau: grau,
+
+                    acorde:
+                        reconhecida
+                            ? notasAcorde[0] +
+                              estrutura.simbolo
+                            : notasAcorde.join(" - "),
+
+                    notas:
+                        notasAcorde,
+
+                    qualidade:
+                        reconhecida
+                            ? estrutura.qualidade
+                            : "Estrutura da escala: " +
+                              gerarEstrutura(
+                                  indice,
+                                  4
+                              )
+                };
+
+            }
+        );
+
+
+    return {
+        triades: triades,
+        tetrades: tetrades
+    };
+
+}
 

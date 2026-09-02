@@ -1,66 +1,454 @@
+/* ======================================================
+   CÓDIGO DAS CORDAS
+   Identidade visual — Etapa 1
+   ====================================================== */
+
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #2b1b10;
-    color: #f5ead7;
+:root {
+    --madeira-escura: #1b120c;
+    --madeira: #362011;
+    --madeira-media: #362011;
+    --madeira-clara: #4a2f1b;
+
+    --dourado: #d4a85c;
+    --dourado-claro: #e7c47d;
+    --dourado-escuro: #8f6330;
+
+    --creme: #efe0c2;
+    --creme-suave: #d8c6a8;
+
+    --painel: #ead9b8;
+    --painel-escuro: #dbc49a;
+    --texto-escuro: #362011;
+
+    --borda: #b58a4a;
 }
 
+
+/* ======================================================
+   BASE
+   ====================================================== */
+
+html {
+    min-height: 100%;
+    background: var(--madeira-escura);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--creme);
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212, 168, 92, 0.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #1b120c 0%,
+            #362011 48%,
+            #21150d 100%
+        );
+
+    position: relative;
+}
+
+
+/* ======================================================
+   DETALHE SUTIL DE CORDAS NO FUNDO
+   ====================================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.045;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 28px,
+            rgba(255, 255, 255, 0.35) 29px,
+            transparent 30px
+        );
+
+    z-index: 0;
+}
+
+
+/* ======================================================
+   CABEÇALHO
+   ====================================================== */
+
 header {
+    position: relative;
+    z-index: 1;
+
     text-align: center;
-    padding: 40px 20px;
+
+    padding:
+        38px 20px
+        28px;
+
+    border-bottom:
+        1px solid
+        rgba(181, 138, 74, 0.22);
+}
+
+header::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 2px;
+
+    margin:
+        22px auto
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dourado),
+            transparent
+        );
+
+    opacity: 0.8;
 }
 
 header h1 {
-    margin-bottom: 10px;
-    color: #d4a85c;
+    margin: 0;
+
+    color: var(--dourado-claro);
+
+    font-size: clamp(32px, 6vw, 48px);
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.45);
 }
 
 header p {
-    color: #d8c6a8;
+    margin:
+        10px 0
+        0;
+
+    color: var(--creme-suave);
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.35px;
+
+    opacity: 0.92;
 }
+
+
+/* ======================================================
+   CONTEÚDO
+   ====================================================== */
 
 main {
-    max-width: 1000px;
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1200px;
+
     margin: auto;
-    padding: 20px;
+
+    padding:
+        24px 20px
+        50px;
 }
 
+
+/* ======================================================
+   CARD PRINCIPAL
+   ====================================================== */
+
 .card {
-    background: #4a2f1b;
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #9c7138;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(74, 47, 27, 0.98),
+            rgba(54, 32, 17, 0.98)
+        );
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(181, 138, 74, 0.70);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+
+    overflow: hidden;
 }
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 8%;
+    right: 8%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(231, 196, 125, 0.65),
+            transparent
+        );
+}
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(212, 168, 92, 0.05),
+            transparent 35%,
+            transparent 65%,
+            rgba(212, 168, 92, 0.04)
+        );
+
+    opacity: 0.35;
+
+    pointer-events: none;
+}
+
+
+/* ======================================================
+   TÍTULOS
+   ====================================================== */
+
+.card h2 {
+    margin:
+        0 0
+        24px;
+
+    color: var(--dourado-claro);
+
+    font-size: 25px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+.card h2::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 2px;
+
+    margin-top: 10px;
+
+    background: var(--dourado);
+
+    border-radius: 999px;
+
+    opacity: 0.8;
+}
+
+
+/* ======================================================
+   LABELS
+   ====================================================== */
+
+label {
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--creme-suave);
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* ======================================================
+   CAMPOS
+   ====================================================== */
 
 select,
 button {
     width: 100%;
-    padding: 12px;
-    margin-top: 16px;
-    border-radius: 8px;
-    border: 1px solid #b58a4a;
-    font-size: 20px;
+
+    min-height: 50px;
+
+    padding:
+        12px 15px;
+
+    margin-top: 9px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        var(--borda);
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    transition:
+        border-color 0.16s ease,
+        box-shadow 0.16s ease,
+        transform 0.12s ease,
+        background 0.16s ease;
 }
+
+
+/* ======================================================
+   SELECT
+   ====================================================== */
 
 select {
-    background: #f1e3c6;
-    color: #3a2514;
+    appearance: auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #efe0c2,
+            #e9d7b2
+        );
+
+    color: var(--texto-escuro);
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        0 3px 10px rgba(0, 0, 0, 0.14);
 }
 
+select:hover {
+    border-color: var(--dourado-claro);
+}
+
+select:focus {
+    outline: none;
+
+    border-color: var(--dourado-claro);
+
+    box-shadow:
+        0 0 0 3px rgba(212, 168, 92, 0.16),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ======================================================
+   BOTÃO PRINCIPAL
+   ====================================================== */
+
 button {
-    background: #7a4b22;
-    color: #fff4df;
+    margin-top: 24px;
+
+    border-color:
+        #b9853f;
+
+    background:
+        linear-gradient(
+            180deg,
+            #815124,
+            #70451f
+        );
+
+    color: #f3e6ca;
+
     cursor: pointer;
-    font-weight: bold;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
 button:hover {
-    background: #97642f;
+    background:
+        linear-gradient(
+            180deg,
+            #94612d,
+            #76502a
+        );
+
+    border-color: var(--dourado-claro);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.32),
+        0 0 18px rgba(212, 168, 92, 0.08);
+}
+
+button:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.30);
+}
+
+button:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(212, 168, 92, 0.20),
+        0 6px 15px rgba(0, 0, 0, 0.28);
 }
 
 
@@ -69,104 +457,196 @@ button:hover {
    ====================================================== */
 
 #resultado {
-    margin-top: 25px;
-    padding: 20px;
-    background: #ead9b8;
-    color: #3a2514;
-    border: 1px solid #b58a4a;
-    border-radius: 10px;
+    margin-top: 26px;
+
+    padding: 21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee0c1,
+            #e4d1a8
+        );
+
+    color: var(--texto-escuro);
+
+    border:
+        1px solid
+        var(--borda);
+
+    border-radius: 12px;
+
     text-align: center;
-    font-size: 20px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+    animation:
+        aparecer 0.22s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
 /* ======================================================
-   TABELA DE GRAUS E INTERVALOS
-   ====================================================== */
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 15px;
-    overflow: hidden;
-    border-radius: 8px;
-    border: 1px solid #b58a4a;
-    background: #f3e6ca;
-}
-
-
-/* ======================================================
-   BLOCOS DE INFORMAÇÃO DA ESCALA
+   BLOCOS DE INFORMAÇÃO
    ====================================================== */
 
 .info-escala {
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .bloco-resultado {
     margin-bottom: 18px;
-    padding: 15px;
-    background: #dbc49a;
-    color: #3a2514;
-    border-radius: 10px;
-    border: 1px solid #b58a4a;
+
+    padding: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dbc49a,
+            #d4b77a
+        );
+
+    color: var(--texto-escuro);
+
+    border:
+        1px solid
+        rgba(181, 138, 74, 0.85);
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .bloco-resultado strong {
     display: block;
+
     margin-bottom: 8px;
-    color: #6b421f;
+
+    color: #603a1c;
+
+    font-size: 16px;
 }
 
 .bloco-resultado p {
     margin: 0;
+
     line-height: 1.6;
 }
 
 
 /* ======================================================
-   TABELA
+   TABELAS
    ====================================================== */
 
 .tabela-container {
     width: 100%;
+
     overflow-x: auto;
+
     margin-top: 20px;
+
+    border-radius: 10px;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        var(--borda);
+
+    background: #efe0c2;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.16);
 }
 
 th,
 td {
-    padding: 12px 18px;
+    padding: 14px 18px;
+
     text-align: center;
-    border-bottom: 1px solid #c7a873;
+
+    border-bottom:
+        1px solid
+        #bda06b;
+
+    vertical-align: middle;
 }
 
 th {
-    font-weight: bold;
-    background: #6f431e;
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            180deg,
+            #76502a,
+            #603a1c
+        );
+
     color: #fff1d2;
+
+    letter-spacing: 0.3px;
+
+    text-transform: none;
 }
 
 td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #3a2514;
-    background: #f3e6ca;
+    padding-top: 13px;
+    padding-bottom: 13px;
+
+    color: var(--texto-escuro);
+
+    background: #efe0c2;
+
+    line-height: 1.45;
 }
 
 tr:nth-child(even) td {
-    background: #ead8b6;
+    background: #e6d5b4;
 }
 
 tr:hover td {
-    background: #dfc395;
+    background: #dcc29a;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 
 /* ======================================================
-   ESPAÇAMENTO ENTRE AS COLUNAS
+   COLUNAS
    ====================================================== */
 
 th:nth-child(1),
@@ -200,179 +680,103 @@ td:nth-child(5) {
    ====================================================== */
 
 .campo-harmonico {
-    margin-top: 30px;
+    margin-top: 36px;
 }
 
 .campo-harmonico h3 {
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #6b421f;
+
+    color: #5a371d;
+
+    font-size: 20px;
 }
 
 .campo-harmonico table {
     margin-top: 0;
 }
 
-
-/* ======================================================
-   DESTAQUE DOS ACORDES
-   ====================================================== */
-
 .campo-harmonico td strong {
-    color: #7a4b22;
-}
-
-
-
-
-/* ======================================================
-   CAMPO HARMÔNICO — CELULAR
-   ====================================================== */
-
-@media (max-width: 768px) {
-
-    .campo-harmonico {
-        margin-top: 24px;
-    }
-
-    .campo-harmonico h3 {
-        margin-top: 24px;
-        margin-bottom: 12px;
-        font-size: 18px;
-        line-height: 1.3;
-    }
-
-    .campo-harmonico .tabela-container {
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        border-radius: 8px;
-    }
-
-    .campo-harmonico table {
-        width: max-content;
-        min-width: 100%;
-        margin-top: 0;
-    }
-
-    .campo-harmonico th,
-    .campo-harmonico td {
-        padding: 9px 12px;
-        font-size: 14px;
-        white-space: nowrap;
-    }
-
-    /* Grau */
-    .campo-harmonico th:nth-child(1),
-    .campo-harmonico td:nth-child(1) {
-        min-width: 58px;
-    }
-
-    /* Acorde */
-    .campo-harmonico th:nth-child(2),
-    .campo-harmonico td:nth-child(2) {
-        min-width: 80px;
-    }
-
-    /* Notas */
-    .campo-harmonico th:nth-child(3),
-    .campo-harmonico td:nth-child(3) {
-        min-width: 150px;
-    }
-
-    /* Qualidade */
-    .campo-harmonico th:nth-child(4),
-    .campo-harmonico td:nth-child(4) {
-        min-width: 120px;
-    }
-
+    color: #6b421f;
 }
 
 
 /* ======================================================
-   RESPONSIVO
-   ====================================================== */
-
-@media (max-width: 768px) {
-
-    main {
-        width: 100%;
-        padding: 12px;
-    }
-
-    .card {
-        padding: 18px;
-    }
-
-    #resultado {
-        padding: 15px;
-        font-size: 18px;
-    }
-
-    th,
-    td {
-        padding: 10px 12px;
-        font-size: 15px;
-    }
-
-}
-
-/* =========================================
    BRAÇO DO VIOLÃO
-   ========================================= */
+   ====================================================== */
 
 #bracoViolao {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 #bracoViolao h3 {
     margin: 0 0 18px;
-    color: #f5ead7;
+
+    color: var(--creme);
+
     font-size: 22px;
 }
 
 
-/* =========================================
+/* ======================================================
    CORPO DO BRAÇO
-   ========================================= */
+   ====================================================== */
 
 .braco {
     width: 100%;
+
     overflow-x: auto;
 
-    padding: 20px 14px 22px;
+    padding:
+        20px 14px
+        22px;
 
     background:
         linear-gradient(
             to bottom,
-            #8d5c2e,
-            #70451f
+            #5a371d 0%,
+            #6b421f 18%,
+            #4a2f1b 50%,
+            #603a1c 82%,
+            #4a2f1b 100%
         );
 
-    border: 2px solid #b58a4a;
+    border:
+        2px solid
+        var(--borda);
+
     border-radius: 12px;
 
     box-shadow:
-        inset 0 0 25px rgba(0,0,0,.35),
-        0 7px 18px rgba(0,0,0,.30);
+        inset 0 0 28px rgba(0, 0, 0, 0.48),
+        inset 0 2px 4px rgba(255, 220, 160, 0.08),
+        0 7px 18px rgba(0, 0, 0, 0.30);
+
+    -webkit-overflow-scrolling: touch;
 }
 
 
-/* =========================================
+/* ======================================================
    NUMERAÇÃO DAS CASAS
-   ========================================= */
+   ====================================================== */
+
+/* ======================================================
+   NUMERAÇÃO DAS CASAS
+   ====================================================== */
 
 .numeracao-casas {
     display: grid;
-    grid-template-columns: 1fr repeat(12, 1fr);
+
+    grid-template-columns:
+        1fr repeat(12, 1fr);
+
     width: 100%;
+
     min-width: 0;
 
     height: 34px;
 }
 
-/* Retira apenas o número 0, mas mantém o espaço */
 .numeracao-casas .numero-casa:first-child {
     visibility: hidden;
 }
@@ -383,23 +787,26 @@ td:nth-child(5) {
     align-items: center;
     justify-content: center;
 
-    color: #f4dfb5;
+    color: #f0dfbd;
 
     font-size: 15px;
+
     font-weight: bold;
 }
 
 
-/* =========================================
+/* ======================================================
    LINHAS DAS CORDAS
-   ========================================= */
+   ====================================================== */
 
 .linha-corda {
     display: grid;
 
-    grid-template-columns: repeat(13, 1fr);
+    grid-template-columns:
+        repeat(13, 1fr);
 
     width: 100%;
+
     min-width: 0;
 
     height: 50px;
@@ -408,9 +815,9 @@ td:nth-child(5) {
 }
 
 
-/* =========================================
+/* ======================================================
    NOME DA CORDA
-   ========================================= */
+   ====================================================== */
 
 .nome-corda {
     width: 50px;
@@ -423,20 +830,23 @@ td:nth-child(5) {
 
     background: #4b2d16;
 
-    color: #fff4df;
+    color: #f3e6ca;
 
     font-size: 15px;
+
     font-weight: bold;
 
-    border-right: 4px solid #d8bd87;
+    border-right:
+        4px solid
+        #d8bd87;
 
     z-index: 10;
 }
 
 
-/* =========================================
+/* ======================================================
    CASAS
-   ========================================= */
+   ====================================================== */
 
 .casa {
     position: relative;
@@ -445,32 +855,320 @@ td:nth-child(5) {
     height: 50px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background: transparent;
 
-    border-right: 2px solid rgba(220, 220, 220, 0.55);
+    border-right:
+        2px solid
+        rgba(220, 220, 220, 0.55);
 
     z-index: 3;
 }
 
-/* =========================================
-   COLUNA 0 — CORDAS SOLTAS
-   ========================================= */
 
-.linha-corda .casa:first-of-type {
-    background: #4a2f1b !important;
+/* ======================================================
+   MARCADORES DO BRAÇO
+   ====================================================== */
 
-    border-left: 3px solid #c49a5c;
-
-    box-shadow:
-        inset -8px 0 12px rgba(0, 0, 0, 0.25);
+.marcadores-casas {
+    display: none;
 }
 
-/* =========================================
+/* ======================================================
+   MARCADORES DAS CASAS
+   ====================================================== */
+
+.casa .marcador-casa {
+    display: none;
+}
+
+
+
+.numero-casa > span:first-child {
+    position: relative;
+    top: -4px;
+}
+
+/* ======================================================
+   MARCADORES ABAIXO DA NUMERAÇÃO
+   ====================================================== */
+
+.numero-casa {
+    position: relative;
+}
+
+.marcador-numero {
+    position: absolute;
+    display: block;
+
+    width: 9px;
+    height: 9px;
+
+    left: 50%;
+    top: 25px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #c7c7c7 45%,
+        #8f8f8f
+    );
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.marcador-numero-duplo {
+    position: absolute;
+
+    display: block;
+
+    width: 22px;
+    height: 9px;
+
+    left: 50%;
+    top: 25px;
+
+    transform: translateX(-50%);
+
+    background: transparent;
+    box-shadow: none;
+}
+
+.marcador-numero-duplo::before,
+.marcador-numero-duplo::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #c7c7c7 45%,
+        #8f8f8f
+    );
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.marcador-numero-duplo::before {
+    left: 0;
+}
+
+.marcador-numero-duplo::after {
+    right: 0;
+}
+
+
+/* ======================================================
+   NOTAS DA ESCALA
+   ====================================================== */
+
+.casa .nome-nota {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    color: rgba(255, 244, 223, 0.38);
+    font-size: 12px;
+    font-weight: normal;
+
+    background: transparent;
+
+    position: relative;
+    z-index: 5;
+}
+
+.casa.nota-escala .nome-nota {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #d8bd87;
+    color: #362011;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.35);
+
+    z-index: 6;
+}
+
+
+/* ======================================================
+   TÔNICA
+   ====================================================== */
+
+.casa.nota-escala.tonica .nome-nota {
+    width: 40px;
+    height: 40px;
+
+    background: #f3e6ca;
+    color: #6b421f;
+
+    border: 3px solid #c49a5c;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 244, 223, 0.20),
+        0 3px 8px rgba(0, 0, 0, 0.45);
+
+    z-index: 7;
+}
+
+/* ======================================================
+   TÔNICA
+   ====================================================== */
+
+.casa.nota-escala.tonica .nome-nota {
+    width: 40px;
+    height: 40px;
+
+    background: #f3e6ca;
+
+    color: #6b421f;
+
+    border:
+        3px solid
+        #c49a5c;
+
+    font-size: 16px;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 244, 223, 0.20),
+        0 3px 8px rgba(0, 0, 0, 0.45);
+
+    z-index: 6;
+}
+
+
+/* ======================================================
+   PESTANA DO VIOLÃO
+   ====================================================== */
+
+.braco {
+    position: relative;
+}
+
+.braco::before {
+    content: "";
+
+    position: absolute;
+
+    top: 54px;
+    bottom: 22px;
+
+    left: calc(14px + ((100% - 28px) / 13) - 7px);
+
+    width: 14px;
+
+    background: linear-gradient(
+        to right,
+        #b9b5a9,
+        #f1e5cc 25%,
+        #f7ecd7 50%,
+        #d8d4c5 75%,
+        #aaa69b
+    );
+
+    border-radius: 3px;
+
+    box-shadow:
+        1px 0 3px rgba(0, 0, 0, 0.35),
+        inset 1px 0 2px rgba(255, 255, 255, 0.8),
+        inset -1px 0 2px rgba(0, 0, 0, 0.18);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* ======================================================
+   TRANSIÇÃO DAS CORDAS NA PESTANA
+   ====================================================== */
+
+.braco {
+    position: relative;
+}
+
+.linha-corda {
+    position: relative;
+}
+
+
+/* ======================================================
+   IDENTIFICAÇÃO DAS CORDAS
+   ====================================================== */
+
+
+
+
+
+
+
+.nome-corda {
+    width: 50px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #4b2d16;
+    color: #f3e6ca;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    border-right: 4px solid #d8bd87;
+
+    position: relative;
+    z-index: 10;
+
+    box-shadow:
+        inset -5px 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.linha-corda {
+    position: relative;
+}
+
+
+/* ======================================================
+   CORDAS SOLTAS
+   ====================================================== */
+
+/* ======================================================
    CORDA METÁLICA
-   ========================================= */
+   ====================================================== */
 
 .linha-corda::after {
     content: "";
@@ -486,13 +1184,14 @@ td:nth-child(5) {
 
     transform: translateY(-50%);
 
-    background: linear-gradient(
-        to bottom,
-        #eeeeee,
-        #aaaaaa,
-        #ffffff,
-        #888888
-    );
+    background:
+        linear-gradient(
+            to bottom,
+            #eeeeee,
+            #aaaaaa,
+            #ffffff,
+            #888888
+        );
 
     pointer-events: none;
 
@@ -518,217 +1217,1327 @@ td:nth-child(5) {
 }
 
 
-/* =========================================
-   NOTAS
-   ========================================= */
-
-.nome-nota {
-    position: relative;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    z-index: 10;
-}
-
-
-/* =========================================
-   NOTAS DA ESCALA
-   ========================================= */
-
-.casa.nota-escala .nome-nota {
-    background: #d4a85c;
-
-    color: #3a2514;
-
-    font-weight: bold;
-
-    box-shadow:
-        0 2px 5px rgba(0,0,0,.35),
-        inset 0 1px 1px rgba(255,255,255,.35);
-}
-
-
-/* =========================================
-   TÔNICA
-   ========================================= */
-
-.casa.tonica .nome-nota {
-    background: #f2ca68;
-
-    color: #3a2514;
-
-    font-size: 15px;
-    font-weight: 900;
-
-    border: 3px solid #fff3c7;
-
-    box-shadow:
-        0 0 0 2px rgba(60, 30, 5, 0.75),
-        0 0 10px rgba(255, 220, 120, 0.95),
-        0 0 20px rgba(255, 200, 80, 0.65),
-        0 4px 9px rgba(0, 0, 0, 0.5);
-}
-
-
-/* =========================================
-   NOTAS FORA DA ESCALA
-   ========================================= */
-
-.casa:not(.nota-escala) .nome-nota {
-    color: rgba(255,244,223,.35);
-
-    background: transparent;
-}
-
-
-/* =========================================
-   CASAS MARCADAS NO BRAÇO
-   ========================================= */
-
-.linha-corda:nth-child(4) .casa:nth-child(4)::before,
-.linha-corda:nth-child(4) .casa:nth-child(6)::before,
-.linha-corda:nth-child(4) .casa:nth-child(8)::before,
-.linha-corda:nth-child(4) .casa:nth-child(10)::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: rgba(245,225,185,.55);
-
-    bottom: 5px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-
-/* =========================================
-   CASA 12 — DUPLA MARCAÇÃO
-   ========================================= */
-
-.linha-corda:nth-child(4) .casa:nth-child(14)::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: rgba(245,225,185,.60);
-
-    top: 13px;
-    left: 25%;
-
-}
-
-.linha-corda:nth-child(4) .casa:nth-child(14)::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: rgba(245,225,185,.60);
-
-    top: 13px;
-    right: 25%;
-
-}
-
-
-/* =========================================
-   RESPONSIVO — BRAÇO DO VIOLÃO
-   ========================================= */
+/* ======================================================
+   CAMPO HARMÔNICO — CELULAR
+   ====================================================== */
 
 @media (max-width: 768px) {
 
+    header {
+        padding:
+            28px 16px
+            22px;
+    }
+
+    header h1 {
+        font-size: 31px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    main {
+        width: 100%;
+
+        padding:
+            14px 12px
+            35px;
+    }
+
+    .card {
+        padding: 20px 16px;
+
+        border-radius: 15px;
+    }
+
+    .card h2 {
+        font-size: 22px;
+
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    select,
+    button {
+        min-height: 48px;
+
+        font-size: 16px;
+    }
+
+    #resultado {
+        padding: 16px;
+
+        font-size: 17px;
+    }
+
+    th,
+    td {
+        padding:
+            10px 12px;
+
+        font-size: 15px;
+    }
+
+    .campo-harmonico {
+        margin-top: 24px;
+    }
+
+    .campo-harmonico h3 {
+        margin-top: 24px;
+
+        margin-bottom: 12px;
+
+        font-size: 18px;
+
+        line-height: 1.3;
+    }
+
+    .campo-harmonico .tabela-container {
+        width: 100%;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        border-radius: 8px;
+    }
+
+    .campo-harmonico table {
+        width: max-content;
+
+        min-width: 100%;
+
+        margin-top: 0;
+    }
+
+    .campo-harmonico th,
+    .campo-harmonico td {
+        padding:
+            9px 12px;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+    }
+
+    .campo-harmonico th:nth-child(1),
+    .campo-harmonico td:nth-child(1) {
+        min-width: 58px;
+    }
+
+    .campo-harmonico th:nth-child(2),
+    .campo-harmonico td:nth-child(2) {
+        min-width: 80px;
+    }
+
+    .campo-harmonico th:nth-child(3),
+    .campo-harmonico td:nth-child(3) {
+        min-width: 150px;
+    }
+
+    .campo-harmonico th:nth-child(4),
+    .campo-harmonico td:nth-child(4) {
+        min-width: 120px;
+    }
+
+    #bracoViolao {
+        margin-top: 25px;
+    }
+
     #bracoViolao h3 {
+        font-size: 20px;
+    }
+}
+
+
+/* ======================================================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   ====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ======================================================
+   INVERSÃO DA DIREÇÃO DO BRAÇO
+   ====================================================== */
+
+.braco {
+    transform: scaleX(-1);
+}
+
+.braco > * {
+    transform: scaleX(-1);
+}
+
+
+/* ======================================================
+   DIREÇÃO CORRETA DO BRAÇO — DIREITA PARA ESQUERDA
+   ====================================================== */
+
+/* Remove o espelhamento anterior */
+.braco {
+    transform: none;
+}
+
+.braco > * {
+    transform: none;
+}
+
+/* Inverte a ordem das casas */
+
+/* ======================================================
+   BRAÇO DO VIOLÃO — ORIENTAÇÃO
+   ====================================================== */
+
+.numeracao-casas,
+.linha-corda {
+    direction: rtl;
+}
+
+/* ======================================================
+   PESTANA — DIVISÃO ENTRE CASA 0 E CASA 1
+   ====================================================== */
+
+.braco::before {
+    top: 79px;
+    bottom: auto;
+    height: 250px;
+
+    left: auto;
+    right: calc(14px + ((100% - 28px) / 13) - 7px);
+
+    width: 14px;
+}
+
+/* ======================================================
+   TRASTES
+   ====================================================== */
+
+/* Retira qualquer traste antigo das casas */
+.linha-corda .casa {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Trastes contínuos, do centro da 1ª ao centro da 6ª corda */
+.braco::after {
+    content: "";
+
+    position: absolute;
+
+    top: 79px;
+    left: 14px;
+    right: 14px;
+
+    height: 250px;
+
+    background:
+        repeating-linear-gradient(
+            to right,
+            #bfc3c5 0,
+            #e5e7e8 2px,
+            transparent 2px,
+            transparent calc(100% / 13)
+        );
+
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* ======================================================
+   GERADOR — ORGANIZAÇÃO DOS CONTROLES
+   ====================================================== */
+
+.card > label,
+.card > select,
+.card > button {
+    display: block;
+}
+
+.card > label {
+    margin-top: 14px;
+}
+
+.card > select,
+.card > button {
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .card > label[for="nota"] {
+        display: inline-block;
+        width: calc(50% - 12px);
+    }
+
+    .card > label[for="tipoEscala"] {
+        display: inline-block;
+        width: calc(50% - 12px);
+        margin-left: 20px;
+    }
+
+    .card > select#nota {
+        display: inline-block;
+        width: calc(50% - 12px);
+    }
+
+    .card > select#tipoEscala {
+        display: inline-block;
+        width: calc(50% - 12px);
+        margin-left: 20px;
+    }
+
+    .card > button#gerarEscala {
+        margin-top: 22px;
+        width: 100%;
+    }
+}
+
+/* ======================================================
+   CORREÇÃO — LAYOUT DO GERADOR DE ESCALAS
+   ====================================================== */
+
+@media (min-width: 769px) {
+
+    .card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 24px;
+        row-gap: 10px;
+    }
+
+    .card h2 {
+        grid-column: 1 / -1;
+    }
+
+    .card > label[for="nota"] {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > select#nota {
+        grid-column: 1;
+        grid-row: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > label[for="tipoEscala"] {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > select#tipoEscala {
+        grid-column: 2;
+        grid-row: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > button#gerarEscala {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .card > #resultado {
+        grid-column: 1 / -1;
+        grid-row: 5;
+        width: 100%;
+    }
+
+    .card > #bracoViolao {
+        grid-column: 1 / -1;
+        grid-row: 6;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        display: block;
+    }
+
+    .card > label,
+    .card > select,
+    .card > button {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ======================================================
+   RESULTADO — APRESENTAÇÃO INICIAL
+   ====================================================== */
+
+#resultado {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(243, 230, 202, 0.96),
+            rgba(234, 216, 182, 0.96)
+        );
+
+    border: 1px solid rgba(196, 154, 92, 0.65);
+    border-radius: 14px;
+
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+#resultado > p {
+    margin: 0;
+    opacity: 0.78;
+    font-size: 16px;
+}
+
+/* ======================================================
+   CORREÇÃO — RESULTADO GERADO
+   ====================================================== */
+
+#resultado {
+    display: block;
+    min-height: 0;
+}
+
+#resultado > p:only-child {
+    margin: 0;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+#resultado > * {
+    max-width: 100%;
+}
+
+
+/* ======================================================
+   NOTAS DA ESCALA — DESTAQUE VISUAL
+   ====================================================== */
+
+#resultado .notas-escala {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#resultado .nota-escala {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 46px;
+    height: 46px;
+    padding: 0 12px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #76502a,
+            #4b2d16
+        );
+
+    color: #f3e6ca;
+
+    font-weight: 700;
+
+    border: 1px solid #c49a5c;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+#resultado .nota-escala:first-child {
+    background:
+        linear-gradient(
+            145deg,
+            #e5bd72,
+            #b9853f
+        );
+
+    color: #362011;
+
+    transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+
+    #resultado .notas-escala {
+        gap: 7px;
+    }
+
+    #resultado .nota-escala {
+        min-width: 40px;
+        height: 40px;
+        padding: 0 9px;
+    }
+}
+
+/* ==========================================
+   RESULTADO DA ESCALA — REFINAMENTO VISUAL
+   ========================================== */
+
+#resultado > h3 {
+    margin: 0 0 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: rgba(74, 47, 27, 0.96);
+    color: #efe0c2;
+    border: 1px solid rgba(181, 138, 74, 0.65);
+}
+
+.info-escala {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.bloco-resultado {
+    padding: 18px;
+    border-radius: 12px;
+    background: rgba(255, 248, 235, 0.72);
+    border: 1px solid rgba(181, 138, 74, 0.45);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bloco-resultado strong {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 15px;
+    color: #5a371d;
+}
+
+.bloco-resultado p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f2116;
+}
+
+@media (max-width: 768px) {
+    .info-escala {
+        grid-template-columns: 1fr;
+    }
+
+    #resultado > h3 {
         font-size: 19px;
+    }
+}
+
+
+/* ==========================================
+   CONTROLES — REFINAMENTO VISUAL
+   ========================================== */
+
+.card > label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: #efe0c2;
+    margin-bottom: 6px;
+}
+
+.card > select {
+    min-height: 48px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(181, 138, 74, 0.7);
+    background: rgba(255, 248, 235, 0.96);
+    color: #362011;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card > select:hover {
+    border-color: rgba(211, 166, 91, 0.95);
+}
+
+.card > select:focus {
+    outline: none;
+    border-color: #c49a5c;
+    box-shadow: 0 0 0 3px rgba(201, 154, 82, 0.18);
+}
+
+.card > button#gerarEscala {
+    min-height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin-top: 14px;
+}
+
+
+/* ==========================================
+   TABELAS — REFINAMENTO VISUAL
+   ========================================== */
+
+.tabela-container {
+    margin-top: 4px;
+    border-radius: 12px;
+    overflow-x: auto;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+}
+
+.tabela-container table {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.tabela-container th {
+    padding: 13px 12px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+.tabela-container td {
+    padding: 12px;
+    font-size: 15px;
+}
+
+.tabela-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-container tbody tr:hover td {
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .tabela-container th,
+    .tabela-container td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+}
+
+
+/* ==========================================
+   DESTAQUE DOURADO — TÍTULOS PRINCIPAIS
+   ========================================== */
+
+header h1 {
+    color: #f2cf7a;
+
+    text-shadow:
+        0 0 6px rgba(231, 196, 125, 0.55),
+        0 0 14px rgba(212, 168, 92, 0.35),
+        0 3px 12px rgba(0, 0, 0, 0.55);
+}
+
+.card > h2 {
+    color: #e7c47d;
+
+    text-shadow:
+        0 0 5px rgba(231, 196, 125, 0.45),
+        0 0 12px rgba(212, 168, 92, 0.25);
+}
+
+
+/* ==========================================
+   TIPOGRAFIA — TÍTULOS E SEÇÕES
+   ========================================== */
+
+#resultado > h3 {
+    font-size: 24px;
+}
+
+.bloco-resultado strong {
+    font-size: 17px;
+}
+
+.campo-harmonico h3 {
+    font-size: 21px;
+    color: #e7c47d;
+
+    text-shadow:
+        0 0 5px rgba(231, 196, 125, 0.35),
+        0 0 10px rgba(212, 168, 92, 0.20);
+}
+
+.tabela-container th {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    #resultado > h3 {
+        font-size: 21px;
+    }
+
+    .bloco-resultado strong {
+        font-size: 16px;
+    }
+
+    .campo-harmonico h3 {
+        font-size: 19px;
+    }
+}
+
+
+/* ==========================================
+   CAMPO HARMÔNICO — VOLTA AO ESTILO ORIGINAL
+   ========================================== */
+
+.campo-harmonico h3 {
+    color: var(--texto-escuro);
+
+    text-shadow: none;
+
+    font-size: 21px;
+}
+
+
+/* ==========================================
+   ESTADO INICIAL DO GERADOR
+   ========================================== */
+
+.estado-inicial {
+    padding: 34px 20px;
+    text-align: center;
+}
+
+.estado-inicial-icone {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 30px;
+    opacity: 0.75;
+}
+
+.estado-inicial strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #5a371d;
+    font-size: 19px;
+}
+
+.estado-inicial p {
+    max-width: 520px;
+    margin: 0 auto;
+    color: #6b5743;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   BOTÃO GERAR ESCALA — DESTAQUE
+   ========================================== */
+
+.card > button#gerarEscala {
+    background: linear-gradient(
+        135deg,
+        #d4a85c,
+        #b9853f
+    );
+
+    color: #362011;
+
+    border: 1px solid #e7c47d;
+
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.30);
+
+    text-shadow: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.card > button#gerarEscala:hover {
+    filter: brightness(1.08);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.32),
+        0 0 12px rgba(212, 168, 92, 0.22);
+}
+
+.card > button#gerarEscala:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   ANIMAÇÃO SUTIL — BOTÃO GERAR ESCALA
+   ========================================== */
+
+@keyframes pulo-sutil {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(-4px);
+    }
+
+    80% {
+        transform: translateY(0);
+    }
+
+    90% {
+        transform: translateY(-4px);
+    }
+
+    95% {
+        transform: translateY(0);
+    }
+}
+
+.card > button#gerarEscala {
+    animation: pulo-sutil 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.card > button#gerarEscala:hover {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card > button#gerarEscala {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   ANIMAÇÃO — CABEÇALHO
+   ========================================== */
+
+header h1,
+header p {
+    animation: balanco-titulo 6s ease-in-out infinite;
+}
+
+@keyframes balanco-titulo {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(16px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header h1,
+    header p {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   ANIMAÇÃO — BLOCO GERADOR DE ESCALAS
+   ========================================== */
+
+@keyframes balanco-card {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(12px);
+    }
+}
+
+.card {
+    animation: balanco-card 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   ILUMINAÇÃO SUTIL — CARD PRINCIPAL
+   ========================================== */
+
+.card {
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.38),
+        0 0 22px rgba(212, 168, 92, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.card::before {
+    animation: brilho-borda 5s ease-in-out infinite;
+}
+
+@keyframes brilho-borda {
+    0%, 100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card::before {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   TÍTULO DO GERADOR
+   ========================================== */
+
+.card > h2 {
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+
+    font-size: 25px;
+    color: #f0c96f;
+
+    text-shadow:
+        0 0 6px rgba(231, 196, 125, 0.55),
+        0 0 14px rgba(212, 168, 92, 0.25);
+
+    border-bottom:
+        1px solid
+        rgba(212, 168, 92, 0.35);
+}
+
+
+/* Hierarquia visual dos controles */
+.card > label[for="nota"],
+.card > label[for="tipoEscala"] {
+    position: relative;
+    display: block;
+    margin-bottom: 8px;
+    color: #f0dfbd;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .35px;
+}
+
+.card > label[for="nota"]::before {
+    content: "1";
+}
+
+.card > label[for="tipoEscala"]::before {
+    content: "2";
+}
+
+.card > label[for="nota"]::before,
+.card > label[for="tipoEscala"]::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    border: 1px solid rgba(231,196,125,.55);
+    border-radius: 50%;
+    color: #f2cf7a;
+    font-size: 12px;
+}
+
+.card > select#nota,
+.card > select#tipoEscala {
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid rgba(181,138,74,.7);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f3e6ca, #e6d5b4);
+    color: #2f2116;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 4px 12px rgba(0,0,0,.12);
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+.card > select#nota:hover,
+.card > select#tipoEscala:hover {
+    border-color: #e7c47d;
+}
+
+.card > select#nota:focus,
+.card > select#tipoEscala:focus {
+    outline: none;
+    border-color: #f2cf7a;
+    box-shadow:
+        0 0 0 3px rgba(231,196,125,.16),
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 5px 14px rgba(0,0,0,.14);
+}
+
+.card > button#gerarEscala {
+    min-height: 50px;
+    margin-top: 16px;
+    border: 1px solid rgba(242,207,122,.7);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #8f6330, #6b421f);
+    color: #fff4df;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.card > button#gerarEscala:hover {
+    border-color: #f2cf7a;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.28),
+        0 0 14px rgba(212,168,92,.18),
+        inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+
+/* Refinamento visual do painel de resultado */
+#resultado {
+    padding: 22px;
+    background: linear-gradient(145deg, #f1e5cc, #e6d5b4);
+    border: 1px solid rgba(196,154,92,.72);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        0 8px 22px rgba(0,0,0,.16);
+}
+
+#resultado > h3 {
+    margin: 0 0 22px;
+    padding: 17px 20px;
+    background: linear-gradient(145deg, #4a2f1b, #362011);
+    border: 1px solid rgba(181,138,74,.72);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 5px 14px rgba(0,0,0,.15);
+    color: #f2cf7a;
+}
+
+.info-escala {
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.bloco-resultado {
+    padding: 19px;
+    background: rgba(255,253,242,.58);
+    border: 1px solid rgba(181,138,74,.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.5),
+        0 5px 14px rgba(0,0,0,.09);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.bloco-resultado:hover {
+    transform: translateY(-2px);
+    border-color: rgba(196,154,92,.75);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        0 8px 18px rgba(0,0,0,.13);
+}
+
+.bloco-resultado strong {
+    color: #5a371d;
+    font-size: 16px;
+    letter-spacing: .2px;
+}
+
+.bloco-resultado p {
+    color: #2f2116;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   AJUSTE PARA CELULAR — MODO RETRATO
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        padding: 28px 16px 24px;
+    }
+
+    header h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    header p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    main {
+        width: 100%;
+        padding: 14px 10px 30px;
+    }
+
+    .card {
+        padding: 20px 14px;
+        border-radius: 14px;
+        animation-duration: 9s;
+    }
+
+    .card > h2 {
+        font-size: 22px;
+        margin-bottom: 22px;
+        line-height: 1.3;
+    }
+
+    .card > label[for="nota"],
+    .card > label[for="tipoEscala"] {
+        margin-top: 10px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .card > select#nota,
+    .card > select#tipoEscala {
+        width: 100%;
+        min-height: 50px;
+        font-size: 16px;
+    }
+
+    .card > button#gerarEscala {
+        width: 100%;
+        min-height: 52px;
+        margin-top: 18px;
+        font-size: 16px;
+    }
+
+    #resultado {
+        margin-top: 24px;
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    #resultado > h3 {
+        font-size: 20px;
+        line-height: 1.35;
+        padding: 14px 12px;
+        margin-bottom: 18px;
+    }
+
+    .info-escala {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .bloco-resultado {
+        padding: 16px;
+    }
+
+    .bloco-resultado strong {
+        font-size: 15px;
+    }
+
+    .bloco-resultado p {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .tabela-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 16px;
+    }
+
+    table {
+        min-width: 520px;
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 11px 12px;
+    }
+
+    .campo-harmonico h3 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    #bracoViolao {
+        margin-top: 28px;
+    }
+}
+
+
+/* =========================================================
+   MODO RETRATO — LAYOUT MAIS COMPACTO
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 22px 12px 20px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    header::after {
+        margin-top: 16px;
+    }
+
+    main {
+        padding: 10px 8px 24px;
+    }
+
+    .card {
+        padding: 16px 12px;
+        border-radius: 13px;
+    }
+
+    .card > h2 {
+        font-size: 20px;
+        margin-bottom: 18px;
+        padding-bottom: 11px;
+    }
+
+    .card > label[for="nota"],
+    .card > label[for="tipoEscala"] {
+        margin-top: 7px;
+        margin-bottom: 6px;
+        font-size: 13px;
+    }
+
+    .card > select#nota,
+    .card > select#tipoEscala {
+        min-height: 44px;
+        height: 44px;
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .card > button#gerarEscala {
+        min-height: 46px;
+        height: 46px;
+        margin-top: 14px;
+        font-size: 15px;
+    }
+
+    #resultado {
+        margin-top: 18px;
+        padding: 10px;
+    }
+
+    #resultado > h3 {
+        font-size: 18px;
+        padding: 11px 10px;
+        margin-bottom: 13px;
+    }
+
+    .info-escala {
+        gap: 9px;
         margin-bottom: 14px;
     }
 
-    .braco {
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding: 14px 8px 18px;
-        -webkit-overflow-scrolling: touch;
+    .bloco-resultado {
+        padding: 12px;
     }
 
-    /*
-       Casa 0 = corda solta
-       Casas 1–12 = as 12 casas do braço
-    */
-
-    .numeracao-casas {
-        display: grid;
-        grid-template-columns: 48px repeat(12, 72px);
-        width: max-content;
-        min-width: 0;
-        height: 32px;
+    .bloco-resultado strong {
+        margin-bottom: 6px;
+        font-size: 14px;
     }
 
-    .linha-corda {
-        display: grid;
-        grid-template-columns: 48px repeat(12, 72px);
-        width: max-content;
-        min-width: 0;
-        height: 48px;
+    .bloco-resultado p {
+        font-size: 14px;
+        line-height: 1.45;
     }
 
-    .casa {
-        width: 72px;
-        height: 48px;
+    .campo-harmonico {
+        margin-top: 20px;
     }
 
-    .linha-corda .casa:first-of-type {
-        width: 48px;
+    .campo-harmonico h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 17px;
     }
 
-    .numero-casa {
+    .tabela-container {
+        margin-top: 10px;
+    }
+
+    th,
+    td {
+        padding: 9px 10px;
         font-size: 13px;
     }
 
-    .nome-nota {
-        width: 36px;
-        height: 36px;
-        font-size: 12px;
+    /* Mantém o braço do violão como está */
+    #bracoViolao {
+        margin-top: 28px;
     }
-
-    .casa.tonica .nome-nota {
-        font-size: 13px;
-    }
-
-    .linha-corda::after {
-        left: 0;
-        right: auto;
-        width: 912px;
-    }
-
 }
+
+
 
