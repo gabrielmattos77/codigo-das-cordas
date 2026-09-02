@@ -1,0 +1,734 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #2b1b10;
+    color: #f5ead7;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    color: #d4a85c;
+}
+
+header p {
+    color: #d8c6a8;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #4a2f1b;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #9c7138;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: 1px solid #b58a4a;
+    font-size: 20px;
+}
+
+select {
+    background: #f1e3c6;
+    color: #3a2514;
+}
+
+button {
+    background: #7a4b22;
+    color: #fff4df;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #97642f;
+}
+
+
+/* ======================================================
+   RESULTADO
+   ====================================================== */
+
+#resultado {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ead9b8;
+    color: #3a2514;
+    border: 1px solid #b58a4a;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================================================
+   TABELA DE GRAUS E INTERVALOS
+   ====================================================== */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #b58a4a;
+    background: #f3e6ca;
+}
+
+
+/* ======================================================
+   BLOCOS DE INFORMAÇÃO DA ESCALA
+   ====================================================== */
+
+.info-escala {
+    margin-top: 20px;
+}
+
+.bloco-resultado {
+    margin-bottom: 18px;
+    padding: 15px;
+    background: #dbc49a;
+    color: #3a2514;
+    border-radius: 10px;
+    border: 1px solid #b58a4a;
+}
+
+.bloco-resultado strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #6b421f;
+}
+
+.bloco-resultado p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   TABELA
+   ====================================================== */
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px 18px;
+    text-align: center;
+    border-bottom: 1px solid #c7a873;
+}
+
+th {
+    font-weight: bold;
+    background: #6f431e;
+    color: #fff1d2;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #3a2514;
+    background: #f3e6ca;
+}
+
+tr:nth-child(even) td {
+    background: #ead8b6;
+}
+
+tr:hover td {
+    background: #dfc395;
+}
+
+
+/* ======================================================
+   ESPAÇAMENTO ENTRE AS COLUNAS
+   ====================================================== */
+
+th:nth-child(1),
+td:nth-child(1) {
+    min-width: 60px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    min-width: 70px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    min-width: 90px;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    min-width: 150px;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    min-width: 80px;
+}
+
+
+/* ======================================================
+   CAMPO HARMÔNICO
+   ====================================================== */
+
+.campo-harmonico {
+    margin-top: 30px;
+}
+
+.campo-harmonico h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #6b421f;
+}
+
+.campo-harmonico table {
+    margin-top: 0;
+}
+
+
+/* ======================================================
+   DESTAQUE DOS ACORDES
+   ====================================================== */
+
+.campo-harmonico td strong {
+    color: #7a4b22;
+}
+
+
+
+
+/* ======================================================
+   CAMPO HARMÔNICO — CELULAR
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .campo-harmonico {
+        margin-top: 24px;
+    }
+
+    .campo-harmonico h3 {
+        margin-top: 24px;
+        margin-bottom: 12px;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .campo-harmonico .tabela-container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+
+    .campo-harmonico table {
+        width: max-content;
+        min-width: 100%;
+        margin-top: 0;
+    }
+
+    .campo-harmonico th,
+    .campo-harmonico td {
+        padding: 9px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* Grau */
+    .campo-harmonico th:nth-child(1),
+    .campo-harmonico td:nth-child(1) {
+        min-width: 58px;
+    }
+
+    /* Acorde */
+    .campo-harmonico th:nth-child(2),
+    .campo-harmonico td:nth-child(2) {
+        min-width: 80px;
+    }
+
+    /* Notas */
+    .campo-harmonico th:nth-child(3),
+    .campo-harmonico td:nth-child(3) {
+        min-width: 150px;
+    }
+
+    /* Qualidade */
+    .campo-harmonico th:nth-child(4),
+    .campo-harmonico td:nth-child(4) {
+        min-width: 120px;
+    }
+
+}
+
+
+/* ======================================================
+   RESPONSIVO
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    main {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    #resultado {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+}
+
+/* =========================================
+   BRAÇO DO VIOLÃO
+   ========================================= */
+
+#bracoViolao {
+    margin-top: 30px;
+}
+
+#bracoViolao h3 {
+    margin: 0 0 18px;
+    color: #f5ead7;
+    font-size: 22px;
+}
+
+
+/* =========================================
+   CORPO DO BRAÇO
+   ========================================= */
+
+.braco {
+    width: 100%;
+    overflow-x: auto;
+
+    padding: 20px 14px 22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8d5c2e,
+            #70451f
+        );
+
+    border: 2px solid #b58a4a;
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,.35),
+        0 7px 18px rgba(0,0,0,.30);
+}
+
+
+/* =========================================
+   NUMERAÇÃO DAS CASAS
+   ========================================= */
+
+.numeracao-casas {
+    display: grid;
+    grid-template-columns: 1fr repeat(12, 1fr);
+    width: 100%;
+    min-width: 0;
+
+    height: 34px;
+}
+
+/* Retira apenas o número 0, mas mantém o espaço */
+.numeracao-casas .numero-casa:first-child {
+    visibility: hidden;
+}
+
+.numero-casa {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #f4dfb5;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   LINHAS DAS CORDAS
+   ========================================= */
+
+.linha-corda {
+    display: grid;
+
+    grid-template-columns: repeat(13, 1fr);
+
+    width: 100%;
+    min-width: 0;
+
+    height: 50px;
+
+    position: relative;
+}
+
+
+/* =========================================
+   NOME DA CORDA
+   ========================================= */
+
+.nome-corda {
+    width: 50px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #4b2d16;
+
+    color: #fff4df;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    border-right: 4px solid #d8bd87;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   CASAS
+   ========================================= */
+
+.casa {
+    position: relative;
+
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border-right: 2px solid rgba(220, 220, 220, 0.55);
+
+    z-index: 3;
+}
+
+/* =========================================
+   COLUNA 0 — CORDAS SOLTAS
+   ========================================= */
+
+.linha-corda .casa:first-of-type {
+    background: #4a2f1b !important;
+
+    border-left: 3px solid #c49a5c;
+
+    box-shadow:
+        inset -8px 0 12px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   CORDA METÁLICA
+   ========================================= */
+
+.linha-corda::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 50%;
+
+    height: 2px;
+
+    transform: translateY(-50%);
+
+    background: linear-gradient(
+        to bottom,
+        #eeeeee,
+        #aaaaaa,
+        #ffffff,
+        #888888
+    );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* Grossuras das cordas */
+
+.linha-corda:nth-child(2)::after,
+.linha-corda:nth-child(7)::after {
+    height: 4px;
+}
+
+.linha-corda:nth-child(3)::after,
+.linha-corda:nth-child(6)::after {
+    height: 3px;
+}
+
+.linha-corda:nth-child(4)::after,
+.linha-corda:nth-child(5)::after {
+    height: 2px;
+}
+
+
+/* =========================================
+   NOTAS
+   ========================================= */
+
+.nome-nota {
+    position: relative;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   NOTAS DA ESCALA
+   ========================================= */
+
+.casa.nota-escala .nome-nota {
+    background: #d4a85c;
+
+    color: #3a2514;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.35);
+}
+
+
+/* =========================================
+   TÔNICA
+   ========================================= */
+
+.casa.tonica .nome-nota {
+    background: #f2ca68;
+
+    color: #3a2514;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    border: 3px solid #fff3c7;
+
+    box-shadow:
+        0 0 0 2px rgba(60, 30, 5, 0.75),
+        0 0 10px rgba(255, 220, 120, 0.95),
+        0 0 20px rgba(255, 200, 80, 0.65),
+        0 4px 9px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   NOTAS FORA DA ESCALA
+   ========================================= */
+
+.casa:not(.nota-escala) .nome-nota {
+    color: rgba(255,244,223,.35);
+
+    background: transparent;
+}
+
+
+/* =========================================
+   CASAS MARCADAS NO BRAÇO
+   ========================================= */
+
+.linha-corda:nth-child(4) .casa:nth-child(4)::before,
+.linha-corda:nth-child(4) .casa:nth-child(6)::before,
+.linha-corda:nth-child(4) .casa:nth-child(8)::before,
+.linha-corda:nth-child(4) .casa:nth-child(10)::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.55);
+
+    bottom: 5px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+
+/* =========================================
+   CASA 12 — DUPLA MARCAÇÃO
+   ========================================= */
+
+.linha-corda:nth-child(4) .casa:nth-child(14)::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.60);
+
+    top: 13px;
+    left: 25%;
+
+}
+
+.linha-corda:nth-child(4) .casa:nth-child(14)::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(245,225,185,.60);
+
+    top: 13px;
+    right: 25%;
+
+}
+
+
+/* =========================================
+   RESPONSIVO — BRAÇO DO VIOLÃO
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    #bracoViolao h3 {
+        font-size: 19px;
+        margin-bottom: 14px;
+    }
+
+    .braco {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 14px 8px 18px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*
+       Casa 0 = corda solta
+       Casas 1–12 = as 12 casas do braço
+    */
+
+    .numeracao-casas {
+        display: grid;
+        grid-template-columns: 48px repeat(12, 72px);
+        width: max-content;
+        min-width: 0;
+        height: 32px;
+    }
+
+    .linha-corda {
+        display: grid;
+        grid-template-columns: 48px repeat(12, 72px);
+        width: max-content;
+        min-width: 0;
+        height: 48px;
+    }
+
+    .casa {
+        width: 72px;
+        height: 48px;
+    }
+
+    .linha-corda .casa:first-of-type {
+        width: 48px;
+    }
+
+    .numero-casa {
+        font-size: 13px;
+    }
+
+    .nome-nota {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+
+    .casa.tonica .nome-nota {
+        font-size: 13px;
+    }
+
+    .linha-corda::after {
+        left: 0;
+        right: auto;
+        width: 912px;
+    }
+
+}
+

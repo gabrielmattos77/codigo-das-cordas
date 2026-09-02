@@ -1,0 +1,1453 @@
+/* ======================================================
+   CÓDIGO DAS CORDAS
+   Identidade visual — Etapa 1
+   ====================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --madeira-escura: #1c120c;
+    --madeira: #2b1b10;
+    --madeira-media: #3b2414;
+    --madeira-clara: #4a2f1b;
+
+    --dourado: #d4a85c;
+    --dourado-claro: #e7c47d;
+    --dourado-escuro: #9c7138;
+
+    --creme: #f5ead7;
+    --creme-suave: #d8c6a8;
+
+    --painel: #ead9b8;
+    --painel-escuro: #dbc49a;
+    --texto-escuro: #3a2514;
+
+    --borda: #b58a4a;
+}
+
+
+/* ======================================================
+   BASE
+   ====================================================== */
+
+html {
+    min-height: 100%;
+    background: var(--madeira-escura);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--creme);
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(212, 168, 92, 0.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #1b110b 0%,
+            #2b1b10 48%,
+            #21140c 100%
+        );
+
+    position: relative;
+}
+
+
+/* ======================================================
+   DETALHE SUTIL DE CORDAS NO FUNDO
+   ====================================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.045;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 28px,
+            rgba(255, 255, 255, 0.35) 29px,
+            transparent 30px
+        );
+
+    z-index: 0;
+}
+
+
+/* ======================================================
+   CABEÇALHO
+   ====================================================== */
+
+header {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+
+    padding:
+        38px 20px
+        28px;
+
+    border-bottom:
+        1px solid
+        rgba(181, 138, 74, 0.22);
+}
+
+header::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 2px;
+
+    margin:
+        22px auto
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dourado),
+            transparent
+        );
+
+    opacity: 0.8;
+}
+
+header h1 {
+    margin: 0;
+
+    color: var(--dourado-claro);
+
+    font-size: clamp(30px, 6vw, 46px);
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+header p {
+    margin:
+        12px 0
+        0;
+
+    color: var(--creme-suave);
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* ======================================================
+   CONTEÚDO
+   ====================================================== */
+
+main {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding:
+        24px 20px
+        50px;
+}
+
+
+/* ======================================================
+   CARD PRINCIPAL
+   ====================================================== */
+
+.card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(74, 47, 27, 0.98),
+            rgba(54, 32, 17, 0.98)
+        );
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(181, 138, 74, 0.70);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 8%;
+    right: 8%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(231, 196, 125, 0.65),
+            transparent
+        );
+}
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(212, 168, 92, 0.05),
+            transparent 35%,
+            transparent 65%,
+            rgba(212, 168, 92, 0.04)
+        );
+
+    opacity: 0.35;
+
+    pointer-events: none;
+}
+
+
+/* ======================================================
+   TÍTULOS
+   ====================================================== */
+
+.card h2 {
+    margin:
+        0 0
+        24px;
+
+    color: var(--dourado-claro);
+
+    font-size: 25px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+.card h2::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 2px;
+
+    margin-top: 10px;
+
+    background: var(--dourado);
+
+    border-radius: 999px;
+
+    opacity: 0.8;
+}
+
+
+/* ======================================================
+   LABELS
+   ====================================================== */
+
+label {
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--creme-suave);
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* ======================================================
+   CAMPOS
+   ====================================================== */
+
+select,
+button {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding:
+        12px 15px;
+
+    margin-top: 9px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        var(--borda);
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    transition:
+        border-color 0.16s ease,
+        box-shadow 0.16s ease,
+        transform 0.12s ease,
+        background 0.16s ease;
+}
+
+
+/* ======================================================
+   SELECT
+   ====================================================== */
+
+select {
+    appearance: auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f4e7ca,
+            #e9d7b2
+        );
+
+    color: var(--texto-escuro);
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        0 3px 10px rgba(0, 0, 0, 0.14);
+}
+
+select:hover {
+    border-color: var(--dourado-claro);
+}
+
+select:focus {
+    outline: none;
+
+    border-color: var(--dourado-claro);
+
+    box-shadow:
+        0 0 0 3px rgba(212, 168, 92, 0.16),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ======================================================
+   BOTÃO PRINCIPAL
+   ====================================================== */
+
+button {
+    margin-top: 24px;
+
+    border-color:
+        #b9853f;
+
+    background:
+        linear-gradient(
+            180deg,
+            #94612d,
+            #70451f
+        );
+
+    color: #fff6e7;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+button:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #aa7135,
+            #815124
+        );
+
+    border-color: var(--dourado-claro);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.32),
+        0 0 18px rgba(212, 168, 92, 0.08);
+}
+
+button:active {
+    transform: translateY(1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.30);
+}
+
+button:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(212, 168, 92, 0.20),
+        0 6px 15px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ======================================================
+   RESULTADO
+   ====================================================== */
+
+#resultado {
+    margin-top: 26px;
+
+    padding: 21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee0c1,
+            #e4d1a8
+        );
+
+    color: var(--texto-escuro);
+
+    border:
+        1px solid
+        var(--borda);
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+    animation:
+        aparecer 0.22s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ======================================================
+   BLOCOS DE INFORMAÇÃO
+   ====================================================== */
+
+.info-escala {
+    margin-top: 22px;
+}
+
+.bloco-resultado {
+    margin-bottom: 18px;
+
+    padding: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dbc49a,
+            #d3b887
+        );
+
+    color: var(--texto-escuro);
+
+    border:
+        1px solid
+        rgba(181, 138, 74, 0.85);
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.bloco-resultado strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #68401d;
+
+    font-size: 16px;
+}
+
+.bloco-resultado p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   TABELAS
+   ====================================================== */
+
+.tabela-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        var(--borda);
+
+    background: #f3e6ca;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.16);
+}
+
+th,
+td {
+    padding: 12px 18px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        #c7a873;
+}
+
+th {
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            180deg,
+            #795027,
+            #603a1c
+        );
+
+    color: #fff1d2;
+
+    letter-spacing: 0.15px;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: var(--texto-escuro);
+
+    background: #f3e6ca;
+}
+
+tr:nth-child(even) td {
+    background: #ead8b6;
+}
+
+tr:hover td {
+    background: #dfc395;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ======================================================
+   COLUNAS
+   ====================================================== */
+
+th:nth-child(1),
+td:nth-child(1) {
+    min-width: 60px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    min-width: 70px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    min-width: 90px;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    min-width: 150px;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    min-width: 80px;
+}
+
+
+/* ======================================================
+   CAMPO HARMÔNICO
+   ====================================================== */
+
+.campo-harmonico {
+    margin-top: 30px;
+}
+
+.campo-harmonico h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+
+    color: #6b421f;
+
+    font-size: 20px;
+}
+
+.campo-harmonico table {
+    margin-top: 0;
+}
+
+.campo-harmonico td strong {
+    color: #7a4b22;
+}
+
+
+/* ======================================================
+   BRAÇO DO VIOLÃO
+   ====================================================== */
+
+#bracoViolao {
+    margin-top: 32px;
+}
+
+#bracoViolao h3 {
+    margin: 0 0 18px;
+
+    color: var(--creme);
+
+    font-size: 22px;
+}
+
+
+/* ======================================================
+   CORPO DO BRAÇO
+   ====================================================== */
+
+.braco {
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding:
+        20px 14px
+        22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5a351f 0%,
+            #6b4125 18%,
+            #4d2d1b 50%,
+            #633b22 82%,
+            #4a2a18 100%
+        );
+
+    border:
+        2px solid
+        var(--borda);
+
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 0 28px rgba(0, 0, 0, 0.48),
+        inset 0 2px 4px rgba(255, 220, 160, 0.08),
+        0 7px 18px rgba(0, 0, 0, 0.30);
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* ======================================================
+   NUMERAÇÃO DAS CASAS
+   ====================================================== */
+
+/* ======================================================
+   NUMERAÇÃO DAS CASAS
+   ====================================================== */
+
+.numeracao-casas {
+    display: grid;
+
+    grid-template-columns:
+        1fr repeat(12, 1fr);
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 34px;
+}
+
+.numeracao-casas .numero-casa:first-child {
+    visibility: hidden;
+}
+
+.numero-casa {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #f4dfb5;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+
+/* ======================================================
+   LINHAS DAS CORDAS
+   ====================================================== */
+
+.linha-corda {
+    display: grid;
+
+    grid-template-columns:
+        repeat(13, 1fr);
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 50px;
+
+    position: relative;
+}
+
+
+/* ======================================================
+   NOME DA CORDA
+   ====================================================== */
+
+.nome-corda {
+    width: 50px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #4b2d16;
+
+    color: #fff4df;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    border-right:
+        4px solid
+        #d8bd87;
+
+    z-index: 10;
+}
+
+
+/* ======================================================
+   CASAS
+   ====================================================== */
+
+.casa {
+    position: relative;
+
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border-right:
+        2px solid
+        rgba(220, 220, 220, 0.55);
+
+    z-index: 3;
+}
+
+
+/* ======================================================
+   MARCADORES DO BRAÇO
+   ====================================================== */
+
+.marcadores-casas {
+    display: none;
+}
+
+/* ======================================================
+   MARCADORES DAS CASAS
+   ====================================================== */
+
+.casa .marcador-casa {
+    display: none;
+}
+
+
+
+.numero-casa > span:first-child {
+    position: relative;
+    top: -4px;
+}
+
+/* ======================================================
+   MARCADORES ABAIXO DA NUMERAÇÃO
+   ====================================================== */
+
+.numero-casa {
+    position: relative;
+}
+
+.marcador-numero {
+    position: absolute;
+    display: block;
+
+    width: 9px;
+    height: 9px;
+
+    left: 50%;
+    top: 25px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #c7c7c7 45%,
+        #8f8f8f
+    );
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.marcador-numero-duplo {
+    position: absolute;
+
+    display: block;
+
+    width: 22px;
+    height: 9px;
+
+    left: 50%;
+    top: 25px;
+
+    transform: translateX(-50%);
+
+    background: transparent;
+    box-shadow: none;
+}
+
+.marcador-numero-duplo::before,
+.marcador-numero-duplo::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #c7c7c7 45%,
+        #8f8f8f
+    );
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.marcador-numero-duplo::before {
+    left: 0;
+}
+
+.marcador-numero-duplo::after {
+    right: 0;
+}
+
+
+/* ======================================================
+   NOTAS DA ESCALA
+   ====================================================== */
+
+.casa .nome-nota {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    color: rgba(255, 244, 223, 0.38);
+    font-size: 12px;
+    font-weight: normal;
+
+    background: transparent;
+
+    position: relative;
+    z-index: 5;
+}
+
+.casa.nota-escala .nome-nota {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #d8bd87;
+    color: #3b2412;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.35);
+
+    z-index: 6;
+}
+
+
+/* ======================================================
+   TÔNICA
+   ====================================================== */
+
+.casa.nota-escala.tonica .nome-nota {
+    width: 40px;
+    height: 40px;
+
+    background: #fff4df;
+    color: #6b3f1f;
+
+    border: 3px solid #c49a5c;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 244, 223, 0.20),
+        0 3px 8px rgba(0, 0, 0, 0.45);
+
+    z-index: 7;
+}
+
+/* ======================================================
+   TÔNICA
+   ====================================================== */
+
+.casa.nota-escala.tonica .nome-nota {
+    width: 40px;
+    height: 40px;
+
+    background: #fff4df;
+
+    color: #6b3f1f;
+
+    border:
+        3px solid
+        #c49a5c;
+
+    font-size: 16px;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 244, 223, 0.20),
+        0 3px 8px rgba(0, 0, 0, 0.45);
+
+    z-index: 6;
+}
+
+
+/* ======================================================
+   PESTANA DO VIOLÃO
+   ====================================================== */
+
+.braco {
+    position: relative;
+}
+
+.braco::before {
+    content: "";
+
+    position: absolute;
+
+    top: 54px;
+    bottom: 22px;
+
+    left: calc(14px + ((100% - 28px) / 13) - 7px);
+
+    width: 14px;
+
+    background: linear-gradient(
+        to right,
+        #b9b5a9,
+        #f5f1df 25%,
+        #fffdf2 50%,
+        #d8d4c5 75%,
+        #aaa69b
+    );
+
+    border-radius: 3px;
+
+    box-shadow:
+        1px 0 3px rgba(0, 0, 0, 0.35),
+        inset 1px 0 2px rgba(255, 255, 255, 0.8),
+        inset -1px 0 2px rgba(0, 0, 0, 0.18);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* ======================================================
+   TRANSIÇÃO DAS CORDAS NA PESTANA
+   ====================================================== */
+
+.braco {
+    position: relative;
+}
+
+.linha-corda {
+    position: relative;
+}
+
+
+/* ======================================================
+   IDENTIFICAÇÃO DAS CORDAS
+   ====================================================== */
+
+
+
+
+
+
+
+.nome-corda {
+    width: 50px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #4b2d16;
+    color: #fff4df;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    border-right: 4px solid #d8bd87;
+
+    position: relative;
+    z-index: 10;
+
+    box-shadow:
+        inset -5px 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.linha-corda {
+    position: relative;
+}
+
+
+/* ======================================================
+   CORDAS SOLTAS
+   ====================================================== */
+
+/* ======================================================
+   CORDA METÁLICA
+   ====================================================== */
+
+.linha-corda::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 50%;
+
+    height: 2px;
+
+    transform: translateY(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #eeeeee,
+            #aaaaaa,
+            #ffffff,
+            #888888
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* Grossuras das cordas */
+
+.linha-corda:nth-child(2)::after,
+.linha-corda:nth-child(7)::after {
+    height: 4px;
+}
+
+.linha-corda:nth-child(3)::after,
+.linha-corda:nth-child(6)::after {
+    height: 3px;
+}
+
+.linha-corda:nth-child(4)::after,
+.linha-corda:nth-child(5)::after {
+    height: 2px;
+}
+
+
+/* ======================================================
+   CAMPO HARMÔNICO — CELULAR
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    header {
+        padding:
+            28px 16px
+            22px;
+    }
+
+    header h1 {
+        font-size: 31px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    main {
+        width: 100%;
+
+        padding:
+            14px 12px
+            35px;
+    }
+
+    .card {
+        padding: 20px 16px;
+
+        border-radius: 15px;
+    }
+
+    .card h2 {
+        font-size: 22px;
+
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    select,
+    button {
+        min-height: 48px;
+
+        font-size: 16px;
+    }
+
+    #resultado {
+        padding: 16px;
+
+        font-size: 17px;
+    }
+
+    th,
+    td {
+        padding:
+            10px 12px;
+
+        font-size: 15px;
+    }
+
+    .campo-harmonico {
+        margin-top: 24px;
+    }
+
+    .campo-harmonico h3 {
+        margin-top: 24px;
+
+        margin-bottom: 12px;
+
+        font-size: 18px;
+
+        line-height: 1.3;
+    }
+
+    .campo-harmonico .tabela-container {
+        width: 100%;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        border-radius: 8px;
+    }
+
+    .campo-harmonico table {
+        width: max-content;
+
+        min-width: 100%;
+
+        margin-top: 0;
+    }
+
+    .campo-harmonico th,
+    .campo-harmonico td {
+        padding:
+            9px 12px;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+    }
+
+    .campo-harmonico th:nth-child(1),
+    .campo-harmonico td:nth-child(1) {
+        min-width: 58px;
+    }
+
+    .campo-harmonico th:nth-child(2),
+    .campo-harmonico td:nth-child(2) {
+        min-width: 80px;
+    }
+
+    .campo-harmonico th:nth-child(3),
+    .campo-harmonico td:nth-child(3) {
+        min-width: 150px;
+    }
+
+    .campo-harmonico th:nth-child(4),
+    .campo-harmonico td:nth-child(4) {
+        min-width: 120px;
+    }
+
+    #bracoViolao {
+        margin-top: 25px;
+    }
+
+    #bracoViolao h3 {
+        font-size: 20px;
+    }
+}
+
+
+/* ======================================================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   ====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ======================================================
+   INVERSÃO DA DIREÇÃO DO BRAÇO
+   ====================================================== */
+
+.braco {
+    transform: scaleX(-1);
+}
+
+.braco > * {
+    transform: scaleX(-1);
+}
+
+
+/* ======================================================
+   DIREÇÃO CORRETA DO BRAÇO — DIREITA PARA ESQUERDA
+   ====================================================== */
+
+/* Remove o espelhamento anterior */
+.braco {
+    transform: none;
+}
+
+.braco > * {
+    transform: none;
+}
+
+/* Inverte a ordem das casas */
+
+/* ======================================================
+   BRAÇO DO VIOLÃO — ORIENTAÇÃO
+   ====================================================== */
+
+.numeracao-casas,
+.linha-corda {
+    direction: rtl;
+}
+
+/* ======================================================
+   PESTANA — DIVISÃO ENTRE CASA 0 E CASA 1
+   ====================================================== */
+
+.braco::before {
+    top: 79px;
+    bottom: auto;
+    height: 250px;
+
+    left: auto;
+    right: calc(14px + ((100% - 28px) / 13) - 7px);
+
+    width: 14px;
+}
+
+/* ======================================================
+   TRASTES
+   ====================================================== */
+
+/* Retira qualquer traste antigo das casas */
+.linha-corda .casa {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Trastes contínuos, do centro da 1ª ao centro da 6ª corda */
+.braco::after {
+    content: "";
+
+    position: absolute;
+
+    top: 79px;
+    left: 14px;
+    right: 14px;
+
+    height: 250px;
+
+    background:
+        repeating-linear-gradient(
+            to right,
+            #bfc3c5 0,
+            #e5e7e8 2px,
+            transparent 2px,
+            transparent calc(100% / 13)
+        );
+
+    pointer-events: none;
+    z-index: 2;
+}
+

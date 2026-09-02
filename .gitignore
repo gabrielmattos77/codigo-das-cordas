@@ -1,0 +1,11 @@
+node_modules/
+keystore/
+*.keystore
+*.jks
+.DS_Store
+index-etapa4-backup.html
+css/*backup*
+android/icon-backups/
+android/keystore.properties
+icons/*backup*
+www/css/*backup*

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Gerador de Escalas</string>
+    <string name="title_activity_main">Gerador de Escalas</string>
+    <string name="package_name">com.codigodascordas.geradordeescalas</string>
+    <string name="custom_url_scheme">com.codigodascordas.geradordeescalas</string>
+</resources>
