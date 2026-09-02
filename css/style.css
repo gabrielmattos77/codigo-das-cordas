@@ -8,21 +8,21 @@
 }
 
 :root {
-    --madeira-escura: #1c120c;
-    --madeira: #2b1b10;
-    --madeira-media: #3b2414;
+    --madeira-escura: #1b120c;
+    --madeira: #362011;
+    --madeira-media: #362011;
     --madeira-clara: #4a2f1b;
 
     --dourado: #d4a85c;
     --dourado-claro: #e7c47d;
-    --dourado-escuro: #9c7138;
+    --dourado-escuro: #8f6330;
 
-    --creme: #f5ead7;
+    --creme: #efe0c2;
     --creme-suave: #d8c6a8;
 
     --painel: #ead9b8;
     --painel-escuro: #dbc49a;
-    --texto-escuro: #3a2514;
+    --texto-escuro: #362011;
 
     --borda: #b58a4a;
 }
@@ -56,9 +56,9 @@ body {
         ),
         linear-gradient(
             135deg,
-            #1b110b 0%,
-            #2b1b10 48%,
-            #21140c 100%
+            #1b120c 0%,
+            #362011 48%,
+            #21150d 100%
         );
 
     position: relative;
@@ -139,11 +139,11 @@ header h1 {
 
     color: var(--dourado-claro);
 
-    font-size: clamp(30px, 6vw, 46px);
+    font-size: clamp(32px, 6vw, 48px);
 
     font-weight: 700;
 
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 
     text-shadow:
         0 3px 12px rgba(0, 0, 0, 0.45);
@@ -151,7 +151,7 @@ header h1 {
 
 header p {
     margin:
-        12px 0
+        10px 0
         0;
 
     color: var(--creme-suave);
@@ -160,7 +160,9 @@ header p {
 
     line-height: 1.5;
 
-    letter-spacing: 0.2px;
+    letter-spacing: 0.35px;
+
+    opacity: 0.92;
 }
 
 
@@ -173,7 +175,7 @@ main {
     z-index: 1;
 
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
 
     margin: auto;
 
@@ -357,7 +359,7 @@ select {
     background:
         linear-gradient(
             180deg,
-            #f4e7ca,
+            #efe0c2,
             #e9d7b2
         );
 
@@ -398,11 +400,11 @@ button {
     background:
         linear-gradient(
             180deg,
-            #94612d,
+            #815124,
             #70451f
         );
 
-    color: #fff6e7;
+    color: #f3e6ca;
 
     cursor: pointer;
 
@@ -421,8 +423,8 @@ button:hover {
     background:
         linear-gradient(
             180deg,
-            #aa7135,
-            #815124
+            #94612d,
+            #76502a
         );
 
     border-color: var(--dourado-claro);
@@ -518,7 +520,7 @@ button:focus-visible {
         linear-gradient(
             145deg,
             #dbc49a,
-            #d3b887
+            #d4b77a
         );
 
     color: var(--texto-escuro);
@@ -538,7 +540,7 @@ button:focus-visible {
 
     margin-bottom: 8px;
 
-    color: #68401d;
+    color: #603a1c;
 
     font-size: 16px;
 }
@@ -583,7 +585,7 @@ table {
         1px solid
         var(--borda);
 
-    background: #f3e6ca;
+    background: #efe0c2;
 
     box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.16);
@@ -591,13 +593,15 @@ table {
 
 th,
 td {
-    padding: 12px 18px;
+    padding: 14px 18px;
 
     text-align: center;
 
     border-bottom:
         1px solid
-        #c7a873;
+        #bda06b;
+
+    vertical-align: middle;
 }
 
 th {
@@ -606,30 +610,34 @@ th {
     background:
         linear-gradient(
             180deg,
-            #795027,
+            #76502a,
             #603a1c
         );
 
     color: #fff1d2;
 
-    letter-spacing: 0.15px;
+    letter-spacing: 0.3px;
+
+    text-transform: none;
 }
 
 td {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 
     color: var(--texto-escuro);
 
-    background: #f3e6ca;
+    background: #efe0c2;
+
+    line-height: 1.45;
 }
 
 tr:nth-child(even) td {
-    background: #ead8b6;
+    background: #e6d5b4;
 }
 
 tr:hover td {
-    background: #dfc395;
+    background: #dcc29a;
 }
 
 tr:last-child td {
@@ -672,14 +680,14 @@ td:nth-child(5) {
    ====================================================== */
 
 .campo-harmonico {
-    margin-top: 30px;
+    margin-top: 36px;
 }
 
 .campo-harmonico h3 {
     margin-top: 30px;
     margin-bottom: 15px;
 
-    color: #6b421f;
+    color: #5a371d;
 
     font-size: 20px;
 }
@@ -689,7 +697,7 @@ td:nth-child(5) {
 }
 
 .campo-harmonico td strong {
-    color: #7a4b22;
+    color: #6b421f;
 }
 
 
@@ -698,7 +706,7 @@ td:nth-child(5) {
    ====================================================== */
 
 #bracoViolao {
-    margin-top: 32px;
+    margin-top: 40px;
 }
 
 #bracoViolao h3 {
@@ -726,11 +734,11 @@ td:nth-child(5) {
     background:
         linear-gradient(
             to bottom,
-            #5a351f 0%,
-            #6b4125 18%,
-            #4d2d1b 50%,
-            #633b22 82%,
-            #4a2a18 100%
+            #5a371d 0%,
+            #6b421f 18%,
+            #4a2f1b 50%,
+            #603a1c 82%,
+            #4a2f1b 100%
         );
 
     border:
@@ -779,7 +787,7 @@ td:nth-child(5) {
     align-items: center;
     justify-content: center;
 
-    color: #f4dfb5;
+    color: #f0dfbd;
 
     font-size: 15px;
 
@@ -822,7 +830,7 @@ td:nth-child(5) {
 
     background: #4b2d16;
 
-    color: #fff4df;
+    color: #f3e6ca;
 
     font-size: 15px;
 
@@ -1000,7 +1008,7 @@ td:nth-child(5) {
     border-radius: 50%;
 
     background: #d8bd87;
-    color: #3b2412;
+    color: #362011;
 
     font-size: 14px;
     font-weight: bold;
@@ -1020,8 +1028,8 @@ td:nth-child(5) {
     width: 40px;
     height: 40px;
 
-    background: #fff4df;
-    color: #6b3f1f;
+    background: #f3e6ca;
+    color: #6b421f;
 
     border: 3px solid #c49a5c;
 
@@ -1043,9 +1051,9 @@ td:nth-child(5) {
     width: 40px;
     height: 40px;
 
-    background: #fff4df;
+    background: #f3e6ca;
 
-    color: #6b3f1f;
+    color: #6b421f;
 
     border:
         3px solid
@@ -1084,8 +1092,8 @@ td:nth-child(5) {
     background: linear-gradient(
         to right,
         #b9b5a9,
-        #f5f1df 25%,
-        #fffdf2 50%,
+        #f1e5cc 25%,
+        #f7ecd7 50%,
         #d8d4c5 75%,
         #aaa69b
     );
@@ -1135,7 +1143,7 @@ td:nth-child(5) {
     justify-content: center;
 
     background: #4b2d16;
-    color: #fff4df;
+    color: #f3e6ca;
 
     font-size: 15px;
     font-weight: bold;
@@ -1449,5 +1457,847 @@ td:nth-child(5) {
 
     pointer-events: none;
     z-index: 2;
+}
+
+
+/* ======================================================
+   GERADOR — ORGANIZAÇÃO DOS CONTROLES
+   ====================================================== */
+
+.card > label,
+.card > select,
+.card > button {
+    display: block;
+}
+
+.card > label {
+    margin-top: 14px;
+}
+
+.card > select,
+.card > button {
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .card > label[for="nota"] {
+        display: inline-block;
+        width: calc(50% - 12px);
+    }
+
+    .card > label[for="tipoEscala"] {
+        display: inline-block;
+        width: calc(50% - 12px);
+        margin-left: 20px;
+    }
+
+    .card > select#nota {
+        display: inline-block;
+        width: calc(50% - 12px);
+    }
+
+    .card > select#tipoEscala {
+        display: inline-block;
+        width: calc(50% - 12px);
+        margin-left: 20px;
+    }
+
+    .card > button#gerarEscala {
+        margin-top: 22px;
+        width: 100%;
+    }
+}
+
+/* ======================================================
+   CORREÇÃO — LAYOUT DO GERADOR DE ESCALAS
+   ====================================================== */
+
+@media (min-width: 769px) {
+
+    .card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 24px;
+        row-gap: 10px;
+    }
+
+    .card h2 {
+        grid-column: 1 / -1;
+    }
+
+    .card > label[for="nota"] {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > select#nota {
+        grid-column: 1;
+        grid-row: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > label[for="tipoEscala"] {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > select#tipoEscala {
+        grid-column: 2;
+        grid-row: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card > button#gerarEscala {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .card > #resultado {
+        grid-column: 1 / -1;
+        grid-row: 5;
+        width: 100%;
+    }
+
+    .card > #bracoViolao {
+        grid-column: 1 / -1;
+        grid-row: 6;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        display: block;
+    }
+
+    .card > label,
+    .card > select,
+    .card > button {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ======================================================
+   RESULTADO — APRESENTAÇÃO INICIAL
+   ====================================================== */
+
+#resultado {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(243, 230, 202, 0.96),
+            rgba(234, 216, 182, 0.96)
+        );
+
+    border: 1px solid rgba(196, 154, 92, 0.65);
+    border-radius: 14px;
+
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+#resultado > p {
+    margin: 0;
+    opacity: 0.78;
+    font-size: 16px;
+}
+
+/* ======================================================
+   CORREÇÃO — RESULTADO GERADO
+   ====================================================== */
+
+#resultado {
+    display: block;
+    min-height: 0;
+}
+
+#resultado > p:only-child {
+    margin: 0;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+#resultado > * {
+    max-width: 100%;
+}
+
+
+/* ======================================================
+   NOTAS DA ESCALA — DESTAQUE VISUAL
+   ====================================================== */
+
+#resultado .notas-escala {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#resultado .nota-escala {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 46px;
+    height: 46px;
+    padding: 0 12px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #76502a,
+            #4b2d16
+        );
+
+    color: #f3e6ca;
+
+    font-weight: 700;
+
+    border: 1px solid #c49a5c;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+#resultado .nota-escala:first-child {
+    background:
+        linear-gradient(
+            145deg,
+            #e5bd72,
+            #b9853f
+        );
+
+    color: #362011;
+
+    transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+
+    #resultado .notas-escala {
+        gap: 7px;
+    }
+
+    #resultado .nota-escala {
+        min-width: 40px;
+        height: 40px;
+        padding: 0 9px;
+    }
+}
+
+/* ==========================================
+   RESULTADO DA ESCALA — REFINAMENTO VISUAL
+   ========================================== */
+
+#resultado > h3 {
+    margin: 0 0 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: rgba(74, 47, 27, 0.96);
+    color: #efe0c2;
+    border: 1px solid rgba(181, 138, 74, 0.65);
+}
+
+.info-escala {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.bloco-resultado {
+    padding: 18px;
+    border-radius: 12px;
+    background: rgba(255, 248, 235, 0.72);
+    border: 1px solid rgba(181, 138, 74, 0.45);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bloco-resultado strong {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 15px;
+    color: #5a371d;
+}
+
+.bloco-resultado p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f2116;
+}
+
+@media (max-width: 768px) {
+    .info-escala {
+        grid-template-columns: 1fr;
+    }
+
+    #resultado > h3 {
+        font-size: 19px;
+    }
+}
+
+
+/* ==========================================
+   CONTROLES — REFINAMENTO VISUAL
+   ========================================== */
+
+.card > label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: #efe0c2;
+    margin-bottom: 6px;
+}
+
+.card > select {
+    min-height: 48px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(181, 138, 74, 0.7);
+    background: rgba(255, 248, 235, 0.96);
+    color: #362011;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card > select:hover {
+    border-color: rgba(211, 166, 91, 0.95);
+}
+
+.card > select:focus {
+    outline: none;
+    border-color: #c49a5c;
+    box-shadow: 0 0 0 3px rgba(201, 154, 82, 0.18);
+}
+
+.card > button#gerarEscala {
+    min-height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin-top: 14px;
+}
+
+
+/* ==========================================
+   TABELAS — REFINAMENTO VISUAL
+   ========================================== */
+
+.tabela-container {
+    margin-top: 4px;
+    border-radius: 12px;
+    overflow-x: auto;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+}
+
+.tabela-container table {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.tabela-container th {
+    padding: 13px 12px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+.tabela-container td {
+    padding: 12px;
+    font-size: 15px;
+}
+
+.tabela-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-container tbody tr:hover td {
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .tabela-container th,
+    .tabela-container td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+}
+
+
+/* ==========================================
+   DESTAQUE DOURADO — TÍTULOS PRINCIPAIS
+   ========================================== */
+
+header h1 {
+    color: #f2cf7a;
+
+    text-shadow:
+        0 0 6px rgba(231, 196, 125, 0.55),
+        0 0 14px rgba(212, 168, 92, 0.35),
+        0 3px 12px rgba(0, 0, 0, 0.55);
+}
+
+.card > h2 {
+    color: #e7c47d;
+
+    text-shadow:
+        0 0 5px rgba(231, 196, 125, 0.45),
+        0 0 12px rgba(212, 168, 92, 0.25);
+}
+
+
+/* ==========================================
+   TIPOGRAFIA — TÍTULOS E SEÇÕES
+   ========================================== */
+
+#resultado > h3 {
+    font-size: 24px;
+}
+
+.bloco-resultado strong {
+    font-size: 17px;
+}
+
+.campo-harmonico h3 {
+    font-size: 21px;
+    color: #e7c47d;
+
+    text-shadow:
+        0 0 5px rgba(231, 196, 125, 0.35),
+        0 0 10px rgba(212, 168, 92, 0.20);
+}
+
+.tabela-container th {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    #resultado > h3 {
+        font-size: 21px;
+    }
+
+    .bloco-resultado strong {
+        font-size: 16px;
+    }
+
+    .campo-harmonico h3 {
+        font-size: 19px;
+    }
+}
+
+
+/* ==========================================
+   CAMPO HARMÔNICO — VOLTA AO ESTILO ORIGINAL
+   ========================================== */
+
+.campo-harmonico h3 {
+    color: var(--texto-escuro);
+
+    text-shadow: none;
+
+    font-size: 21px;
+}
+
+
+/* ==========================================
+   ESTADO INICIAL DO GERADOR
+   ========================================== */
+
+.estado-inicial {
+    padding: 34px 20px;
+    text-align: center;
+}
+
+.estado-inicial-icone {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 30px;
+    opacity: 0.75;
+}
+
+.estado-inicial strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #5a371d;
+    font-size: 19px;
+}
+
+.estado-inicial p {
+    max-width: 520px;
+    margin: 0 auto;
+    color: #6b5743;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   BOTÃO GERAR ESCALA — DESTAQUE
+   ========================================== */
+
+.card > button#gerarEscala {
+    background: linear-gradient(
+        135deg,
+        #d4a85c,
+        #b9853f
+    );
+
+    color: #362011;
+
+    border: 1px solid #e7c47d;
+
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.30);
+
+    text-shadow: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.card > button#gerarEscala:hover {
+    filter: brightness(1.08);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.32),
+        0 0 12px rgba(212, 168, 92, 0.22);
+}
+
+.card > button#gerarEscala:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   ANIMAÇÃO SUTIL — BOTÃO GERAR ESCALA
+   ========================================== */
+
+@keyframes pulo-sutil {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(-4px);
+    }
+
+    80% {
+        transform: translateY(0);
+    }
+
+    90% {
+        transform: translateY(-4px);
+    }
+
+    95% {
+        transform: translateY(0);
+    }
+}
+
+.card > button#gerarEscala {
+    animation: pulo-sutil 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.card > button#gerarEscala:hover {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card > button#gerarEscala {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   ANIMAÇÃO — CABEÇALHO
+   ========================================== */
+
+header h1,
+header p {
+    animation: balanco-titulo 6s ease-in-out infinite;
+}
+
+@keyframes balanco-titulo {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(16px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header h1,
+    header p {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   ANIMAÇÃO — BLOCO GERADOR DE ESCALAS
+   ========================================== */
+
+@keyframes balanco-card {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(12px);
+    }
+}
+
+.card {
+    animation: balanco-card 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   ILUMINAÇÃO SUTIL — CARD PRINCIPAL
+   ========================================== */
+
+.card {
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.38),
+        0 0 22px rgba(212, 168, 92, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.card::before {
+    animation: brilho-borda 5s ease-in-out infinite;
+}
+
+@keyframes brilho-borda {
+    0%, 100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card::before {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   TÍTULO DO GERADOR
+   ========================================== */
+
+.card > h2 {
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+
+    font-size: 25px;
+    color: #f0c96f;
+
+    text-shadow:
+        0 0 6px rgba(231, 196, 125, 0.55),
+        0 0 14px rgba(212, 168, 92, 0.25);
+
+    border-bottom:
+        1px solid
+        rgba(212, 168, 92, 0.35);
+}
+
+
+/* Hierarquia visual dos controles */
+.card > label[for="nota"],
+.card > label[for="tipoEscala"] {
+    position: relative;
+    display: block;
+    margin-bottom: 8px;
+    color: #f0dfbd;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .35px;
+}
+
+.card > label[for="nota"]::before {
+    content: "1";
+}
+
+.card > label[for="tipoEscala"]::before {
+    content: "2";
+}
+
+.card > label[for="nota"]::before,
+.card > label[for="tipoEscala"]::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    border: 1px solid rgba(231,196,125,.55);
+    border-radius: 50%;
+    color: #f2cf7a;
+    font-size: 12px;
+}
+
+.card > select#nota,
+.card > select#tipoEscala {
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid rgba(181,138,74,.7);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f3e6ca, #e6d5b4);
+    color: #2f2116;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 4px 12px rgba(0,0,0,.12);
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+.card > select#nota:hover,
+.card > select#tipoEscala:hover {
+    border-color: #e7c47d;
+}
+
+.card > select#nota:focus,
+.card > select#tipoEscala:focus {
+    outline: none;
+    border-color: #f2cf7a;
+    box-shadow:
+        0 0 0 3px rgba(231,196,125,.16),
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 5px 14px rgba(0,0,0,.14);
+}
+
+.card > button#gerarEscala {
+    min-height: 50px;
+    margin-top: 16px;
+    border: 1px solid rgba(242,207,122,.7);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #8f6330, #6b421f);
+    color: #fff4df;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.card > button#gerarEscala:hover {
+    border-color: #f2cf7a;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.28),
+        0 0 14px rgba(212,168,92,.18),
+        inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+
+/* Refinamento visual do painel de resultado */
+#resultado {
+    padding: 22px;
+    background: linear-gradient(145deg, #f1e5cc, #e6d5b4);
+    border: 1px solid rgba(196,154,92,.72);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        0 8px 22px rgba(0,0,0,.16);
+}
+
+#resultado > h3 {
+    margin: 0 0 22px;
+    padding: 17px 20px;
+    background: linear-gradient(145deg, #4a2f1b, #362011);
+    border: 1px solid rgba(181,138,74,.72);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 5px 14px rgba(0,0,0,.15);
+    color: #f2cf7a;
+}
+
+.info-escala {
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.bloco-resultado {
+    padding: 19px;
+    background: rgba(255,253,242,.58);
+    border: 1px solid rgba(181,138,74,.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.5),
+        0 5px 14px rgba(0,0,0,.09);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.bloco-resultado:hover {
+    transform: translateY(-2px);
+    border-color: rgba(196,154,92,.75);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.55),
+        0 8px 18px rgba(0,0,0,.13);
+}
+
+.bloco-resultado strong {
+    color: #5a371d;
+    font-size: 16px;
+    letter-spacing: .2px;
+}
+
+.bloco-resultado p {
+    color: #2f2116;
+    font-size: 16px;
+    line-height: 1.65;
 }
 
