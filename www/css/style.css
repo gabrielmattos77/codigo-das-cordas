@@ -2541,3 +2541,36 @@ header p {
 
 
 
+
+/* ======================================================
+   OTIMIZAÇÃO DE RENDERIZAÇÃO — CELULAR
+   ====================================================== */
+
+#resultado {
+    contain: layout paint;
+}
+
+#bracoViolao {
+    contain: layout paint;
+}
+
+.tabela-container {
+    contain: layout paint;
+}
+
+
+/* ======================================================
+   PERFORMANCE — SOMENTE O TÍTULO FICA ANIMADO
+   ====================================================== */
+
+header p,
+header::after,
+.card,
+#gerarEscala {
+    animation: none !important;
+}
+
+header h1 {
+    animation: balanco-titulo 6s ease-in-out infinite !important;
+}
+

@@ -1438,6 +1438,24 @@ function gerarBracoViolao(
     const numeroDeCasas =
         notasPorCasa;
 
+    // Índice rápido das notas da escala:
+    // evita procurar a nota com .find() em cada casa do braço.
+    const notasEscalaPorValor = new Map();
+
+    notasEscala.forEach(
+        function (nota) {
+            notasEscalaPorValor.set(
+                obterValorNotaMusical(nota),
+                nota
+            );
+        }
+    );
+
+    const valorTonica =
+        obterValorNotaMusical(
+            notasEscala[0]
+        );
+
 
     let html = `
 
@@ -1533,19 +1551,8 @@ function gerarBracoViolao(
 
 
                 const notaEscala =
-                    notasEscala.find(
-                        function (
-                            nota
-                        ) {
-
-                            return (
-                                obterValorNotaMusical(
-                                    nota
-                                ) ===
-                                valorCasa
-                            );
-
-                        }
+                    notasEscalaPorValor.get(
+                        valorCasa
                     );
 
 
@@ -1555,12 +1562,7 @@ function gerarBracoViolao(
 
                 const isTonica =
                     pertenceEscala &&
-                    obterValorNotaMusical(
-                        notaEscala
-                    ) ===
-                    obterValorNotaMusical(
-                        notasEscala[0]
-                    );
+                    valorCasa === valorTonica;
 
 
                 const notaExibida =

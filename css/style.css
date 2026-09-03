@@ -2538,6 +2538,17 @@ header p {
         margin-top: 28px;
     }
 }
+/* ======================================================
+   PERFORMANCE — SOMENTE O TÍTULO FICA ANIMADO
+   ====================================================== */
 
+header p,
+header::after,
+.card,
+#gerarEscala {
+    animation: none !important;
+}
 
-
+header h1 {
+    animation: balanco-titulo 6s ease-in-out infinite !important;
+}
