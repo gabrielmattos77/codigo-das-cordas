@@ -4,52 +4,97 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Music Tools - Download</title>
+<title>Music Tools</title>
 
 <style>
 
-body{
+*{
     margin:0;
-    font-family:Arial,sans-serif;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
     background:#0f1117;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    color:#fff;
+}
+
+.hero{
     min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
 }
 
 .container{
-    text-align:center;
-    max-width:700px;
-    padding:40px;
+    max-width:900px;
 }
 
 h1{
-    font-size:48px;
+    font-size:64px;
     color:#f5d06f;
+    margin-bottom:20px;
 }
 
-p{
+.subtitulo{
+    font-size:22px;
+    color:#ddd;
+    margin-bottom:40px;
+}
+
+.card{
+    background:#171b24;
+    border-radius:20px;
+    padding:30px;
+    margin:30px 0;
+}
+
+.card h2{
+    color:#f5d06f;
+    margin-bottom:20px;
+}
+
+.recursos{
+    list-style:none;
+    text-align:left;
+    max-width:500px;
+    margin:auto;
+}
+
+.recursos li{
+    padding:10px 0;
     font-size:18px;
-    line-height:1.6;
 }
 
 .botao{
     display:inline-block;
     margin-top:30px;
-    padding:18px 40px;
-    font-size:22px;
-    font-weight:bold;
-    text-decoration:none;
-    color:#000;
+    padding:20px 45px;
     background:#f5d06f;
-    border-radius:14px;
+    color:#000;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:bold;
+    border-radius:15px;
 }
 
-.versao{
-    margin-top:20px;
-    opacity:.8;
+.botao:hover{
+    transform:scale(1.03);
+}
+
+.github{
+    display:inline-block;
+    margin-top:15px;
+    color:#f5d06f;
+    text-decoration:none;
+}
+
+.rodape{
+    margin-top:40px;
+    opacity:.7;
 }
 
 </style>
@@ -57,28 +102,55 @@ p{
 
 <body>
 
+<section class="hero">
+
 <div class="container">
 
 <h1>🎸 Music Tools</h1>
 
-<p>
-Gerador de escalas, campo harmônico,
-modos gregos, intervalos e ferramentas
-de teoria musical.
+<p class="subtitulo">
+Gerador de escalas e ferramentas completas
+de teoria musical para músicos, estudantes
+e professores.
 </p>
 
 <a
 class="botao"
-href="https://github.com/gabrielmattos77/codigo-das-cordas/releases/download/v1.0.1/app-debug.apk"
+href="https://github.com/gabrielmattos77/codigo-das-cordas/releases/latest"
 >
 📱 Baixar APK
 </a>
 
-<div class="versao">
-Versão atual: v1.0.1
+<div class="card">
+
+<h2>Recursos</h2>
+
+<ul class="recursos">
+<li>🎼 Gerador de Escalas</li>
+<li>🎹 Campo Harmônico</li>
+<li>🎵 Modos Gregos</li>
+<li>⭐ Favoritos</li>
+<li>🔊 Reprodução de Escalas</li>
+<li>🥁 Metrônomo</li>
+<li>📚 Ferramentas de Teoria Musical</li>
+</ul>
+
+</div>
+
+<a
+class="github"
+href="https://github.com/gabrielmattos77/codigo-das-cordas"
+>
+Ver projeto no GitHub
+</a>
+
+<div class="rodape">
+Código das Cordas © 2026
 </div>
 
 </div>
+
+</section>
 
 </body>
 </html>
