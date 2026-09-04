@@ -10,13 +10,135 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
 </head>
+</div>
 
-<body>
+
+
 
     <header>
+        <button id="btnFavoritos" class="btn-favoritos" type="button">
+            ☰ Menu
+        </button>
+
         <h1>🎸 Music Tools</h1>
         <p>Gerador de escalas e ferramentas de teoria musical</p>
+
     </header>
+
+        <aside id="painelFavoritos" class="painel-favoritos" aria-hidden="true">
+
+    <div class="painel-favoritos-cabecalho">
+        <h2>☰ Menu</h2>
+
+        <button
+            id="fecharFavoritos"
+            type="button"
+            aria-label="Fechar menu"
+        >
+            ✕
+        </button>
+
+    </div>
+
+    <!-- ==================================================
+         ESCALAS SALVAS
+         ================================================== -->
+
+    <section class="menu-secao">
+
+        <h3>⭐ Minhas Escalas</h3>
+
+        <div id="listaFavoritos" class="lista-favoritos">
+
+            <p class="favoritos-vazio">
+                Nenhuma escala favoritada ainda.
+                <br><br>
+                Gere uma escala e clique em ☆ para salvá-la aqui.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         REPRODUÇÃO
+         ================================================== -->
+
+    
+
+
+    <!-- ==================================================
+         METRÔNOMO
+         ================================================== -->
+
+    <section class="menu-secao menu-metronomo-secao">
+
+        <h3>🥁 Metrônomo</h3>
+
+        <div class="controle-bpm">
+
+            <label for="bpmMetronomo">
+                BPM:
+            </label>
+
+            <button
+                id="diminuirBpm"
+                type="button"
+                aria-label="Diminuir BPM"
+            >
+                −
+            </button>
+
+
+            <input
+                id="bpmMetronomo"
+                type="number"
+                min="40"
+                max="240"
+                value="80"
+            >
+
+            <button
+                id="aumentarBpm"
+                type="button"
+                aria-label="Aumentar BPM"
+            >
+                +
+            </button>
+
+
+        </div>
+
+        <div class="controle-compasso">
+
+            <label for="compassoMetronomo">
+                Compasso:
+            </label>
+
+            <select id="compassoMetronomo">
+                <option value="2">2/4</option>
+                <option value="3">3/4</option>
+                <option value="4" selected>4/4</option>
+                <option value="6">6/8</option>
+            </select>
+
+        </div>
+
+        <button
+            id="btnMetronomo"
+            class="btn-metronomo"
+            type="button"
+        >
+            ▶ Iniciar metrônomo
+        </button>
+
+
+    </section>
+
+</aside>
+
+    <div id="fundoFavoritos" class="fundo-favoritos"></div>
 
     <main>
 
@@ -172,6 +294,7 @@
             <button id="gerarEscala" type="button">
                 Gerar escala
             </button>
+
 
 
             <div id="resultado">

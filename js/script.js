@@ -1,3 +1,4 @@
+let ultimaEscalaGerada = []; 
 // ======================================================
 // CÓDIGO DAS CORDAS — GERADOR DE ESCALAS
 // Núcleo musical completo
@@ -1704,13 +1705,13 @@ if (botao) {
             // ------------------------------------------
             // GERAR ESCALA
             // ------------------------------------------
-
             const escala =
                 gerarEscalaMusical(
                     notaEscolhida,
                     escalaSelecionada
                 );
 
+            ultimaEscalaGerada = escala;
 
             if (
                 escala.length === 0
@@ -1821,12 +1822,28 @@ if (botao) {
 
             resultado.innerHTML = `
 
-                <h3>
-                    🎵
-                    ${notaEscolhida}
-                    —
-                    ${escalaSelecionada.nome}
-                </h3>
+                <div class="titulo-resultado">
+                    <h3>
+                        🎵
+                        ${notaEscolhida}
+                        —
+                        ${escalaSelecionada.nome}
+                    </h3>
+
+                    <button
+                        id="btnFavoritarEscala"
+                        class="btn-favoritar-escala"
+                        type="button"
+                        title="Adicionar aos favoritos"
+                    >
+                        ${obterEscalasSalvas().some(function (favorito) {
+                            return (
+                                favorito.nota === notaEscolhida &&
+                                favorito.tipo === tipoEscala
+                            );
+                        }) ? "★" : "☆"}
+                    </button>
+                </div>
 
 
                 <div class="info-escala">
@@ -2675,14 +2692,15 @@ function executarTestesGerador() {
                 // 2. GERAR ESCALA
                 // ==========================================
 
-                const escala =
-                    gerarEscalaMusical(
-                        tonalidade,
-                        escalaDefinicao
-                    );
+            const escala =
+                gerarEscalaMusical(
+                    notaEscolhida,
+                    escalaSelecionada
+                );
 
+            ultimaEscalaGerada = escala;
 
-                if (
+            if (
                     !Array.isArray(escala) ||
                     escala.length === 0
                 ) {
@@ -3278,18 +3296,15 @@ function executarTestesSimetricasProfundo() {
                         // 2. GERAR ESCALA
                         // ----------------------------------
 
-                        const escala =
-                            gerarEscalaMusical(
-                                tonalidade,
-                                definicao
-                            );
+            const escala =
+                gerarEscalaMusical(
+                    notaEscolhida,
+                    escalaSelecionada
+                );
 
+            ultimaEscalaGerada = escala;
 
-                        // ----------------------------------
-                        // 3. QUANTIDADE
-                        // ----------------------------------
-
-                        if (
+            if (
                             escala.length !==
                             teste.quantidade
                         ) {
@@ -3844,4 +3859,1174 @@ function gerarCampoHarmonicoEscala(
     };
 
 }
+
+
+/* ======================================================
+   MINHAS ESCALAS — ABRIR E FECHAR PAINEL
+   ====================================================== */
+
+const btnFavoritos = document.getElementById("btnFavoritos");
+const painelFavoritos = document.getElementById("painelFavoritos");
+const fecharFavoritos = document.getElementById("fecharFavoritos");
+const fundoFavoritos = document.getElementById("fundoFavoritos");
+
+function abrirFavoritos() {
+    painelFavoritos.classList.add("aberto");
+    fundoFavoritos.classList.add("visivel");
+    painelFavoritos.setAttribute("aria-hidden", "false");
+}
+
+function fecharPainelFavoritos() {
+    painelFavoritos.classList.remove("aberto");
+    fundoFavoritos.classList.remove("visivel");
+    painelFavoritos.setAttribute("aria-hidden", "true");
+}
+
+if (btnFavoritos) {
+    btnFavoritos.addEventListener("click", abrirFavoritos);
+}
+
+if (fecharFavoritos) {
+    fecharFavoritos.addEventListener("click", fecharPainelFavoritos);
+}
+
+if (fundoFavoritos) {
+    fundoFavoritos.addEventListener("click", fecharPainelFavoritos);
+}
+
+/* ======================================================
+   MINHAS ESCALAS — SISTEMA DE FAVORITOS
+   ====================================================== */
+
+function obterEscalasSalvas() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("minhasEscalas") || "[]"
+        );
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar escalas favoritas:",
+            erro
+        );
+
+        return [];
+    }
+}
+
+
+/* ======================================================
+   RENDERIZAR FAVORITOS
+   ====================================================== */
+
+function renderizarFavoritos() {
+
+    const lista =
+        document.getElementById("listaFavoritos");
+
+    if (!lista) {
+        return;
+    }
+
+    const escalasSalvas =
+        obterEscalasSalvas();
+
+    if (escalasSalvas.length === 0) {
+
+        lista.innerHTML = `
+            <p class="favoritos-vazio">
+                Nenhuma escala favoritada ainda.
+                <br><br>
+                Gere uma escala e clique em ☆ para salvá-la aqui.
+            </p>
+        `;
+
+        return;
+    }
+
+    lista.innerHTML = "";
+
+    escalasSalvas.forEach(
+        function (favorito, indice) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "item-favorito";
+
+            item.dataset.nota =
+                favorito.nota;
+
+            item.dataset.tipo =
+                favorito.tipo;
+
+            item.innerHTML = `
+                <div class="favorito-info">
+                    <strong>
+                        🎵 ${favorito.nota} — ${favorito.nome}
+                    </strong>
+
+                    <span>
+                        ${favorito.tipo}
+                    </span>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-remover-favorito"
+                    data-indice="${indice}"
+                    title="Remover dos favoritos"
+                >
+                    ✕
+                </button>
+            `;
+
+            lista.appendChild(item);
+        }
+    );
+}
+
+
+/* ======================================================
+   FAVORITAR / DESFAVORITAR ESCALA
+   ====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const botaoFavoritar =
+            event.target.closest(
+                "#btnFavoritarEscala"
+            );
+
+        if (!botaoFavoritar) {
+            return;
+        }
+
+        const nota =
+            document.getElementById("nota").value;
+
+        const tipo =
+            document.getElementById("tipoEscala").value;
+
+        const escalaSelecionada =
+            escalas[tipo];
+
+        if (!escalaSelecionada) {
+            return;
+        }
+
+        const escalasSalvas =
+            obterEscalasSalvas();
+
+        const indiceExistente =
+            escalasSalvas.findIndex(
+                function (favorito) {
+
+                    return (
+                        favorito.nota === nota &&
+                        favorito.tipo === tipo
+                    );
+                }
+            );
+
+        if (indiceExistente !== -1) {
+
+            escalasSalvas.splice(
+                indiceExistente,
+                1
+            );
+
+            botaoFavoritar.textContent = "☆";
+
+            botaoFavoritar.title =
+                "Adicionar aos favoritos";
+
+        } else {
+
+            escalasSalvas.push({
+
+                nota: nota,
+
+                tipo: tipo,
+
+                nome:
+                    escalaSelecionada.nome
+            });
+
+            botaoFavoritar.textContent = "★";
+
+            botaoFavoritar.title =
+                "Remover dos favoritos";
+        }
+
+        localStorage.setItem(
+            "minhasEscalas",
+            JSON.stringify(escalasSalvas)
+        );
+
+        renderizarFavoritos();
+    }
+);
+
+
+/* ======================================================
+   REMOVER FAVORITO
+   ====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const botaoRemover =
+            event.target.closest(
+                ".btn-remover-favorito"
+            );
+
+        if (!botaoRemover) {
+            return;
+        }
+
+        const indice =
+            Number(
+                botaoRemover.dataset.indice
+            );
+
+        const escalasSalvas =
+            obterEscalasSalvas();
+
+        escalasSalvas.splice(
+            indice,
+            1
+        );
+
+        localStorage.setItem(
+            "minhasEscalas",
+            JSON.stringify(escalasSalvas)
+        );
+
+        renderizarFavoritos();
+    }
+);
+
+
+/* ======================================================
+   ABRIR ESCALA FAVORITA
+   ====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const itemFavorito =
+            event.target.closest(
+                ".item-favorito"
+            );
+
+        if (!itemFavorito) {
+            return;
+        }
+
+        if (
+            event.target.closest(
+                ".btn-remover-favorito"
+            )
+        ) {
+            return;
+        }
+
+        const nota =
+            itemFavorito.dataset.nota;
+
+        const tipo =
+            itemFavorito.dataset.tipo;
+
+        const seletorNota =
+            document.getElementById("nota");
+
+        const seletorEscala =
+            document.getElementById("tipoEscala");
+
+        const botaoGerar =
+            document.getElementById("gerarEscala");
+
+        const resultado =
+            document.getElementById("resultado");
+
+        if (
+            !nota ||
+            !tipo ||
+            !seletorNota ||
+            !seletorEscala ||
+            !botaoGerar ||
+            !resultado
+        ) {
+            return;
+        }
+
+        /* Seleciona a escala salva */
+        seletorNota.value = nota;
+        seletorEscala.value = tipo;
+
+        /* Mantém a estrela marcada para escalas favoritas */
+        const botaoFavoritar =
+            document.getElementById("btnFavoritarEscala");
+
+        if (botaoFavoritar) {
+            botaoFavoritar.textContent = "★";
+            botaoFavoritar.title =
+                "Remover dos favoritos";
+        }
+
+        /* Fecha a aba de favoritos */
+        if (typeof fecharPainelFavoritos === "function") {
+            fecharPainelFavoritos();
+        }
+
+        /* Gera novamente a escala completa */
+        botaoGerar.click();
+
+        /* Desce automaticamente até o resultado */
+        setTimeout(
+            function () {
+                resultado.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            },
+            150
+        );
+    }
+);
+
+renderizarFavoritos();
+
+/* ======================================================
+   REPRODUÇÃO DE ESCALA — ÁUDIO
+   ====================================================== */
+
+let contextoAudioEscala = null;
+let temporizadorEscala = null;
+
+function obterFrequenciaNota(nota, oitava = 4) {
+
+    const valorNota = obterValorNotaMusical(nota);
+
+    if (valorNota === undefined) {
+        return undefined;
+    }
+
+    const numeroMidi = (oitava + 1) * 12 + valorNota;
+
+    return 440 * Math.pow(
+        2,
+        (numeroMidi - 69) / 12
+    );
+}
+
+
+function tocarNotaEscala(nota, oitava, inicio, duracao) {
+
+    if (!contextoAudioEscala) {
+        return;
+    }
+
+    const frequencia =
+        obterFrequenciaNota(
+            nota,
+            oitava
+        );
+
+    if (frequencia === undefined) {
+        return;
+    }
+
+    const oscilador =
+        contextoAudioEscala.createOscillator();
+
+    const ganho =
+        contextoAudioEscala.createGain();
+
+    /*
+     * Timbre inspirado em corda de violão:
+     * mistura de harmônicos para evitar o som de
+     * teclado/seno puro.
+     */
+    oscilador.type = "triangle";
+
+    oscilador.frequency.setValueAtTime(
+        frequencia,
+        inicio
+    );
+
+    ganho.gain.setValueAtTime(
+        0.0001,
+        inicio
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+        0.22,
+        inicio + 0.008
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+        0.08,
+        inicio + duracao * 0.25
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+        0.0001,
+        inicio + duracao
+    );
+
+    oscilador.connect(ganho);
+
+    ganho.connect(
+        contextoAudioEscala.destination
+    );
+
+    oscilador.start(inicio);
+
+    oscilador.stop(
+        inicio + duracao
+    );
+}
+
+async function reproduzirEscalaAscendente() {
+
+    const seletorNota =
+        document.getElementById("nota");
+
+    const seletorEscala =
+        document.getElementById("tipoEscala");
+
+    const campoBpm =
+        document.getElementById("bpmEscala");
+
+    const bpm =
+        Number(
+            campoBpm?.value || 80
+        );
+
+    if (
+        !seletorNota ||
+        !seletorEscala ||
+        !Array.isArray(ultimaEscalaGerada) ||
+        ultimaEscalaGerada.length === 0
+    ) {
+        return;
+    }
+
+    const tipo =
+        seletorEscala.value;
+
+    const escalaSelecionada =
+        escalas[tipo];
+
+    if (!escalaSelecionada) {
+        return;
+    }
+
+    if (!contextoAudioEscala) {
+
+        contextoAudioEscala =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+    await contextoAudioEscala.resume();
+
+    const intervalo =
+        60 / Math.max(
+            40,
+            Math.min(
+                240,
+                bpm
+            )
+        );
+
+    const agora =
+        contextoAudioEscala.currentTime + 0.05;
+
+    const notasReproducao =
+        [
+            ...ultimaEscalaGerada,
+            ultimaEscalaGerada[0]
+        ];
+
+    const tonica =
+        obterValorNotaMusical(
+            seletorNota.value
+        );
+
+    notasReproducao.forEach(
+        function (notaEscala, indice) {
+
+            const valorNota =
+                obterValorNotaMusical(
+                    notaEscala
+                );
+
+            let oitava = 4;
+
+            if (indice > 0) {
+
+                const valorAnterior =
+                    obterValorNotaMusical(
+                        notasReproducao[indice - 1]
+                    );
+
+                const intervaloSemitons =
+                    (
+                        valorNota -
+                        tonica +
+                        12
+                    ) % 12;
+
+                const intervaloAnterior =
+                    (
+                        valorAnterior -
+                        tonica +
+                        12
+                    ) % 12;
+
+                oitava =
+                    4 +
+                    (
+                        Math.floor(
+                            (
+                                (
+                                    indice === notasReproducao.length - 1
+                                )
+                                ? 12
+                                : intervaloSemitons
+                            ) / 12
+                        )
+                    );
+
+                if (
+                    indice < notasReproducao.length - 1 &&
+                    intervaloSemitons < intervaloAnterior
+                ) {
+                    oitava++;
+                }
+
+            }
+
+            if (
+                indice === notasReproducao.length - 1
+            ) {
+                oitava = 5;
+            }
+
+            tocarNotaEscala(
+                notaEscala,
+                oitava,
+                agora + indice * intervalo,
+                intervalo * 0.85
+            );
+
+        }
+    );
+}
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            !event.target.closest(
+                "#btnTocarAscendente"
+            )
+        ) {
+            return;
+        }
+
+        reproduzirEscalaAscendente();
+
+    }
+);
+
+
+/* ======================================================
+   METRÔNOMO
+   ====================================================== */
+
+let contextoAudioMetronomo = null;
+let intervaloMetronomo = null;
+let batidaMetronomo = 0;
+let indicadoresBatidaMetronomo = document.querySelectorAll("#batidasMetronomo span");
+
+function tocarBatidaMetronomo(acento = false) {
+
+    if (!contextoAudioMetronomo) {
+        return;
+    }
+
+    const agora = contextoAudioMetronomo.currentTime;
+
+    const oscilador =
+        contextoAudioMetronomo.createOscillator();
+
+    const ganho =
+        contextoAudioMetronomo.createGain();
+
+    const filtro =
+        contextoAudioMetronomo.createBiquadFilter();
+
+    oscilador.type = "triangle";
+
+    /*
+     * TA = primeiro tempo, mais presente.
+     * tum = demais tempos, iguais entre si.
+     */
+
+    oscilador.frequency.setValueAtTime(
+        acento ? 1100 : 850,
+        agora
+    );
+
+    oscilador.frequency.exponentialRampToValueAtTime(
+        acento ? 500 : 380,
+        agora + 0.035
+    );
+
+    filtro.type = "bandpass";
+
+    filtro.frequency.setValueAtTime(
+        acento ? 2300 : 1700,
+        agora
+    );
+
+    filtro.Q.setValueAtTime(
+        acento ? 2.2 : 1.6,
+        agora
+    );
+
+    ganho.gain.setValueAtTime(
+        0.0001,
+        agora
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+        acento ? 1.55 : 1.15,
+        agora + 0.001
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+        0.0001,
+        agora + (acento ? 0.045 : 0.032)
+    );
+
+    oscilador.connect(filtro);
+    filtro.connect(ganho);
+    ganho.connect(
+        contextoAudioMetronomo.destination
+    );
+
+    oscilador.start(agora);
+
+    oscilador.stop(
+        agora + (acento ? 0.045 : 0.032)
+    );
+}
+
+
+async function iniciarMetronomo() {
+
+    const campoBpm =
+        document.getElementById("bpmMetronomo");
+
+    const campoCompasso =
+        document.getElementById("compassoMetronomo");
+
+    const botao =
+        document.getElementById("btnMetronomo");
+
+    if (!campoBpm || !botao) {
+        return;
+    }
+
+    const bpm =
+        Math.max(
+            40,
+            Math.min(
+                240,
+                Number(campoBpm.value) || 80
+            )
+        );
+
+    campoBpm.value = bpm;
+
+    const temposPorCompasso =
+        Number(campoCompasso?.value) || 4;
+
+    if (!contextoAudioMetronomo) {
+
+        contextoAudioMetronomo =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+    }
+
+    await contextoAudioMetronomo.resume();
+
+    if (intervaloMetronomo) {
+        clearInterval(intervaloMetronomo);
+    }
+
+    /*
+     * Começa SEMPRE no primeiro tempo:
+     *
+     * TA - tum - tum - tum
+     */
+
+    batidaMetronomo = 0;
+
+    tocarBatidaMetronomo(true);
+
+    if (indicadoresBatidaMetronomo.length) {
+
+        indicadoresBatidaMetronomo.forEach(
+            function (indicador) {
+                indicador.classList.remove("batida-atual");
+            }
+        );
+
+        indicadoresBatidaMetronomo[0]
+            .classList.add("batida-atual");
+    }
+
+    batidaMetronomo = 1;
+
+    intervaloMetronomo =
+        setInterval(
+            function () {
+
+                const acento =
+                    temposPorCompasso === 6
+                        ? batidaMetronomo === 0 || batidaMetronomo === 3
+                        : batidaMetronomo === 0;
+
+                tocarBatidaMetronomo(acento);
+
+                if (indicadoresBatidaMetronomo.length) {
+
+                    indicadoresBatidaMetronomo.forEach(
+                        function (indicador) {
+                            indicador.classList.remove(
+                                "batida-atual"
+                            );
+                        }
+                    );
+
+                    indicadoresBatidaMetronomo[
+                        batidaMetronomo
+                    ].classList.add(
+                        "batida-atual"
+                    );
+                }
+
+                batidaMetronomo =
+                    (batidaMetronomo + 1) % temposPorCompasso;
+
+            },
+            60000 / bpm
+        );
+
+    botao.textContent =
+        "⏹ Parar metrônomo";
+
+    botao.classList.add("metronomo-ativo");
+}
+
+
+function pararMetronomo() {
+
+    const botao =
+        document.getElementById("btnMetronomo");
+
+    if (intervaloMetronomo) {
+
+        clearInterval(
+            intervaloMetronomo
+        );
+
+        intervaloMetronomo = null;
+    }
+
+    batidaMetronomo = 0;
+
+    if (indicadoresBatidaMetronomo.length) {
+
+        indicadoresBatidaMetronomo.forEach(
+            function (indicador) {
+                indicador.classList.remove(
+                    "batida-atual"
+                );
+            }
+        );
+    }
+
+    if (botao) {
+
+        botao.textContent =
+            "▶ Iniciar metrônomo";
+
+        botao.classList.remove(
+            "metronomo-ativo"
+        );
+    }
+}
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const botao =
+            event.target.closest(
+                "#btnMetronomo"
+            );
+
+        if (!botao) {
+            return;
+        }
+
+        if (intervaloMetronomo) {
+            pararMetronomo();
+        } else {
+            iniciarMetronomo();
+        }
+    }
+);
+
+
+/* ======================================================
+   CONTROLE DE BPM DO METRÔNOMO
+   ====================================================== */
+
+let temporizadorMetronomo = null;
+
+function agendarProximaBatidaMetronomo() {
+
+    if (!intervaloMetronomo) {
+        return;
+    }
+
+    const campoBpm =
+        document.getElementById("bpmMetronomo");
+
+    const campoCompasso =
+        document.getElementById("compassoMetronomo");
+
+    const bpm =
+        Math.max(
+            40,
+            Math.min(
+                240,
+                Number(campoBpm?.value) || 80
+            )
+        );
+
+    const temposPorCompasso =
+        Number(campoCompasso?.value) || 4;
+
+    const acento =
+        temposPorCompasso === 6
+            ? batidaMetronomo === 0 ||
+              batidaMetronomo === 3
+            : batidaMetronomo === 0;
+
+    tocarBatidaMetronomo(acento);
+
+    if (indicadoresBatidaMetronomo.length) {
+
+        indicadoresBatidaMetronomo.forEach(
+            function (indicador) {
+                indicador.classList.remove(
+                    "batida-atual"
+                );
+            }
+        );
+
+        indicadoresBatidaMetronomo[
+            batidaMetronomo
+        ].classList.add(
+            "batida-atual"
+        );
+    }
+
+    batidaMetronomo =
+        (batidaMetronomo + 1) %
+        temposPorCompasso;
+
+    const intervalo =
+        60000 / bpm;
+
+    temporizadorMetronomo =
+        setTimeout(
+            agendarProximaBatidaMetronomo,
+            intervalo
+        );
+}
+
+
+/* ======================================================
+   CONTROLE DE BPM — CLIQUE E PRESSÃO CONTÍNUA
+   ====================================================== */
+
+let temporizadorBpm = null;
+let botaoBpmPressionado = null;
+let velocidadeBpm = 1;
+
+function alterarBpm(direcao) {
+
+    const campo =
+        document.getElementById("bpmMetronomo");
+
+    if (!campo) {
+        return;
+    }
+
+    let bpm =
+        Number(campo.value) || 80;
+
+    bpm += direcao;
+
+    bpm =
+        Math.max(
+            40,
+            Math.min(240, bpm)
+        );
+
+    campo.value = bpm;
+}
+
+function iniciarAlteracaoContinuaBpm(botao) {
+
+    if (temporizadorBpm) {
+        clearInterval(temporizadorBpm);
+    }
+
+    botaoBpmPressionado = botao;
+    velocidadeBpm = 1;
+
+    const direcao =
+        botao.id === "diminuirBpm"
+            ? -1
+            : 1;
+
+    /* Pequena espera antes de começar a repetição */
+    temporizadorBpm =
+        setTimeout(function repetir() {
+
+            velocidadeBpm =
+                Math.min(
+                    velocidadeBpm + 1,
+                    10
+                );
+
+            for (
+                let i = 0;
+                i < velocidadeBpm;
+                i++
+            ) {
+                alterarBpm(direcao);
+            }
+
+            temporizadorBpm =
+                setTimeout(
+                    repetir,
+                    65
+                );
+
+        }, 350);
+}
+
+function pararAlteracaoContinuaBpm() {
+
+    if (temporizadorBpm) {
+        clearTimeout(temporizadorBpm);
+        clearInterval(temporizadorBpm);
+        temporizadorBpm = null;
+    }
+
+    botaoBpmPressionado = null;
+    velocidadeBpm = 1;
+}
+
+
+/* Pressionamento */
+document.addEventListener(
+    "pointerdown",
+    function (event) {
+
+        const botao =
+            event.target.closest(
+                "#diminuirBpm, #aumentarBpm"
+            );
+
+        if (!botao) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        alterarBpm(
+            botao.id === "diminuirBpm"
+                ? -1
+                : 1
+        );
+
+        iniciarAlteracaoContinuaBpm(botao);
+    },
+    true
+);
+
+
+/* Soltar o botão */
+document.addEventListener(
+    "pointerup",
+    function (event) {
+
+        const botao =
+            event.target.closest(
+                "#diminuirBpm, #aumentarBpm"
+            );
+
+        if (!botao) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        pararAlteracaoContinuaBpm();
+    },
+    true
+);
+
+
+/* Caso o dedo/mouse saia do botão */
+document.addEventListener(
+    "pointercancel",
+    function () {
+        pararAlteracaoContinuaBpm();
+    },
+    true
+);
+/* ======================================================
+   SUBSTITUIÇÃO DO INICIAR/PARAR
+   ====================================================== */
+
+iniciarMetronomo = async function () {
+
+    const campoBpm =
+        document.getElementById("bpmMetronomo");
+
+    const botao =
+        document.getElementById("btnMetronomo");
+
+    if (!campoBpm || !botao) {
+        return;
+    }
+
+    const bpm =
+        Math.max(
+            40,
+            Math.min(
+                240,
+                Number(campoBpm.value) || 80
+            )
+        );
+
+    campoBpm.value = bpm;
+
+    if (!contextoAudioMetronomo) {
+        contextoAudioMetronomo =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+    }
+
+    await contextoAudioMetronomo.resume();
+
+    if (temporizadorMetronomo) {
+        clearTimeout(temporizadorMetronomo);
+    }
+
+    batidaMetronomo = 0;
+
+    if (indicadoresBatidaMetronomo.length) {
+        indicadoresBatidaMetronomo.forEach(
+            function (indicador) {
+                indicador.classList.remove(
+                    "batida-atual"
+                );
+            }
+        );
+    }
+
+    intervaloMetronomo = true;
+
+    agendarProximaBatidaMetronomo();
+
+    botao.textContent =
+        "⏹ Parar metrônomo";
+
+    botao.classList.add(
+        "metronomo-ativo"
+    );
+};
+
+
+pararMetronomo = function () {
+
+    const botao =
+        document.getElementById("btnMetronomo");
+
+    intervaloMetronomo = null;
+
+    if (temporizadorMetronomo) {
+        clearTimeout(
+            temporizadorMetronomo
+        );
+
+        temporizadorMetronomo = null;
+    }
+
+    batidaMetronomo = 0;
+
+    if (indicadoresBatidaMetronomo.length) {
+        indicadoresBatidaMetronomo.forEach(
+            function (indicador) {
+                indicador.classList.remove(
+                    "batida-atual"
+                );
+            }
+        );
+    }
+
+    if (botao) {
+        botao.textContent =
+            "▶ Iniciar metrônomo";
+
+        botao.classList.remove(
+            "metronomo-ativo"
+        );
+    }
+};
+
+
 
